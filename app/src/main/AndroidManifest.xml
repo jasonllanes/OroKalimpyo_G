@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MaterialComponents.NoActionBar"
+        tools:targetApi="31">
+        <activity
+            android:name=".terms_and_data.external_link"
+            android:exported="false" />
+        <activity
+            android:name=".profile.about_app"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.sign_up_note"
+            android:exported="false" />
+        <activity
+            android:name=".profile.edit_location"
+            android:exported="false" />
+        <activity
+            android:name=".profile.view_contribution"
+            android:exported="false" />
+        <activity
+            android:name=".profile.show_qr"
+            android:exported="false" />
+        <activity
+            android:name=".scanner.consolidator_scanner_result"
+            android:exported="false" />
+        <activity
+            android:name=".scanner.consolidator_scanner"
+            android:exported="false" />
+        <activity
+            android:name=".scanner.collector_scanner_result"
+            android:exported="false" />
+        <activity
+            android:name=".scanner.collector_scanner"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.final_sign_up_2"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.consolidator_sign_up_details"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.collector_sign_up_details"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.sign_up_selection"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.final_sign_up"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.non_household_sign_up_details"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.household_sign_up_details"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.choose_user_type"
+            android:exported="false" />
+        <activity
+            android:name=".home.home"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.choose_household"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.log_in"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.navigation_activity"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.getting_started"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Oro Kalimpyo</string>
+
+    <string name="terms_of_service"><u>Terms and Condition</u></string>
+    <string name="data_policy"><u>Data Policy</u>.</string>
+
+    <string name="screen1">Oro Kalimpyo App</string>
+    <string name="screen2">Seamless Collection</string>
+    <string name="screen3">Partnership</string>
+    <string name="screen4">City Implementation</string>
+    <string name="screen5">SL Devs</string>
+    <string name="screen1desc">The Oro Kalimpyo App is a mobile platform for Android devices for optimizing the segregation of waste materials in Cagayan de Oro City, Philippines. </string>
+    <string name="screen2desc">It uses a QR code for processing users and their waste-generation data.
+        The generated data will be use for report generation about the city\'s waste generation quantity that provide statical evidence for a better assessment on partaking reusing recyclable solid waste.</string>
+    <string name="screen3desc">The application is the project of the Healthy Oceans and Cleans Cities Initiative (HOCCI) by the UN-Habitat Philippines, funded by the Government of Japan.</string>
+    <string name="screen4desc">Implemented in the City of Cagayan de Oro with the partnership with the City Local Environment and Natural Resources Office (CLENRO).</string>
+    <string name="screen5desc">The project was based from the Hackathon called "Plastic (3R) Hacks PH)" on the year 2021. Developed by the students from STI College Cagayan de Oro under the team name "SL Devs".</string>
+
+    <string name="startDesc">Salamat sa pag-download ani nga app ug unta gamiton ninyo kani para makatabang
+        mo dili lang para sa syudad peru para pud sa usag ka tao.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="note">Don\'t know what type of plastic? Try using the following: </string>
+    <string name="version">1.0.1</string>
+
+    <string name="ra_description"> ▶ declares the policy of the state in adopting a systematic, comprehensive and ecological solid waste management program that ensures the protection of public health and the environment and the proper segregation, collection, transport, storage, treatment and disposal of solid waste through the formulation and adoption of best environmental practices.</string>
+
+
+</resources>
