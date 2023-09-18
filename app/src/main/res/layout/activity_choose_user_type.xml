@@ -92,40 +92,40 @@
                 app:iconSize="100dp"
                 app:iconTint="@color/white" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCollector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:fontFamily="@font/pmedium"
-                android:padding="15dp"
-                android:text="Waste Collector"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:backgroundTint="@color/green"
-                app:cornerRadius="15dp"
-                app:iconGravity="textTop"
-                app:iconSize="100dp"
-                app:iconTint="@color/white" />
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btnCollector"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:fontFamily="@font/pmedium"-->
+<!--                android:padding="15dp"-->
+<!--                android:text="Waste Collector"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp"-->
+<!--                app:backgroundTint="@color/green"-->
+<!--                app:cornerRadius="15dp"-->
+<!--                app:iconGravity="textTop"-->
+<!--                app:iconSize="100dp"-->
+<!--                app:iconTint="@color/white" />-->
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnConsolidator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="15dp"
-                android:fontFamily="@font/pmedium"
-                android:padding="15dp"
-                android:text="Waste Consolidator"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:backgroundTint="@color/green"
-                app:cornerRadius="15dp"
-                app:iconGravity="textTop"
-                app:iconSize="100dp"
-                app:iconTint="@color/white" />
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btnConsolidator"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:fontFamily="@font/pmedium"-->
+<!--                android:padding="15dp"-->
+<!--                android:text="Waste Consolidator"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp"-->
+<!--                app:backgroundTint="@color/green"-->
+<!--                app:cornerRadius="15dp"-->
+<!--                app:iconGravity="textTop"-->
+<!--                app:iconSize="100dp"-->
+<!--                app:iconTint="@color/white" />-->
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -36,7 +36,7 @@ public class sign_up_note extends AppCompatActivity {
         btnOkay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(sign_up_note.this, choose_user_type.class);
+                Intent i = new Intent(sign_up_note.this, choose_household.class);
                 startActivity(i);
                 finish();
             }

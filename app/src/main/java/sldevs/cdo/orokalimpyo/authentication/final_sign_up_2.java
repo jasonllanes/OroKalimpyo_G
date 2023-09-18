@@ -191,7 +191,7 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
                 user_details.put("email", etEmail.getText().toString().trim());
                 user_details.put("date_create", currentDate + " " + currentTime);
 
-                all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + collector_type + "\n" + accreditation + "\n" + contact_person + "\n" + number + "\n" + etEmail.getText().toString();
+                all_data = mAuth.getUid();
 
             }else{
                 user_details = new HashMap<>();
@@ -204,7 +204,7 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
                 user_details.put("email", etEmail.getText().toString().trim());
                 user_details.put("date_create", currentDate + " " + currentTime);
 
-                all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + collector_type + "\n" + contact_person + "\n" + number + "\n" + etEmail.getText().toString();
+                all_data = mAuth.getUid();
 
             }
         } else if(user_type.equalsIgnoreCase("Waste Consolidator")){
@@ -218,7 +218,7 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
             user_details.put("email", etEmail.getText().toString().trim());
             user_details.put("date_create", currentDate + " " + currentTime);
 
-            all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + consolidator_type + "\n" + contact_person + "\n" + number + "\n" + etEmail.getText().toString();
+            all_data = mAuth.getUid();
 
         }
 

@@ -159,7 +159,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             retrieveAllDataHousehold();
-                            db.collection(user_type).document(mAuth.getUid()).set(user_details).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            db.collection("Waste Generator").document(mAuth.getUid()).set(user_details).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     generateQRCode();
@@ -187,7 +187,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             retrieveAllDataNonHousehold();
-                            db.collection(user_type).document(mAuth.getUid()).set(user_details).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            db.collection("Waste Generator").document(mAuth.getUid()).set(user_details).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     generateQRCode();
@@ -221,7 +221,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details = new HashMap<>();
         user_details.put("user_id",mAuth.getUid());
         user_details.put("name", name);
-        user_details.put("user_type", user_type);
+        user_details.put("user_type", "Waste Generator");
         user_details.put("household_type", houshold_type);
         user_details.put("barangay", barangay);
         user_details.put("location", location);
@@ -234,7 +234,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("special_waste", 0);
         user_details.put("contributed_today","No");
 
-        all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + houshold_type + "\n" + barangay + "\n" + location + "\n" + number + "\n" + etEmail.getText().toString();
+        all_data = mAuth.getUid();
 
     }
 
@@ -252,13 +252,13 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("number", number);
         user_details.put("email", etEmail.getText().toString().trim());
         user_details.put("date_create", currentDate + " " + currentTime);
-        user_details.put("recyclable", 0);
-        user_details.put("biodegradable", 0);
-        user_details.put("residual", 0);
-        user_details.put("special_waste", 0);
+        user_details.put("recyclable", 0.0);
+        user_details.put("biodegradable", 0.0);
+        user_details.put("residual", 0.0);
+        user_details.put("special_waste", 0.0);
         user_details.put("contributed_today","No");
 
-        all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + houshold_type + "\n" + establishment_type + "\n" + others + "\n" + barangay + "\n" + location + "\n" + number + "\n" + etEmail.getText().toString();
+        all_data = mAuth.getUid();
 
     }
 

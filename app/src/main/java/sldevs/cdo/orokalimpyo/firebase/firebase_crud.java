@@ -190,6 +190,40 @@ public class firebase_crud {
             }
         });
     }
+
+    public void retrieveTotalContribution(Activity activity,Context context,String id,TextView recyclable,TextView biodegradable,TextView residual,TextView special_waste){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+
+                    } else {
+
+                    }
+                    recyclable.setText(document.get("recyclable").toString());
+                    biodegradable.setText(document.get("biodegradable").toString());
+                    residual.setText(document.get("residual").toString());
+                    special_waste.setText(document.get("special_waste").toString());
+
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+
+
     public void retrieveProfile(Activity activity, Context context, String id, TextView name, TextView user_type, TextView household_type, TextView establishment_type, TextView barangay, TextView location, TextView number, TextView establishment_type_label,TextView email){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
