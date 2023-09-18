@@ -47,7 +47,7 @@ import sldevs.cdo.orokalimpyo.terms_and_data.external_link;
 public class final_sign_up extends AppCompatActivity implements View.OnClickListener {
 
     ImageView ivBack;
-    EditText etEmail,etPassword;
+    EditText etEmail,etPassword,etRetypePassword;
     CheckBox cbAgree;
 
     ProgressBar pbLoading;
@@ -83,6 +83,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        etRetypePassword = findViewById(R.id.etRetypePassword);
 
         cbAgree = findViewById(R.id.cbAgree);
 
@@ -140,6 +141,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
     }
 
     public void signUp(){
+
         if(etEmail.getText().toString().isEmpty()){
             etEmail.setError("Please input your email.");
         } else if (!isValidEmail(etEmail.getText().toString())) {
@@ -148,6 +150,8 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
             etPassword.setError("Please input your password.");
         } else if (etPassword.getText().toString().length() < 6) {
             etPassword.setError("Password should be more 6 characters.");
+        } else if (!etPassword.getText().toString().equals(etRetypePassword.getText().toString())) {
+            etRetypePassword.setError("Password should be match.");
         } else if (!cbAgree.isChecked()) {
             cbAgree.setError("Please check the Terms and Service and Data Policy.");
         } else{

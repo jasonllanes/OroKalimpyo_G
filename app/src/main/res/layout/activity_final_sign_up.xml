@@ -124,6 +124,29 @@
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Confirm Password:"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginLeft="5dp"/>
+
+                        <EditText
+                            android:id="@+id/etRetypePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="******"
+                            android:textColorHint="@color/grey"
+                            android:padding="15dp"
+                            android:background="@drawable/edit_text_layout"
+                            android:inputType="textPassword"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+
 
 
                         <LinearLayout

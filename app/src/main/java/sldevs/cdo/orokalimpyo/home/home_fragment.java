@@ -81,10 +81,10 @@ public class home_fragment extends Fragment {
                 });
 
                 List<DataEntry> data = new ArrayList<>();
-            data.add(new ValueDataEntry("Recyclable", Double.parseDouble(tvRecycable.getText().toString())));
-            data.add(new ValueDataEntry("Biodegradable", Double.parseDouble(tvBiodegradable.getText().toString())));
-            data.add(new ValueDataEntry("Residual", Double.parseDouble(tvResidual.getText().toString())));
-            data.add(new ValueDataEntry("Special Waste", Double.parseDouble(tvSpecialWaste.getText().toString())));
+                data.add(new ValueDataEntry("Recyclable", Double.parseDouble(tvRecycable.getText().toString())));
+                data.add(new ValueDataEntry("Biodegradable", Double.parseDouble(tvBiodegradable.getText().toString())));
+                data.add(new ValueDataEntry("Residual", Double.parseDouble(tvResidual.getText().toString())));
+                data.add(new ValueDataEntry("Special Waste", Double.parseDouble(tvSpecialWaste.getText().toString())));
 //                data.add(new ValueDataEntry("Recyclable", 1.0));
 //                data.add(new ValueDataEntry("Biodegradable", 2.0));
 //                data.add(new ValueDataEntry("Residual", 55.0));
