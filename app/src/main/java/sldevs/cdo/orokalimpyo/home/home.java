@@ -36,7 +36,7 @@ public class home extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        replaceFragment(new home_fragment());
+        replaceFragment(new home_frag());
         binding.btmNavBarView.setBackground(null);
 
         btnShowQR = findViewById(R.id.btnShowQR);
@@ -51,7 +51,7 @@ public class home extends AppCompatActivity {
         binding.btmNavBarView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                replaceFragment(new home_fragment());
+                replaceFragment(new home_frag());
             } else if (itemId == R.id.record) {
                 Intent i = new Intent(home.this, show_qr.class);
                 startActivity(i);
@@ -63,6 +63,7 @@ public class home extends AppCompatActivity {
 
     }
 
+    
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

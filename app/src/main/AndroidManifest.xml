@@ -81,9 +81,9 @@
         <activity
             android:name=".authentication.choose_user_type"
             android:exported="false" />
-        <activity
-            android:name=".home.home"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".home.home"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".authentication.choose_household"
             android:exported="false" />
@@ -97,7 +97,7 @@
             android:name=".onboarding.getting_started"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".home.home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
