@@ -251,6 +251,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Latest Announcements"
+            android:textSize="14sp"
+            android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/pregular"
+            android:textColor="@color/black" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -273,39 +282,46 @@
                     app:cardCornerRadius="20dp"
                     card_view:cardElevation="10dp">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/news_1" />
+                        android:layout_height="wrap_content">
+                        <ImageView
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:gravity="end"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/news_1"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:background="@color/n_green" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:background="@color/green"
-                            android:fontFamily="@font/pregular"
-                            android:padding="5dp"
-                            android:text="[News Headline]"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/pregular"
-                            android:text="[News Description]"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Headline]"
+                                android:padding="5dp"
+                                android:background="@color/green"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/white" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Description]"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -319,39 +335,46 @@
                     android:layout_marginRight="10dp"
                     android:backgroundTint="@color/green">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/news_1"/>
+                        android:layout_height="wrap_content">
+                        <ImageView
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/news_1"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:background="@color/n_green" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="[News Headline]"
-                            android:padding="5dp"
-                            android:background="@color/green"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pregular"
-                            android:textColor="@color/white" />
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="[News Description]"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/pregular"
-                            android:textColor="@color/black" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Headline]"
+                                android:padding="5dp"
+                                android:background="@color/green"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/white" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Description]"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -365,39 +388,46 @@
                     android:layout_marginRight="10dp"
                     android:backgroundTint="@color/green">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/news_1"/>
+                        android:layout_height="wrap_content">
+                        <ImageView
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:layout_marginHorizontal="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/news_1"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:background="@color/n_green" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="[News Headline]"
-                            android:padding="5dp"
-                            android:background="@color/green"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pregular"
-                            android:textColor="@color/white" />
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="[News Description]"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/pregular"
-                            android:textColor="@color/black" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Headline]"
+                                android:padding="5dp"
+                                android:background="@color/green"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/white" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="[News Description]"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
