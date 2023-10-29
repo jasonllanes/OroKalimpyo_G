@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#46E196"
+        android:centerColor="#7BED9F"
+        android:endColor="#D3D3D3"
+        android:angle="180"/> <!-- Set the angle to 180 for right to left -->
+
+    <corners
+        android:bottomLeftRadius="80dp"
+        android:bottomRightRadius="80dp"/>
+</shape>

@@ -4,18 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     tools:context=".profile.profile_fragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/profile_heading" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,298 +44,358 @@
 
             </LinearLayout>
 
+        </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/qr_code_sample"
-                android:layout_marginBottom="-50dp"
-                android:layout_gravity="center"
-                android:elevation="30dp"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/green"/>
 
-            <TextView
-                android:id="@+id/tvQRCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap to show QR Code"
-                android:layout_gravity="center"
-                android:textStyle="italic"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:layout_marginTop="50dp"
-                android:paddingTop="10dp"
-                android:fontFamily="@font/pmedium"
-                android:layout_marginHorizontal="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:background="@drawable/card_layout">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jason Llanes"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:layout_marginTop="50dp"
+                    android:paddingTop="10dp"
+                    android:fontFamily="@font/pbold"
+                    android:layout_marginHorizontal="15dp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Waste Generator"
+                    android:layout_gravity="center"
+                    android:textStyle="italic"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/pmedium"
+                    android:layout_marginHorizontal="15dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/qr_code_sample"
+                    android:layout_gravity="center"
+                    android:elevation="30dp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/green"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:visibility="gone"
+                    android:background="@drawable/card_layout">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="User Details"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginHorizontal="15dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="User Type: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User Details"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[User Type]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User Type: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[User Type]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
 
-                    <TextView
-                        android:id="@+id/tvFullname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Name]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
+
+
+                        <TextView
+                            android:id="@+id/tvFullname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Name]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
 
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Household Type: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Household Type: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvHouseholdType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[User Type]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvHouseholdType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[User Type]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvEstablishmentTypeL"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Establishment Type: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvEstablishmentTypeL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Establishment Type: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvEstablishmentType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Establishment Type]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvEstablishmentType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Establishment Type]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Barangay: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Barangay: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvBarangay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Barangay]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvBarangay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Barangay]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Location: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Location: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Location]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Location]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvEditLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tap here to edit location."
-                        android:textColor="@color/green"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_semibolditalic"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvEditLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap here to edit location."
+                            android:textColor="@color/green"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mobile Number: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mobile Number: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Number]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Number]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email: "
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email: "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginHorizontal="15dp" />
 
-                    <TextView
-                        android:id="@+id/tvEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="[Number]"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[Number]"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pmedium"
+                            android:layout_marginHorizontal="15dp" />
 
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="50dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-100dp"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnViewHistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="View Contribution History"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                android:layout_marginHorizontal="50dp" />
+
+
+                            <com.google.android.material.button.MaterialButton
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Redeemed Codes"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                android:layout_marginHorizontal="50dp" />
+
+                            <com.google.android.material.button.MaterialButton
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="About"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                android:layout_marginHorizontal="50dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnAbout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="About"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                android:layout_marginHorizontal="50dp" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Logout"
+                            android:fontFamily="@font/pmedium"
+                            android:textSize="12sp"
+                            android:textColor="@color/white"
+                            android:padding="15dp"
+                            app:backgroundTint="@color/green"
+                            app:cornerRadius="25dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginHorizontal="50dp" />
+
+
+                    </LinearLayout>
+
+
+                </ScrollView>
+
+
+
+
             </LinearLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnViewHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Contribution History"
-                android:textSize="15sp"
-                android:padding="15dp"
-                app:cornerRadius="25dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/green"
-                android:textColor="@color/green"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/white"
-                android:layout_marginHorizontal="50dp" />
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/btnEditProfile"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Edit Profile"-->
-<!--                android:textSize="15sp"-->
-<!--                android:padding="15dp"-->
-<!--                app:cornerRadius="25dp"-->
-<!--                app:strokeWidth="2dp"-->
-<!--                app:strokeColor="@color/green"-->
-<!--                android:textColor="@color/green"-->
-<!--                android:backgroundTint="@color/white"-->
-
-<!--                android:layout_marginHorizontal="50dp"-->
-<!--                />-->
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAbout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textSize="15sp"
-                android:padding="15dp"
-                app:cornerRadius="25dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/green"
-                android:textColor="@color/green"
-                android:backgroundTint="@color/white"
-                android:layout_marginHorizontal="50dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Logout"
-                android:fontFamily="@font/pmedium"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:padding="15dp"
-                app:backgroundTint="@color/green"
-                app:cornerRadius="25dp"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="90dp" />
-        </LinearLayout>
-
-    </ScrollView>
-
 
 </FrameLayout>

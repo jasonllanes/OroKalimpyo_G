@@ -80,7 +80,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnLogout = view.findViewById(R.id.btnLogout);
         btnViewHistory = view.findViewById(R.id.btnViewHistory);
 
-        fc.retrieveProfile(getActivity(),getContext(),mAuth.getUid(),tvFullname,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
+//        fc.retrieveProfile(getActivity(),getContext(),mAuth.getUid(),tvFullname,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
 
 
         tvEditLocation.setOnClickListener(this);

@@ -20,6 +20,8 @@ import sldevs.cdo.orokalimpyo.databinding.ActivityHomeBinding;
 import sldevs.cdo.orokalimpyo.profile.profile_fragment;
 import sldevs.cdo.orokalimpyo.profile.show_qr;
 import sldevs.cdo.orokalimpyo.records.user_records;
+import sldevs.cdo.orokalimpyo.redeem.branch;
+import sldevs.cdo.orokalimpyo.redeem.points;
 
 public class home extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class home extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        replaceFragment(new home_frag());
+        replaceFragment(new profile_fragment());
         binding.btmNavBarView.setBackground(null);
 
         btnShowQR = findViewById(R.id.btnShowQR);
@@ -52,10 +54,14 @@ public class home extends AppCompatActivity {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
                 replaceFragment(new home_frag());
-            } else if (itemId == R.id.record) {
+            } else if (itemId == R.id.points) {
+                replaceFragment(new points());
+            }  else if (itemId == R.id.record) {
                 Intent i = new Intent(home.this, show_qr.class);
                 startActivity(i);
-            } else if (itemId == R.id.profile) {
+            } else if (itemId == R.id.branch) {
+                replaceFragment(new branch());
+            }   else if (itemId == R.id.profile) {
                 replaceFragment(new profile_fragment());
             }
             return true;

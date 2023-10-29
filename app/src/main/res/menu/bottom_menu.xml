@@ -7,8 +7,18 @@
         android:icon="@drawable/home"/>
 
     <item
+        android:id="@+id/points"
+        android:title="Points"
+        android:icon="@drawable/points"/>
+
+    <item
         android:id="@+id/record"
-        android:title="Show QR Code" />
+        android:title="QR Code" />
+
+    <item
+        android:id="@+id/branch"
+        android:title="Branches"
+        android:icon="@drawable/location"/>
 
     <item
         android:id="@+id/profile"
