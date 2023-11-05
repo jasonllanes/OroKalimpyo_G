@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -82,6 +84,8 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
 //        fc.retrieveProfile(getActivity(),getContext(),mAuth.getUid(),tvFullname,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
 
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
+        profile_image.startAnimation(animation);
 
         tvEditLocation.setOnClickListener(this);
         profile_image.setOnClickListener(this);

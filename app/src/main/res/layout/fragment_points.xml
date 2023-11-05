@@ -20,6 +20,7 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cPoints"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/green"
@@ -48,16 +49,14 @@
                             android:text="Total Points"
                             android:textColor="@color/green"
                             android:textSize="30sp"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/pregular"
-                            android:layout_marginLeft="5dp"/>
+                            android:fontFamily="@font/pregular" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="10 pts"
-                            android:layout_gravity="center"
+
                             android:padding="5dp"
                             android:textSize="30sp"
                             android:fontFamily="@font/pbold"
@@ -67,10 +66,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="This is the total accumulated points base on the contribution that you make."
+                            android:text="Points can be earned base on the weight of the contribuions that you make."
                             android:textSize="14sp"
                             android:textAlignment="center"
-                            android:fontFamily="@font/pmedium"
+                            android:fontFamily="@font/poppins_semibolditalic"
                             android:textColor="@color/green" />
                     </LinearLayout>
                 </FrameLayout>
@@ -78,18 +77,46 @@
             </androidx.cardview.widget.CardView>
 
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/white"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HOW TO REDEEM?"
+                            android:textColor="@color/green"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/how_to_redeem"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/pmedium"
+                            android:textColor="@color/green" />
+                    </LinearLayout>
+                </FrameLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_gravity="end"
-                android:layout_marginRight="10dp"
-                android:text="Redeem Points >>"
-                android:textSize="14sp"
-                android:fontFamily="@font/pmedium"
-                android:textColor="@color/green" />
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -123,7 +150,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Contribution Log"
+                            android:text="Redeemable Rewards"
                             android:textSize="14sp"
                             android:fontFamily="@font/pmedium"
                             android:textColor="@color/green" />

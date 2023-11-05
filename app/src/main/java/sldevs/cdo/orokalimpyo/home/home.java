@@ -38,7 +38,7 @@ public class home extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        replaceFragment(new profile_fragment());
+        replaceFragment(new home_frag());
         binding.btmNavBarView.setBackground(null);
 
         btnShowQR = findViewById(R.id.btnShowQR);

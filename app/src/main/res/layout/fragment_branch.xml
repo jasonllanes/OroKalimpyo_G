@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".redeem.branch">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/card_gradient" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select branch"
+                            android:textColor="@color/green"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pregular" />
+
+
+                            <com.jaredrummler.materialspinner.MaterialSpinner
+                                android:id="@+id/sUserType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:ms_padding_left="10dp"
+                                android:textSize="15dp"
+                                android:gravity="left"
+                                android:textColorHint="@color/grey"
+                                app:ms_hint_color="@color/grey"
+                                app:ms_arrow_tint="@color/black"
+                                android:textColor="@color/green" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:indeterminateTint="@color/green"
+        android:backgroundTint="@color/green"
+        android:max="3"
+        android:progress="100"/>
+
+
+    <WebView
+        android:id="@+id/wvBranch"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginBottom="60dp"/>
 
-</FrameLayout>
+
+
+
+</LinearLayout>
