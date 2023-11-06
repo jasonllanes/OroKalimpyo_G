@@ -4,6 +4,7 @@ import static sldevs.cdo.orokalimpyo.authentication.final_sign_up.isValidEmail;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.household_sign_up_details;
@@ -45,8 +49,11 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
     firebase_crud fc;
     FirebaseAuth mAuth;
+    Bitmap bitmap;
 
     private LocationRequest locationRequest;
+
+    LinearLayout llMenu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,10 +89,15 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnLogout = view.findViewById(R.id.btnLogout);
         btnViewHistory = view.findViewById(R.id.btnViewHistory);
 
+        llMenu = view.findViewById(R.id.llMenu);
+
 //        fc.retrieveProfile(getActivity(),getContext(),mAuth.getUid(),tvFullname,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
 
-        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.opacity_anim);
         profile_image.startAnimation(animation);
+
+        Animation animation2 = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
+        llMenu.startAnimation(animation2);
 
         tvEditLocation.setOnClickListener(this);
         profile_image.setOnClickListener(this);
@@ -94,6 +106,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnLogout.setOnClickListener(this);
         btnViewHistory.setOnClickListener(this);
 
+        generateQRCode();
 
         return view;
     }
@@ -152,7 +165,16 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
     }
 
 
+    public void generateQRCode(){
+        QRGEncoder qrgEncoder = new QRGEncoder(mAuth.getUid(), null, QRGContents.Type.TEXT, 800);
+        qrgEncoder.setColorBlack(Color.rgb(10,147,81));
+        qrgEncoder.setColorWhite(Color.rgb(255,255,255));
+        // Getting QR-Code as Bitmap
+        bitmap = qrgEncoder.getBitmap();
+        // Setting Bitmap to ImageView
+        profile_image.setImageBitmap(bitmap);
 
+    }
 
 
 }

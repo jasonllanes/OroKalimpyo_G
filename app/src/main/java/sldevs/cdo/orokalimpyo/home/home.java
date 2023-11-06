@@ -20,6 +20,7 @@ import sldevs.cdo.orokalimpyo.databinding.ActivityHomeBinding;
 import sldevs.cdo.orokalimpyo.profile.profile_fragment;
 import sldevs.cdo.orokalimpyo.profile.show_qr;
 import sldevs.cdo.orokalimpyo.records.user_records;
+import sldevs.cdo.orokalimpyo.redeem.BranchAdapter;
 import sldevs.cdo.orokalimpyo.redeem.branch;
 import sldevs.cdo.orokalimpyo.redeem.points;
 
@@ -30,6 +31,8 @@ public class home extends AppCompatActivity {
     LinearLayout tvConnection;
     Dialog builder;
     FloatingActionButton btnShowQR;
+
+    BranchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,4 +79,7 @@ public class home extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout,fragment);
         fragmentTransaction.commit();
     }
+
+
+
 }

@@ -189,7 +189,7 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
                 user_details.put("contact_person",contact_person);
                 user_details.put("number", number);
                 user_details.put("email", etEmail.getText().toString().trim());
-                user_details.put("date_create", currentDate + " " + currentTime);
+                user_details.put("date_created", currentDate + " " + currentTime);
 
                 all_data = mAuth.getUid();
 
@@ -202,7 +202,7 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
                 user_details.put("contact_person",contact_person);
                 user_details.put("number", number);
                 user_details.put("email", etEmail.getText().toString().trim());
-                user_details.put("date_create", currentDate + " " + currentTime);
+                user_details.put("date_created", currentDate + " " + currentTime);
 
                 all_data = mAuth.getUid();
 
@@ -213,10 +213,10 @@ public class final_sign_up_2 extends AppCompatActivity implements View.OnClickLi
             user_details.put("name", name);
             user_details.put("user_type", user_type);
             user_details.put("consolidator_type", consolidator_type);
-            user_details.put("contact_person",contact_person);
+            user_details.put("contact_perso n",contact_person);
             user_details.put("number", number);
             user_details.put("email", etEmail.getText().toString().trim());
-            user_details.put("date_create", currentDate + " " + currentTime);
+            user_details.put("date_created", currentDate + " " + currentTime);
 
             all_data = mAuth.getUid();
 

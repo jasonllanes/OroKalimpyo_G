@@ -17,12 +17,14 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
@@ -90,7 +92,7 @@ public class view_contribution extends AppCompatActivity implements View.OnClick
 
 
         EventChangeListener();
-//        Query query = waste_contribution_ref.orderBy("user_id",Query.Direction.DESCENDING);
+//        Query query = db.collection("Branches").orderBy("user_id",Query.Direction.DESCENDING);
 //        FirestoreRecyclerOptions<Scanned_Contributions> options = new FirestoreRecyclerOptions.Builder<Scanned_Contributions>()
 //                .setQuery(query, Scanned_Contributions.class)
 //                .build();
@@ -145,4 +147,5 @@ public class view_contribution extends AppCompatActivity implements View.OnClick
             finish();
         }
     }
+
 }

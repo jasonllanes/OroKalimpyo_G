@@ -6,6 +6,12 @@
         <item name="colorSecondary">@color/green</item>
         <item name="colorPrimaryDark">#008BC34A</item>
     </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Customize the search icon color -->
+        <item name="android:tint">@color/black</item>
+
+    </style>
     
 
 </resources>
