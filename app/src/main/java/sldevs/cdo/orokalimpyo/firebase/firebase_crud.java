@@ -191,7 +191,7 @@ public class firebase_crud {
         });
     }
 
-    public void retrieveTotalContribution(Activity activity,Context context,String id,TextView recyclable,TextView biodegradable,TextView residual,TextView special_waste){
+    public void retrieveTotalContribution(Activity activity,Context context,String id,TextView residual,TextView recyclable, TextView biodegradable,TextView special_waste){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -204,16 +204,14 @@ public class firebase_crud {
                     } else {
 
                     }
-                    recyclable.setText(document.get("recyclable").toString());
-                    biodegradable.setText(document.get("biodegradable").toString());
-                    residual.setText(document.get("residual").toString());
-                    special_waste.setText(document.get("special_waste").toString());
+                    residual.setText(document.get("residual").toString() + " kg");
+                    recyclable.setText(document.get("recyclable").toString()+ " kg");
+                    biodegradable.setText(document.get("biodegradable").toString()+ " kg");
+                    special_waste.setText(document.get("special_waste").toString()+ " kg");
 
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
-
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -321,6 +319,10 @@ public class firebase_crud {
                 btnUpdate.setVisibility(View.VISIBLE);
             }
         });
+
+    }
+
+    public void retrieveNews(){
 
     }
 

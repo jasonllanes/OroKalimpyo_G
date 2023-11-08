@@ -3,7 +3,10 @@ package sldevs.cdo.orokalimpyo.home;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +15,52 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import java.util.ArrayList;
 
 import sldevs.cdo.orokalimpyo.R;
+import sldevs.cdo.orokalimpyo.data_fetch.Branches_Details;
+import sldevs.cdo.orokalimpyo.data_fetch.News_Details;
+import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
+import sldevs.cdo.orokalimpyo.redeem.BranchAdapter;
 
 public class home_frag extends Fragment {
 
     Button btnGame1, btnGame2;
     LinearLayout llContributions, llAnnouncements;
+    RecyclerView lvNews;
+    FirebaseFirestore db;
+    FirebaseAuth mAuth;
+    ArrayList<News_Details> news_details;
+    NewsAdapter adapter;
+    String searchQuery;
+    SearchView searchView;
+    TextView tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
+
+    firebase_crud fc;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        db = FirebaseFirestore.getInstance();
+        // Initialize your FirestoreRecyclerOptions and adapter here
+        Query query = db.collection("News").orderBy("title",Query.Direction.DESCENDING).limit(5);
+        FirestoreRecyclerOptions<News_Details> options = new FirestoreRecyclerOptions.Builder<News_Details>()
+                .setQuery(query, News_Details.class)
+                .build();
+
+        adapter = new NewsAdapter(getContext(), options, searchQuery);
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,13 +68,25 @@ public class home_frag extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_home_frag, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        fc = new firebase_crud();
 
         btnGame1 = v.findViewById(R.id.btnGame1);
         btnGame2 = v.findViewById(R.id.btnGame2);
+        tvResidual = v.findViewById(R.id.tvResidual);
+        tvBiodegradable = v.findViewById(R.id.tvBiodegradable);
+        tvRecyclable = v.findViewById(R.id.tvRecyclable);
+        tvSpecialWaste = v.findViewById(R.id.tvSpecialWaste);
 
         llContributions = v.findViewById(R.id.llContributions);
-        llAnnouncements = v.findViewById(R.id.llAnnouncements);
+//        llAnnouncements = v.findViewById(R.id.llAnnouncements);
 
+        lvNews = v.findViewById(R.id.lvNews);
+        lvNews.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        lvNews.setAdapter(adapter);
+
+        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvRecyclable,tvBiodegradable,tvResidual,tvSpecialWaste);
 
         btnGame1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +108,54 @@ public class home_frag extends Fragment {
         llContributions.startAnimation(animation);
 
         Animation animation2 = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim_right);
-        llAnnouncements.startAnimation(animation2);
+        lvNews.startAnimation(animation2);
+
+
+
+
+//        recyclerView.setHasFixedSize(true);
+
+
+        // Initialize your FirestoreRecyclerOptions and adapter here
+
+
+
+        searchView = v.findViewById(R.id.searchView);
+        searchView.setVisibility(View.GONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchQuery = newText;
+                // Update the Firestore query based on the search input
+                Query newQuery = db.collection("News").whereEqualTo("title", newText);
+                FirestoreRecyclerOptions<Branches_Details> newOptions =
+                        new FirestoreRecyclerOptions.Builder<Branches_Details>()
+                                .setQuery(newQuery, Branches_Details.class)
+                                .build();
+
+                adapter.updateSearchQuery(newText);
+
+                return true;
+            }
+        });
 
         return v;
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 }

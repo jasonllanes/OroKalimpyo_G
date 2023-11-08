@@ -1,5 +1,6 @@
 package sldevs.cdo.orokalimpyo.redeem;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,7 +61,7 @@ public class branch extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         // Initialize your FirestoreRecyclerOptions and adapter here
-        Query query = db.collection("Branches").orderBy("name",Query.Direction.DESCENDING);
+        Query query = db.collection("Branches").orderBy("locationName",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Branches_Details> options = new FirestoreRecyclerOptions.Builder<Branches_Details>()
                 .setQuery(query, Branches_Details.class)
                 .build();
@@ -169,6 +170,7 @@ public class branch extends Fragment {
     public void onStart() {
         super.onStart();
         adapter.startListening();
+
     }
 
     @Override
@@ -176,5 +178,6 @@ public class branch extends Fragment {
         super.onStop();
         adapter.stopListening();
     }
+
 
 }

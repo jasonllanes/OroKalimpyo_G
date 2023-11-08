@@ -28,12 +28,15 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import de.hdodenhof.circleimageview.CircleImageView;
+import sldevs.cdo.orokalimpyo.GlideApp;
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.household_sign_up_details;
 import sldevs.cdo.orokalimpyo.authentication.log_in;
@@ -43,9 +46,10 @@ import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 public class profile_fragment extends Fragment implements View.OnClickListener {
 
     Button btnEditProfile,btnViewHistory,btnLogout,btnAbout,btnYes,btnNo;
+    StorageReference storageReference;
     TextView tvEditLocation;
     CircleImageView profile_image;
-    public TextView tvType,tvFullname,tvHouseholdType,tvEstablishmentType,tvEstablishmentTypeL,tvBarangay,tvLocation,tvNumber,tvEmail;
+    public TextView tvName,tvType,tvFullname,tvHouseholdType,tvEstablishmentType,tvEstablishmentTypeL,tvBarangay,tvLocation,tvNumber,tvEmail;
 
     firebase_crud fc;
     FirebaseAuth mAuth;
@@ -72,6 +76,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
         profile_image = view.findViewById(R.id.profile_image);
 
+        tvName = view.findViewById(R.id.tvName);
         tvType = view.findViewById(R.id.tvType);
         tvFullname = view.findViewById(R.id.tvFullname);
         tvHouseholdType = view.findViewById(R.id.tvHouseholdType);
@@ -107,6 +112,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnViewHistory.setOnClickListener(this);
 
         generateQRCode();
+        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
 
         return view;
     }
@@ -166,6 +172,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
 
     public void generateQRCode(){
+
         QRGEncoder qrgEncoder = new QRGEncoder(mAuth.getUid(), null, QRGContents.Type.TEXT, 800);
         qrgEncoder.setColorBlack(Color.rgb(10,147,81));
         qrgEncoder.setColorWhite(Color.rgb(255,255,255));

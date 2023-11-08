@@ -1,14 +1,18 @@
 package sldevs.cdo.orokalimpyo.redeem;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -28,6 +32,7 @@ public class BranchAdapter extends FirestoreRecyclerAdapter<Branches_Details, Br
     FirestoreRecyclerOptions<Branches_Details> branches;
 
     private String searchQuery = "";
+    String url;
     public BranchAdapter(Context context, FirestoreRecyclerOptions<Branches_Details> branches,String searchQuery) {
         super(branches);
         this.context = context;
@@ -54,18 +59,19 @@ public class BranchAdapter extends FirestoreRecyclerAdapter<Branches_Details, Br
     @Override
     protected void onBindViewHolder(@NonNull BranchHolder holder, int position, @NonNull Branches_Details model) {
         Branches_Details branches_details = branches.getSnapshots().get(position);
+        url = branches_details.getUrl();
 //
 //        holder.tvName.setText(branches_details.getName());
 //        holder.tvDescription.setText(branches_details.getDescription());
 //        holder.tvLocation.setText(branches_details.getLongitude() + ", " + branches_details.getLatitude());
         if (model != null) {
             // Check if the model's field is not null
-            String modelField = model.getName();
+            String modelField = model.getLocationName();
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
-                    holder.tvName.setText(branches_details.getName());
-                    holder.tvDescription.setText(branches_details.getDescription());
+                    holder.tvName.setText(branches_details.getLocationName());
                     holder.tvLocation.setText(branches_details.getLongitude() + ", " + branches_details.getLatitude());
+                    holder.tvShared.setText(branches_details.getUrl());
                     holder.itemView.setVisibility(View.VISIBLE);
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     return; // Exit the method after binding data
@@ -88,17 +94,30 @@ public class BranchAdapter extends FirestoreRecyclerAdapter<Branches_Details, Br
 
         TextView tvName;
 
-        TextView tvDescription;
+        TextView tvShared;
         TextView tvLocation;
-
+        CardView cvBranch;
 
         public BranchHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tvName);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
+//            tvDescription = itemView.findViewById(R.id.tvDescription);
             tvLocation = itemView.findViewById(R.id.tvLocation);
 //            ivQR = itemView.findViewById(R.id.ivQR);
+            tvShared = itemView.findViewById(R.id.tvShared);
+            cvBranch = itemView.findViewById(R.id.cvBranch);
+
+
+            cvBranch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(tvShared.getText().toString()));
+                    context.startActivity(browserIntent);
+
+                }
+            });
+
 
 
         }

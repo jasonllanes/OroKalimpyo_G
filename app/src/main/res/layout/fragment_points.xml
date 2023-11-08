@@ -153,10 +153,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvResidual"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="10 kg"
+                            android:text="0 kg"
                             android:layout_gravity="center"
                             android:textSize="20sp"
                             android:fontFamily="@font/pbold"
@@ -194,10 +195,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvRecyclable"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="10 kg"
+                            android:text="0 kg"
                             android:layout_gravity="center"
                             android:textSize="20sp"
                             android:fontFamily="@font/pbold"
@@ -245,10 +247,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvSpecialWaste"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="10 kg"
+                            android:text="0 kg"
                             android:layout_gravity="center"
                             android:textSize="20sp"
                             android:fontFamily="@font/pbold"
@@ -288,10 +291,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvBiodegradable"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="10 kg"
+                            android:text="0 kg"
                             android:layout_gravity="center"
                             android:textSize="20sp"
                             android:fontFamily="@font/pbold"

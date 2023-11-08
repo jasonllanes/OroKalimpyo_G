@@ -1,52 +1,56 @@
 package sldevs.cdo.orokalimpyo.data_fetch;
 
 public class Branches_Details {
-    public String name;
-    public String longitude;
+    public String locationName;
+    public double longitude;
 
-    public String latitude;
-    public String description;
+    public double latitude;
+
+
+
+    public String url;
 
     public Branches_Details() {
     }
 
 
-    public Branches_Details(String name, String longitude, String latitude, String description) {
-        this.name = name;
+    public Branches_Details(String locationName, double longitude, double latitude, String description, String url) {
+        this.locationName = locationName;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.description = description;
+        this.locationName = description;
+        this.url = url;
     }
 
-    public String getName() {
-        return name;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLocationName(String name) {
+        this.locationName = name;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-
-    public String getDescription() {
-        return description;
+    public String getUrl() {
+        return url;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
 }

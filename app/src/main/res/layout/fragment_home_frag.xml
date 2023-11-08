@@ -142,10 +142,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvResidual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10 kg"
+                        android:text="0 kg"
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:fontFamily="@font/pbold"
@@ -183,10 +184,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvRecyclable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10 kg"
+                        android:text="0 kg"
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:fontFamily="@font/pbold"
@@ -234,10 +236,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvSpecialWaste"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10 kg"
+                        android:text="0 kg"
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:fontFamily="@font/pbold"
@@ -277,10 +280,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvBiodegradable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10 kg"
+                        android:text="0 kg"
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:fontFamily="@font/pbold"
@@ -312,6 +316,15 @@
             android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/pregular"
             android:textColor="@color/black" />
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/green"
+                    android:queryBackground="@color/green"
+                    android:layout_marginHorizontal="10dp"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search"/>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -320,184 +333,188 @@
                     android:layout_gravity="center"
                     android:background="@color/black"/>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="5dp">
+<!--        <HorizontalScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="5dp">-->
 
-            <LinearLayout
-                android:id="@+id/llAnnouncements"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/green"
-                    android:orientation="vertical"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="10dp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/news_1"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:background="@color/n_green" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Headline]"
-                                android:padding="5dp"
-                                android:background="@color/green"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/white" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Description]"
-                                android:textSize="14sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-                    </FrameLayout>
-
-                </androidx.cardview.widget.CardView>
+<!--            <LinearLayout-->
+<!--                android:id="@+id/llAnnouncements"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
-                    android:orientation="vertical"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="10dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/green">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:backgroundTint="@color/green"-->
+<!--                    android:orientation="vertical"-->
+<!--                    app:cardCornerRadius="20dp"-->
+<!--                    card_view:cardElevation="10dp">-->
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <ImageView-->
 
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/news_1"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:background="@color/n_green" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/news_1"/>-->
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:background="@color/n_green" />-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="16dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Headline]"
-                                android:padding="5dp"
-                                android:background="@color/green"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/white" />
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Headline]"-->
+<!--                                android:padding="5dp"-->
+<!--                                android:background="@color/green"-->
+<!--                                android:textSize="20sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/white" />-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Description]"
-                                android:textSize="14sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-                    </FrameLayout>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Description]"-->
+<!--                                android:textSize="14sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/black" />-->
+<!--                        </LinearLayout>-->
+<!--                    </FrameLayout>-->
 
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
-                    android:orientation="vertical"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="10dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/green">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/news_1"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:background="@color/n_green" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Headline]"
-                                android:padding="5dp"
-                                android:background="@color/green"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/white" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="[News Description]"
-                                android:textSize="14sp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-                    </FrameLayout>
-
-                </androidx.cardview.widget.CardView>
+<!--                </androidx.cardview.widget.CardView>-->
 
 
-            </LinearLayout>
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    app:cardCornerRadius="20dp"-->
+<!--                    card_view:cardElevation="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:backgroundTint="@color/green">-->
+
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <ImageView-->
+
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/news_1"/>-->
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:background="@color/n_green" />-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="16dp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Headline]"-->
+<!--                                android:padding="5dp"-->
+<!--                                android:background="@color/green"-->
+<!--                                android:textSize="20sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/white" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Description]"-->
+<!--                                android:textSize="14sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/black" />-->
+<!--                        </LinearLayout>-->
+<!--                    </FrameLayout>-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    app:cardCornerRadius="20dp"-->
+<!--                    card_view:cardElevation="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:backgroundTint="@color/green">-->
+
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <ImageView-->
+
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:scaleType="centerCrop"-->
+<!--                            android:src="@drawable/news_1"/>-->
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:background="@color/n_green" />-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:padding="16dp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Headline]"-->
+<!--                                android:padding="5dp"-->
+<!--                                android:background="@color/green"-->
+<!--                                android:textSize="20sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/white" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="4dp"-->
+<!--                                android:text="[News Description]"-->
+<!--                                android:textSize="14sp"-->
+<!--                                android:fontFamily="@font/pregular"-->
+<!--                                android:textColor="@color/black" />-->
+<!--                        </LinearLayout>-->
+<!--                    </FrameLayout>-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+
+<!--            </LinearLayout>-->
 
 
 
-        </HorizontalScrollView>
+<!--        </HorizontalScrollView>-->
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lvNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
 
 
