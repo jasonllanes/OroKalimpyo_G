@@ -47,7 +47,7 @@
                 android:id="@+id/viewProfileTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guess the brand!"
+                android:text="Capture me a brand!"
                 android:textSize="25sp"
                 android:fontFamily="@font/pregular"
                 android:textColor="@color/green" />
@@ -75,10 +75,12 @@
                 android:textColor="@color/green" />
 
             <TextView
+                android:id="@+id/tvStars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
+                android:textAlignment="center"
                 android:text="Total Stars Collected:"
                 android:textSize="15sp"
                 android:fontFamily="@font/pregular"
@@ -95,8 +97,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-
-                    app:lottie_rawRes="@raw/lottie_star"
+                    app:lottie_rawRes="@raw/lottie_star_default"
                     app:lottie_loop="true"
                     app:lottie_autoPlay="true" />
                 <com.airbnb.lottie.LottieAnimationView
@@ -143,7 +144,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWaste1"
+                    android:id="@+id/btnBrand1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -157,7 +158,7 @@
                     app:cornerRadius="15dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWaste2"
+                    android:id="@+id/btnBrand2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -171,7 +172,7 @@
                     app:cornerRadius="15dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWaste3"
+                    android:id="@+id/btnBrand3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -185,7 +186,7 @@
                     app:cornerRadius="15dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWaste4"
+                    android:id="@+id/btnBrand4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -199,7 +200,7 @@
                     app:cornerRadius="15dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWaste5"
+                    android:id="@+id/btnBrand5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"

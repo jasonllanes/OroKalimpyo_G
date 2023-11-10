@@ -145,26 +145,10 @@ public class branch extends Fragment {
         return v;
 
     }
-    public void EventChangeListener(){
-//        tvLoading.setVisibility(View.VISIBLE);
-//        pbLoading.setVisibility(View.VISIBLE);
-        db.collection("Branches").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                branches_details.add(document.toObject(Branches_Details.class));
-                                Toast.makeText(getContext(), document.toObject(Branches_Details.class).toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-//                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
 
-    }
+
+
 
     @Override
     public void onStart() {

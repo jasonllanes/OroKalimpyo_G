@@ -237,8 +237,8 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("residual", 0);
         user_details.put("special_waste", 0);
         user_details.put("total_points", 0);
-        user_details.put("high_score_waste", 0);
-        user_details.put("high_score_logo", 0);
+        user_details.put("waste_game_level", 0);
+        user_details.put("brand_game_level", 0);
         user_details.put("contributed_today","No");
 
         all_data = mAuth.getUid();

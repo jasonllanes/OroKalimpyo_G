@@ -47,7 +47,7 @@
                 android:id="@+id/viewProfileTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guess the waste!"
+                android:text="Capture me a Waste!"
                 android:textSize="25sp"
                 android:fontFamily="@font/pregular"
                 android:textColor="@color/green" />
@@ -77,9 +77,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:layout_marginLeft="10dp"
                 android:text="Total Stars Collected:"
+                android:textSize="15sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/green" />
+            <TextView
+                android:id="@+id/tvStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginLeft="10dp"
+                android:text="0"
                 android:textSize="15sp"
                 android:fontFamily="@font/pregular"
                 android:textColor="@color/green" />
@@ -95,8 +107,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-
-                    app:lottie_rawRes="@raw/lottie_star"
+                    app:lottie_rawRes="@raw/lottie_star_default"
                     app:lottie_loop="true"
                     app:lottie_autoPlay="true" />
                 <com.airbnb.lottie.LottieAnimationView

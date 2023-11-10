@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    tools:context=".game_levels.waste_game">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:lottie_rawRes="@raw/lottie_trash"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Capture me a waste!"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:fontFamily="@font/pbold"
+            android:textColor="@color/green" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level 1"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:fontFamily="@font/pbold"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:id="@+id/viewProfileTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture me a ..."
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:id="@+id/tvWasteType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plastic Bottle"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/green" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="20dp"
+                    android:backgroundTint="@color/white"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="20dp"
+                    card_view:cardElevation="10dp">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_gravity="center">
+                        <ImageView
+                            android:id="@+id/ivAnswer"
+                            android:layout_width="220dp"
+                            android:layout_height="220dp"
+                            android:scaleType="centerCrop"
+                            />
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/lWaiting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/lottie_waiting"
+                            app:lottie_loop="true"
+                            app:lottie_autoPlay="true" />
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/green" />
+
+
+
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capture Now!"
+                android:fontFamily="@font/pmedium"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                app:backgroundTint="@color/green"
+                app:cornerRadius="15dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="90dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Go Back"
+                    android:layout_marginHorizontal="20dp"
+                    android:drawableLeft="@drawable/back"
+                    android:drawableTint="@color/white"
+                    android:fontFamily="@font/pmedium"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    app:backgroundTint="@color/green"
+                    app:cornerRadius="15dp"
+                    android:layout_marginBottom="90dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Home"
+                    android:drawableLeft="@drawable/home"
+                    android:layout_marginHorizontal="20dp"
+                    android:drawableTint="@color/white"
+                    android:fontFamily="@font/pmedium"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    app:backgroundTint="@color/green"
+                    app:cornerRadius="15dp" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

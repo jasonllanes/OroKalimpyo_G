@@ -29,6 +29,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".game_levels.brand_game"
+            android:exported="false" />
+        <activity
+            android:name=".game_levels.waste_game"
+            android:exported="false" />
+        <activity
             android:name=".home.guess_the_brand_game"
             android:exported="false" />
         <activity
@@ -88,9 +94,9 @@
         <activity
             android:name=".authentication.choose_user_type"
             android:exported="false" />
-<!--         <activity-->
-<!--         android:name=".home.home"-->
-<!--         android:exported="false" />-->
+         <activity
+         android:name=".home.home"
+         android:exported="false" />
         <activity
             android:name=".authentication.choose_household"
             android:exported="false" />
@@ -104,7 +110,7 @@
             android:name=".onboarding.getting_started"
             android:exported="false" />
         <activity
-            android:name=".home.home"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

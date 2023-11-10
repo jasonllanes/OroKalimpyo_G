@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,7 +30,10 @@ import com.google.firebase.firestore.AggregateQuerySnapshot;
 import com.google.firebase.firestore.AggregateSource;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +46,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import sldevs.cdo.orokalimpyo.GlideApp;
+import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.final_sign_up;
 import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.UserDetails;
@@ -221,6 +227,51 @@ public class firebase_crud {
         });
     }
 
+    public void wasteGame(Activity activity, Context context, String id, TextView game_level, LottieAnimationView star1){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                if (e != null) {
+//                    Log.w(TAG, "Listen failed.", e);
+//                    return;
+//                }
+
+                if (value != null && value.exists()) {
+                    game_level.setText(value.get("waste_game_level").toString());
+                    if(value.get("waste_game_level").toString() == "1"){
+                        star1.setAnimation(R.raw.lottie_star);
+                    }
+
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+    }
+
+    public void brandGame(Activity activity, Context context, String id, TextView game_level, LottieAnimationView star1){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                if (e != null) {
+//                    Log.w(TAG, "Listen failed.", e);
+//                    return;
+//                }
+
+                if (value != null && value.exists()) {
+                    game_level.setText(value.get("brand_game_level").toString());
+                    if(value.get("brand_game_level").toString() == "1"){
+                        star1.setAnimation(R.raw.lottie_star);
+                    }
+
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+    }
 
     public void retrieveProfile(Activity activity, Context context, String id, TextView name, TextView user_type, TextView household_type, TextView establishment_type, TextView barangay, TextView location, TextView number, TextView establishment_type_label,TextView email){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
@@ -344,6 +395,23 @@ public class firebase_crud {
                     }
                 });
     }
+
+    public void updateWasteStar(){
+        DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
+        locationRef.update("waste_game_level", FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Successfully updated location!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+
 
 
     //Log Out
