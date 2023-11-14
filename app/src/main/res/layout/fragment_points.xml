@@ -42,7 +42,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,10 +85,11 @@
                             android:fontFamily="@font/pregular" />
 
                         <TextView
+                            android:id="@+id/tvPoints"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="10 pts"
+                            android:text="0 pt/s"
 
                             android:textSize="30sp"
                             android:fontFamily="@font/pbold"
@@ -374,7 +376,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/green"
-                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:orientation="vertical"
                 app:cardCornerRadius="20dp"
                 card_view:cardElevation="10dp">
@@ -385,12 +388,12 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@color/white"/>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/white" />
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -398,22 +401,35 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRedeem"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Redeemable Rewards"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/pmedium"
-                            android:textColor="@color/green" />
+                            android:text="Go to Redeem Rewards"
+                            android:textSize="12sp"
+                            android:padding="15dp"
+                            app:cornerRadius="25dp"
+                            app:strokeWidth="2dp"
+                            app:strokeColor="@color/green"
+                            android:textColor="@color/green"
+                            android:backgroundTint="@color/white"
+                            />
+
+
                     </LinearLayout>
+
+
                 </FrameLayout>
 
             </androidx.cardview.widget.CardView>
 
 
 
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvRewards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
 
 

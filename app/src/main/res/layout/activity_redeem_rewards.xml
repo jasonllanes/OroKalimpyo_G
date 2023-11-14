@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".redeem.redeem_rewards">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/profile_heading" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/points"
+                                android:backgroundTint="@color/black"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Redeem Rewards"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pbold"
+                                android:layout_marginTop="13dp"
+                                android:layout_marginLeft="5dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Search for rewards:"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/pregular" />
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        app:cardCornerRadius="20dp"
+                        android:clickable="true"
+                        android:layout_marginHorizontal="50dp"
+                        card_view:cardElevation="10dp"
+
+                        android:orientation="vertical"
+                        android:backgroundTint="@color/green"
+                        android:layout_marginBottom="20dp">
+
+                        <SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/green"
+                            android:queryBackground="@color/green"
+                            android:layout_marginHorizontal="10dp"
+                            android:iconifiedByDefault="false"
+                            android:queryHint="Search"/>
+
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progressBar"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="150dp"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="50dp"-->
+    <!--        android:indeterminateTint="@color/green"-->
+    <!--        android:backgroundTint="@color/green"-->
+    <!--        android:max="3"-->
+    <!--        android:progress="100"/>-->
+
+
+    <!--    <WebView-->
+    <!--        android:id="@+id/wvBranch"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:backgroundTint="@color/white"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginBottom="60dp"/>-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lvRewards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="20dp" />
+
+
+
+</LinearLayout>

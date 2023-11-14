@@ -337,6 +337,20 @@
                             android:orientation="vertical">
 
                             <com.google.android.material.button.MaterialButton
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="View Profile"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                android:layout_marginHorizontal="50dp" />
+
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnViewHistory"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -365,19 +379,7 @@
                                 android:backgroundTint="@color/white"
                                 android:layout_marginHorizontal="50dp" />
 
-                            <com.google.android.material.button.MaterialButton
 
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="About"
-                                android:textSize="12sp"
-                                android:padding="15dp"
-                                app:cornerRadius="25dp"
-                                app:strokeWidth="2dp"
-                                app:strokeColor="@color/green"
-                                android:textColor="@color/green"
-                                android:backgroundTint="@color/white"
-                                android:layout_marginHorizontal="50dp" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnAbout"

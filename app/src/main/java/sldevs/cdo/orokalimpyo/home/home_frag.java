@@ -43,7 +43,7 @@ public class home_frag extends Fragment {
     NewsAdapter adapter;
     String searchQuery;
     SearchView searchView;
-    TextView tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
+    TextView viewProfileTextView,tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
 
     firebase_crud fc;
     @Override
@@ -60,6 +60,7 @@ public class home_frag extends Fragment {
         adapter = new NewsAdapter(getContext(), options, searchQuery);
 
 
+
     }
 
     @Override
@@ -72,6 +73,8 @@ public class home_frag extends Fragment {
         db = FirebaseFirestore.getInstance();
         fc = new firebase_crud();
 
+
+
         btnGame1 = v.findViewById(R.id.btnGame1);
         btnGame2 = v.findViewById(R.id.btnGame2);
         tvResidual = v.findViewById(R.id.tvResidual);
@@ -80,6 +83,7 @@ public class home_frag extends Fragment {
         tvSpecialWaste = v.findViewById(R.id.tvSpecialWaste);
 
         llContributions = v.findViewById(R.id.llContributions);
+        viewProfileTextView = v.findViewById(R.id.viewProfileTextView);
 //        llAnnouncements = v.findViewById(R.id.llAnnouncements);
 
         lvNews = v.findViewById(R.id.lvNews);
@@ -87,6 +91,7 @@ public class home_frag extends Fragment {
         lvNews.setAdapter(adapter);
 
         fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvRecyclable,tvBiodegradable,tvResidual,tvSpecialWaste);
+        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);
 
         btnGame1.setOnClickListener(new View.OnClickListener() {
             @Override

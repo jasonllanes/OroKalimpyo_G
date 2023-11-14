@@ -197,6 +197,33 @@ public class firebase_crud {
         });
     }
 
+    public void retrievePoints(Activity activity,Context context,String id,TextView points){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+
+                    } else {
+
+                    }
+                    points.setText(document.get("total_points").toString());;
+
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+
     public void retrieveTotalContribution(Activity activity,Context context,String id,TextView residual,TextView recyclable, TextView biodegradable,TextView special_waste){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
