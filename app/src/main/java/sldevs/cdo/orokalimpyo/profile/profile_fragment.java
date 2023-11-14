@@ -45,7 +45,7 @@ import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 
 public class profile_fragment extends Fragment implements View.OnClickListener {
 
-    Button btnEditProfile,btnViewHistory,btnLogout,btnAbout,btnYes,btnNo;
+    Button btnProfile,btnViewHistory,btnLogout,btnAbout,btnYes,btnNo;
     StorageReference storageReference;
     TextView tvEditLocation;
     CircleImageView profile_image;
@@ -89,7 +89,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
         tvEditLocation = view.findViewById(R.id.tvEditLocation);
 
-//        btnEditProfile = view.findViewById(R.id.btnEditProfile);
+        btnProfile = view.findViewById(R.id.btnProfile);
         btnAbout = view.findViewById(R.id.btnAbout);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnViewHistory = view.findViewById(R.id.btnViewHistory);
@@ -106,7 +106,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
         tvEditLocation.setOnClickListener(this);
         profile_image.setOnClickListener(this);
-//        btnEditProfile.setOnClickListener(this);
+        btnProfile.setOnClickListener(this);
         btnAbout.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
         btnViewHistory.setOnClickListener(this);
@@ -148,7 +148,10 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
                 }
             });
             builder.show();
-        }else if(id == R.id.profile_image){
+        }else if(id == R.id.btnProfile){
+            Intent i = new Intent(getContext(),view_profile.class);
+            startActivity(i);
+        } else if(id == R.id.profile_image){
             Intent i = new Intent(getContext(),show_qr.class);
             startActivity(i);
         } else if (id == R.id.btnViewHistory) {

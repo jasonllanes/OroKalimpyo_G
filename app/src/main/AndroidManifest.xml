@@ -29,6 +29,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".profile.edit_email"
+            android:exported="false" />
+        <activity
+            android:name=".profile.edit_number"
+            android:exported="false" />
+        <activity
+            android:name=".profile.edit_barangay"
+            android:exported="false" />
+        <activity
+            android:name=".profile.edit_name"
+            android:exported="false" />
+        <activity
             android:name=".profile.view_profile"
             android:exported="false" />
         <activity
