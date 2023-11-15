@@ -22,8 +22,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.AggregateQuery;
 import com.google.firebase.firestore.AggregateQuerySnapshot;
@@ -400,11 +403,113 @@ public class firebase_crud {
 
     }
 
-    public void retrieveNews(){
+    public void updateName(Activity activity,String name){
+        DocumentReference nameRef = db.collection("Waste Generator").document(mAuth.getUid());
+        nameRef.update("name", name).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated name!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated name!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
 
+                        Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+    public void updateBarangay(Activity activity,String barangay){
+        DocumentReference barangayRef = db.collection("Waste Generator").document(mAuth.getUid());
+        barangayRef.update("barangay", barangay).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated barangay!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated barangay!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                        Log.w(TAG, "Error updating barangay.", e);
+                    }
+                });
     }
 
+    public void updateNumber(Activity activity,String number){
+        DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
+        numberRef.update("number", number).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated number!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated number!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
 
+                        Log.w(TAG, "Error updating number.", e);
+                    }
+                });
+    }
+
+    public void updateEmail(Activity activity,String currentEmail, String password,String email){
+        DocumentReference emailRef = db.collection("Waste Generator").document(mAuth.getUid());
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(currentEmail, password);
+
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(TAG, "User re-authenticated.");
+                        user.updateEmail(email)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            emailRef.update("email", email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            activity.finish();
+                                                            Toast.makeText(activity, "Successfully updated email!", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "Successfully updated email!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                                                            Log.w(TAG, "Error updating location.", e);
+                                                        }
+                                                    });
+                                        }else{
+                                            Toast.makeText(activity, task.getException()+ "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+
+
+
+
+
+    }
     //Update Location
     public void updateLocation(Activity activity,String location){
         DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
@@ -412,12 +517,16 @@ public class firebase_crud {
                     @Override
                     public void onSuccess(Void aVoid) {
                         activity.finish();
+                        Toast.makeText(activity, "Successfully updated location!", Toast.LENGTH_SHORT).show();
+
                         Log.d(TAG, "Successfully updated location!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
                         Log.w(TAG, "Error updating location.", e);
                     }
                 });

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,6 +111,17 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnAbout.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
         btnViewHistory.setOnClickListener(this);
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
+            }
+        },500);
+
+
 
         generateQRCode();
         fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
