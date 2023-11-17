@@ -55,6 +55,7 @@ import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.UserDetails;
 import sldevs.cdo.orokalimpyo.home.home;
 import sldevs.cdo.orokalimpyo.profile.show_qr;
+import sldevs.cdo.orokalimpyo.profile.view_profile;
 
 public class firebase_crud {
 
@@ -408,6 +409,8 @@ public class firebase_crud {
         nameRef.update("name", name).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
                         activity.finish();
                         Toast.makeText(activity, "Successfully updated name!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Successfully updated name!");
@@ -427,6 +430,8 @@ public class firebase_crud {
         barangayRef.update("barangay", barangay).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
                         activity.finish();
                         Toast.makeText(activity, "Successfully updated barangay!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Successfully updated barangay!");
@@ -447,6 +452,8 @@ public class firebase_crud {
         numberRef.update("number", number).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
                         activity.finish();
                         Toast.makeText(activity, "Successfully updated number!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Successfully updated number!");
@@ -483,6 +490,8 @@ public class firebase_crud {
                                             emailRef.update("email", email).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
+                                                            Intent i = new Intent(activity, view_profile.class);
+                                                            activity.startActivity(i);
                                                             activity.finish();
                                                             Toast.makeText(activity, "Successfully updated email!", Toast.LENGTH_SHORT).show();
                                                             Log.d(TAG, "Successfully updated email!");
@@ -516,6 +525,8 @@ public class firebase_crud {
         locationRef.update("location", location).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
                         activity.finish();
                         Toast.makeText(activity, "Successfully updated location!", Toast.LENGTH_SHORT).show();
 

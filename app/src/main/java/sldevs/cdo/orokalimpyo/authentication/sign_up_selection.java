@@ -32,7 +32,7 @@ public class sign_up_selection extends AppCompatActivity implements View.OnClick
         int id = v.getId();
 
         if (id == R.id.btnCreate){
-            Intent i = new Intent(sign_up_selection.this, sign_up_note.class);
+            Intent i = new Intent(sign_up_selection.this, choose_household.class);
             startActivity(i);
         } else if (id == R.id.btnLogIn){
             finish();

@@ -16,11 +16,11 @@ import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 
 public class view_profile extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvEditName,tvEditBarangay,tvEditLocation,tvEditNumber,tvEditEmail;
-    TextView tvType,tvName,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEmail;
+    TextView tvEditName, tvEditBarangay, tvEditLocation, tvEditNumber, tvEditEmail;
+    TextView tvType, tvName, tvHouseholdType, tvEstablishmentType, tvBarangay, tvLocation, tvNumber, tvEmail;
     TextView tvEstablishmentTypeL;
     Button btnBack;
-    String user_type,household_type,establishment_type,others,name,barangay,location,number,email;
+    String user_type, household_type, establishment_type, others, name, barangay, location, number, email;
 
     FirebaseAuth mAuth;
     firebase_crud fc;
@@ -60,20 +60,10 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
         email = getIntent().getStringExtra("email");
 
 
-
         btnBack = findViewById(R.id.btnBack);
 
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fc.retrieveProfile(view_profile.this,view_profile.this,mAuth.getUid(),tvName,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
-
-            }
-        },500);
-
-
+        fc.retrieveProfile(view_profile.this, view_profile.this, mAuth.getUid(), tvName, tvType, tvHouseholdType, tvEstablishmentType, tvBarangay, tvLocation, tvNumber, tvEstablishmentTypeL, tvEmail);
 
 
         tvEditName.setOnClickListener(this);
@@ -82,10 +72,8 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
         tvEditNumber.setOnClickListener(this);
         tvEditEmail.setOnClickListener(this);
 
+
         btnBack.setOnClickListener(this);
-
-
-
 
 
     }
@@ -95,7 +83,7 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
 
-        if(id == R.id.tvEditName){
+        if (id == R.id.tvEditName) {
             Intent i = new Intent(view_profile.this, edit_name.class);
             i.putExtra("name", tvName.getText().toString());
             startActivity(i);
@@ -116,7 +104,7 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
             i.putExtra("email", tvEmail.getText().toString());
             startActivity(i);
         } else if (id == R.id.btnBack) {
-
+            finish();
         }
     }
 }

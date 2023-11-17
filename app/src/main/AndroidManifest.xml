@@ -79,27 +79,27 @@
         <activity
             android:name=".profile.show_qr"
             android:exported="false" />
-        <activity
-            android:name=".scanner.consolidator_scanner_result"
-            android:exported="false" />
-        <activity
-            android:name=".scanner.consolidator_scanner"
-            android:exported="false" />
-        <activity
-            android:name=".scanner.collector_scanner_result"
-            android:exported="false" />
-        <activity
-            android:name=".scanner.collector_scanner"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.final_sign_up_2"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.consolidator_sign_up_details"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.collector_sign_up_details"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".scanner.consolidator_scanner_result"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".scanner.consolidator_scanner"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".scanner.collector_scanner_result"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".scanner.collector_scanner"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".authentication.final_sign_up_2"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".authentication.consolidator_sign_up_details"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".authentication.collector_sign_up_details"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".authentication.sign_up_selection"
             android:exported="false" />

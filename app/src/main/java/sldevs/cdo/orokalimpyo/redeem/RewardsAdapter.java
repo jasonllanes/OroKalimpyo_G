@@ -15,6 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import sldevs.cdo.orokalimpyo.GlideApp;
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.data_fetch.News_Details;
@@ -59,17 +60,16 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
 
 
 
-//        storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child("Noddle.jpg");
-//        GlideApp.with(context).load(storageReference).into(ivRewards);
-
         if (model != null) {
             // Check if the model's field is not null
             String modelField = model.getRewardTitle();
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
                     holder.tvTitle.setText(rewardsDetails.getRewardTitle());
-                    holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()));
+                    holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()) + " pt/s");
                     holder.tvDescription.setText(rewardsDetails.getDescription());
+                    storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(rewardsDetails.getImageName());
+                    GlideApp.with(context).load(storageReference).into(holder.ivRewards);
                     holder.itemView.setVisibility(View.VISIBLE);
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     return; // Exit the method after binding data
@@ -97,12 +97,16 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
 
         TextView tvDescription;
 
+        ImageView ivRewards;
+
+
         public RewardsHolder(@NonNull View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvPoints = itemView.findViewById(R.id.tvPoints);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivRewards = itemView.findViewById(R.id.ivReward);
 
 
         }

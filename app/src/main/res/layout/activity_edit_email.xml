@@ -163,7 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:iconTint="@color/white"
-                    android:text="Update Name"
+                    android:text="Update Email"
                     android:fontFamily="@font/pmedium"
                     android:textSize="15sp"
                     android:textColor="@color/white"

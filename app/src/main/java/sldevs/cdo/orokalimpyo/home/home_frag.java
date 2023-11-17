@@ -90,7 +90,7 @@ public class home_frag extends Fragment {
         lvNews.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         lvNews.setAdapter(adapter);
 
-        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvRecyclable,tvBiodegradable,tvResidual,tvSpecialWaste);
+        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvResidual,tvRecyclable,tvBiodegradable,tvSpecialWaste);
         fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);
 
         btnGame1.setOnClickListener(new View.OnClickListener() {

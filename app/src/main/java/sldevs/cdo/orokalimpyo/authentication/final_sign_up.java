@@ -250,7 +250,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details = new HashMap<>();
         user_details.put("user_id",mAuth.getUid());
         user_details.put("name", name);
-        user_details.put("user_type", user_type);
+        user_details.put("user_type", "Waste Generator");
         user_details.put("household_type", houshold_type);
         user_details.put("establishment_type",establishment_type);
         user_details.put("others",others);

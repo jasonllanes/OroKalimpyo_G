@@ -56,7 +56,7 @@ public class redeem_rewards extends AppCompatActivity {
 
 
         lvRewards = findViewById(R.id.lvRewards);
-        lvRewards.setLayoutManager(new LinearLayoutManager(redeem_rewards.this,LinearLayoutManager.HORIZONTAL,false));
+        lvRewards.setLayoutManager(new LinearLayoutManager(redeem_rewards.this,LinearLayoutManager.VERTICAL,false));
         lvRewards.setAdapter(adapter);
 
 //        fc.retrieveTotalContribution(this,redeem_rewards.this, mAuth.getUid(), tvRecyclable,tvBiodegradable,tvResidual,tvSpecialWaste);
