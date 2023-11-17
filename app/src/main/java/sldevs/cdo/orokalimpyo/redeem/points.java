@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,12 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import sldevs.cdo.orokalimpyo.R;
+import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.Branches_Details;
 import sldevs.cdo.orokalimpyo.data_fetch.News_Details;
 import sldevs.cdo.orokalimpyo.data_fetch.Rewards_Details;
@@ -41,7 +44,7 @@ public class points extends Fragment {
     RewardsAdapter adapter;
     String searchQuery;
     SearchView searchView;
-    TextView tvPoints,tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
+    TextView tvPoints, tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
 
     Button btnRedeem;
 
@@ -64,12 +67,23 @@ public class points extends Fragment {
 
         btnRedeem = v.findViewById(R.id.btnRedeem);
 
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuth.getCurrentUser().reload();
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(getContext(), log_in.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        },500);
 
-
-        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvRecyclable,tvBiodegradable,tvResidual,tvSpecialWaste);
+        fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvRecyclable, tvBiodegradable, tvResidual, tvSpecialWaste);
 //        fc.retrievePoints(getActivity(),getContext(), mAuth.getUid(), tvPoints);
 
-        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.opacity_anim);
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.opacity_anim);
         cPoints.startAnimation(animation);
 
 
@@ -80,7 +94,6 @@ public class points extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 
         return v;

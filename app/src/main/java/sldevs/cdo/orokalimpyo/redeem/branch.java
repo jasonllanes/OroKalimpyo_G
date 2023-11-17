@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,6 +41,7 @@ import java.util.ArrayList;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import sldevs.cdo.orokalimpyo.R;
+import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.Branches_Details;
 import sldevs.cdo.orokalimpyo.data_fetch.Scanned_Contributions;
 import sldevs.cdo.orokalimpyo.profile.ContributionAdapter;
@@ -48,6 +51,7 @@ import sldevs.cdo.orokalimpyo.profile.view_contribution;
 public class branch extends Fragment {
 
     WebView wvBranch;
+    FirebaseAuth mAuth;
     ProgressBar progressBar;
     RecyclerView recyclerView;
     FirebaseFirestore db;
@@ -76,6 +80,20 @@ public class branch extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_branch, container, false);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuth.getCurrentUser().reload();
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(getContext(), log_in.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        },500);
 
         recyclerView = v.findViewById(R.id.lvContributions);
 //        recyclerView.setHasFixedSize(true);

@@ -63,6 +63,8 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
         btnBack = findViewById(R.id.btnBack);
 
 
+
+
         fc.retrieveProfile(view_profile.this, view_profile.this, mAuth.getUid(), tvName, tvType, tvHouseholdType, tvEstablishmentType, tvBarangay, tvLocation, tvNumber, tvEstablishmentTypeL, tvEmail);
 
 

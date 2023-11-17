@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 
 import sldevs.cdo.orokalimpyo.R;
+import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.Branches_Details;
 import sldevs.cdo.orokalimpyo.data_fetch.News_Details;
 import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
@@ -86,9 +88,25 @@ public class home_frag extends Fragment {
         viewProfileTextView = v.findViewById(R.id.viewProfileTextView);
 //        llAnnouncements = v.findViewById(R.id.llAnnouncements);
 
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuth.getCurrentUser().reload();
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(getContext(), log_in.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        },500);
+
         lvNews = v.findViewById(R.id.lvNews);
         lvNews.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         lvNews.setAdapter(adapter);
+
+
+
 
         fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvResidual,tvRecyclable,tvBiodegradable,tvSpecialWaste);
         fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);

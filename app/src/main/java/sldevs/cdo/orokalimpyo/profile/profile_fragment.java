@@ -105,6 +105,13 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         Animation animation2 = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
         llMenu.startAnimation(animation2);
 
+        mAuth.getCurrentUser().reload();
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(getContext(), log_in.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+
         tvEditLocation.setOnClickListener(this);
         profile_image.setOnClickListener(this);
         btnProfile.setOnClickListener(this);
@@ -118,8 +125,15 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
             @Override
             public void run() {
                 fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
+                mAuth.getCurrentUser().reload();
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(getContext(), log_in.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
             }
         },500);
+
 
 
 
