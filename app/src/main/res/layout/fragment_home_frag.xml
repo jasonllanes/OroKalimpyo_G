@@ -58,542 +58,552 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="80dp">
+            android:layout_height="match_parent">
 
-
-
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:paddingBottom="80dp">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="What is R.A 9003?"
-                    android:textColor="@color/green"
-                    android:textSize="30sp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/pregular"
-                    android:layout_marginTop="13dp" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ra_description"
-                    android:layout_marginHorizontal="15dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/pregular"
-                    android:layout_marginLeft="5dp"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:text="TOTAL WASTE CONTRIBUTION"
-                    android:layout_gravity="center"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/pbold"
-                    android:textColor="@color/green" />
-
-        <LinearLayout
-            android:id="@+id/llContributions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                card_view:cardElevation="5dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/green">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@drawable/card_gradient_1" />
-                </FrameLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvResidual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="0 kg"
-                        android:layout_gravity="center"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/pbold"
-                        android:textColor="@color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Residual"
+                        android:text="What is R.A 9003?"
+                        android:textColor="@color/green"
+                        android:textSize="30sp"
                         android:layout_gravity="center"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/pbolditalic"
-                        android:textColor="@color/white" />
+                        android:fontFamily="@font/pregular"
+                        android:layout_marginTop="13dp" />
 
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                card_view:cardElevation="5dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvRecyclable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="0 kg"
-                        android:layout_gravity="center"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/pbold"
-                        android:textColor="@color/green" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Recyclable"
-                        android:layout_gravity="center"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/pbolditalic"
-                        android:textColor="@color/green" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                card_view:cardElevation="5dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/green">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@drawable/card_gradient_1" />
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvSpecialWaste"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="0 kg"
-                        android:layout_gravity="center"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/pbold"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Biodegradable"
-                        android:layout_gravity="center"
+                        android:text="@string/ra_description"
+                        android:layout_marginHorizontal="15dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
                         android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/pbolditalic"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                app:cardCornerRadius="20dp"
-                card_view:cardElevation="5dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvBiodegradable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="0 kg"
                         android:layout_gravity="center"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/pbold"
-                        android:textColor="@color/green" />
+                        android:fontFamily="@font/pregular"
+                        android:layout_marginLeft="5dp"/>
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Special Waste"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/pbolditalic"
-                        android:textColor="@color/green" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Latest Announcements"
-            android:textSize="14sp"
-            android:layout_marginHorizontal="10dp"
-            android:fontFamily="@font/pregular"
-            android:textColor="@color/black" />
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/green"
-                    android:queryBackground="@color/green"
-                    android:layout_marginHorizontal="10dp"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="Search"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:background="@color/black"/>
-
-<!--        <HorizontalScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_margin="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:id="@+id/llAnnouncements"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal">-->
-
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="300dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:backgroundTint="@color/green"-->
-<!--                    android:orientation="vertical"-->
-<!--                    app:cardCornerRadius="20dp"-->
-<!--                    card_view:cardElevation="10dp">-->
-
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
-<!--                        <ImageView-->
-
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/news_1"/>-->
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:background="@color/n_green" />-->
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="vertical"-->
-<!--                            android:padding="16dp">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Headline]"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:background="@color/green"-->
-<!--                                android:textSize="20sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/white" />-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Description]"-->
-<!--                                android:textSize="14sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/black" />-->
-<!--                        </LinearLayout>-->
-<!--                    </FrameLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="300dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    app:cardCornerRadius="20dp"-->
-<!--                    card_view:cardElevation="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:backgroundTint="@color/green">-->
-
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
-<!--                        <ImageView-->
-
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/news_1"/>-->
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:background="@color/n_green" />-->
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="vertical"-->
-<!--                            android:padding="16dp">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Headline]"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:background="@color/green"-->
-<!--                                android:textSize="20sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/white" />-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Description]"-->
-<!--                                android:textSize="14sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/black" />-->
-<!--                        </LinearLayout>-->
-<!--                    </FrameLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="300dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    app:cardCornerRadius="20dp"-->
-<!--                    card_view:cardElevation="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:backgroundTint="@color/green">-->
-
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
-<!--                        <ImageView-->
-
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:scaleType="centerCrop"-->
-<!--                            android:src="@drawable/news_1"/>-->
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="200dp"-->
-<!--                            android:background="@color/n_green" />-->
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="vertical"-->
-<!--                            android:padding="16dp">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Headline]"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:background="@color/green"-->
-<!--                                android:textSize="20sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/white" />-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="4dp"-->
-<!--                                android:text="[News Description]"-->
-<!--                                android:textSize="14sp"-->
-<!--                                android:fontFamily="@font/pregular"-->
-<!--                                android:textColor="@color/black" />-->
-<!--                        </LinearLayout>-->
-<!--                    </FrameLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-
-<!--            </LinearLayout>-->
-
-
-
-<!--        </HorizontalScrollView>-->
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lvNews"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/animation_view"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:lottie_rawRes="@raw/lottie_trash"
-                        app:lottie_loop="true"
-                        app:lottie_autoPlay="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Let's play a game!"
+                        android:layout_marginTop="14dp"
+                        android:text="TOTAL WASTE CONTRIBUTION"
                         android:layout_gravity="center"
                         android:textSize="15sp"
                         android:fontFamily="@font/pbold"
                         android:textColor="@color/green" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGame1"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/green"
-                        android:fontFamily="@font/pbold"
-                        android:orientation="vertical"
+                    <LinearLayout
+                        android:id="@+id/llContributions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:padding="10dp"
-
-                        android:text="Guess the waste!"
-                        android:textColor="@color/white"
-                        app:cornerRadius="20dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGame2"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        app:cornerRadius="20dp"
-                        card_view:cardElevation="5dp"
-                        android:text="Guess the brand!"
-                        android:layout_marginRight="10dp"
-                        android:backgroundTint="@color/white"/>
+                        android:orientation="horizontal">
 
 
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="20dp"
+                            card_view:cardElevation="5dp"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/green">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp"
+                                    android:background="@drawable/card_gradient_1" />
+                            </FrameLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvResidual"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="0 kg"
+                                    android:layout_gravity="center"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/pbold"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Residual"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/pbolditalic"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="20dp"
+                            card_view:cardElevation="5dp"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/white">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvRecyclable"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="0 kg"
+                                    android:layout_gravity="center"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/pbold"
+                                    android:textColor="@color/green" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Recyclable"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/pbolditalic"
+                                    android:textColor="@color/green" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="20dp"
+                            card_view:cardElevation="5dp"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/green">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp"
+                                    android:background="@drawable/card_gradient_1" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvSpecialWaste"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="0 kg"
+                                    android:layout_gravity="center"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/pbold"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Biodegradable"
+                                    android:layout_gravity="center"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/pbolditalic"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="20dp"
+                            card_view:cardElevation="5dp"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/white">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvBiodegradable"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="0 kg"
+                                    android:layout_gravity="center"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/pbold"
+                                    android:textColor="@color/green" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Special Waste"
+                                    android:layout_gravity="center"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/pbolditalic"
+                                    android:textColor="@color/green" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Latest Announcements"
+                        android:textSize="14sp"
+                        android:layout_marginHorizontal="10dp"
+                        android:fontFamily="@font/pregular"
+                        android:textColor="@color/black" />
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green"
+                        android:queryBackground="@color/green"
+                        android:layout_marginHorizontal="10dp"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="Search"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="@color/black"/>
+
+                    <!--        <HorizontalScrollView-->
+                    <!--            android:layout_width="match_parent"-->
+                    <!--            android:layout_height="wrap_content"-->
+                    <!--            android:padding="10dp"-->
+                    <!--            android:layout_margin="5dp">-->
+
+                    <!--            <LinearLayout-->
+                    <!--                android:id="@+id/llAnnouncements"-->
+                    <!--                android:layout_width="match_parent"-->
+                    <!--                android:layout_height="wrap_content"-->
+                    <!--                android:orientation="horizontal">-->
+
+
+                    <!--                <androidx.cardview.widget.CardView-->
+                    <!--                    android:layout_width="300dp"-->
+                    <!--                    android:layout_height="match_parent"-->
+                    <!--                    android:layout_marginRight="10dp"-->
+                    <!--                    android:backgroundTint="@color/green"-->
+                    <!--                    android:orientation="vertical"-->
+                    <!--                    app:cardCornerRadius="20dp"-->
+                    <!--                    card_view:cardElevation="10dp">-->
+
+                    <!--                    <FrameLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+                    <!--                        <ImageView-->
+
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:scaleType="centerCrop"-->
+                    <!--                            android:src="@drawable/news_1"/>-->
+                    <!--                        <View-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:background="@color/n_green" />-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="vertical"-->
+                    <!--                            android:padding="16dp">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Headline]"-->
+                    <!--                                android:padding="5dp"-->
+                    <!--                                android:background="@color/green"-->
+                    <!--                                android:textSize="20sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/white" />-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Description]"-->
+                    <!--                                android:textSize="14sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/black" />-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </FrameLayout>-->
+
+                    <!--                </androidx.cardview.widget.CardView>-->
+
+
+                    <!--                <androidx.cardview.widget.CardView-->
+                    <!--                    android:layout_width="300dp"-->
+                    <!--                    android:layout_height="150dp"-->
+                    <!--                    android:orientation="vertical"-->
+                    <!--                    app:cardCornerRadius="20dp"-->
+                    <!--                    card_view:cardElevation="10dp"-->
+                    <!--                    android:layout_marginRight="10dp"-->
+                    <!--                    android:backgroundTint="@color/green">-->
+
+                    <!--                    <FrameLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+                    <!--                        <ImageView-->
+
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:scaleType="centerCrop"-->
+                    <!--                            android:src="@drawable/news_1"/>-->
+                    <!--                        <View-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:background="@color/n_green" />-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="vertical"-->
+                    <!--                            android:padding="16dp">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Headline]"-->
+                    <!--                                android:padding="5dp"-->
+                    <!--                                android:background="@color/green"-->
+                    <!--                                android:textSize="20sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/white" />-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Description]"-->
+                    <!--                                android:textSize="14sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/black" />-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </FrameLayout>-->
+
+                    <!--                </androidx.cardview.widget.CardView>-->
+
+
+                    <!--                <androidx.cardview.widget.CardView-->
+                    <!--                    android:layout_width="300dp"-->
+                    <!--                    android:layout_height="150dp"-->
+                    <!--                    android:orientation="vertical"-->
+                    <!--                    app:cardCornerRadius="20dp"-->
+                    <!--                    card_view:cardElevation="10dp"-->
+                    <!--                    android:layout_marginRight="10dp"-->
+                    <!--                    android:backgroundTint="@color/green">-->
+
+                    <!--                    <FrameLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+                    <!--                        <ImageView-->
+
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:scaleType="centerCrop"-->
+                    <!--                            android:src="@drawable/news_1"/>-->
+                    <!--                        <View-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="200dp"-->
+                    <!--                            android:background="@color/n_green" />-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="vertical"-->
+                    <!--                            android:padding="16dp">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Headline]"-->
+                    <!--                                android:padding="5dp"-->
+                    <!--                                android:background="@color/green"-->
+                    <!--                                android:textSize="20sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/white" />-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginTop="4dp"-->
+                    <!--                                android:text="[News Description]"-->
+                    <!--                                android:textSize="14sp"-->
+                    <!--                                android:fontFamily="@font/pregular"-->
+                    <!--                                android:textColor="@color/black" />-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </FrameLayout>-->
+
+                    <!--                </androidx.cardview.widget.CardView>-->
+
+
+                    <!--            </LinearLayout>-->
+
+
+
+                    <!--        </HorizontalScrollView>-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/lvNews"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/animation_view"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:lottie_rawRes="@raw/lottie_trash"
+                            app:lottie_loop="true"
+                            app:lottie_autoPlay="true" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Let's play a game!"
+                            android:layout_gravity="center"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/pbold"
+                            android:textColor="@color/green" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGame1"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/green"
+                            android:fontFamily="@font/pbold"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+
+                            android:text="Guess the waste!"
+                            android:textColor="@color/white"
+                            app:cornerRadius="20dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGame2"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            app:cornerRadius="20dp"
+                            card_view:cardElevation="5dp"
+                            android:text="Guess the brand!"
+                            android:layout_marginRight="10dp"
+                            android:backgroundTint="@color/white"/>
+
+
+
+
+
+
+                    </LinearLayout>
 
 
 
 
                 </LinearLayout>
+            </ScrollView>
 
 
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-            </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 
 </FrameLayout>

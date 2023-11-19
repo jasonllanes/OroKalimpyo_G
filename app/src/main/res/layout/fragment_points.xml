@@ -39,103 +39,34 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cPoints"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:backgroundTint="@color/green"
-                android:layout_margin="10dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="30dp"
-                card_view:cardElevation="10dp">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:background="@drawable/card_gradient" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total Points:"
-                            android:textColor="@color/green"
-                            android:textSize="25sp"
-                            android:fontFamily="@font/pregular" />
-
-                        <TextView
-                            android:id="@+id/tvPoints"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="0 pt/s"
-
-                            android:textSize="30sp"
-                            android:fontFamily="@font/pbold"
-                            android:textColor="@color/white" />
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_gravity="center"
-                            android:background="@color/black"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Earn more points by contributing!"
-                            android:textSize="14sp"
-                            android:layout_gravity="center_horizontal"
-                            android:textAlignment="center"
-                            android:fontFamily="@font/pregular"
-                            android:textColor="@color/green" />
-                    </LinearLayout>
-                </FrameLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp">
 
             <LinearLayout
-                android:id="@+id/llContributions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
+                    android:id="@+id/cPoints"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:backgroundTint="@color/green"
+                    android:layout_margin="10dp"
                     android:orientation="vertical"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="5dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/green">
+                    app:cardCornerRadius="30dp"
+                    card_view:cardElevation="10dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -143,182 +74,257 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:background="@drawable/card_gradient_1" />
-                    </FrameLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvResidual"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="0 kg"
-                            android:layout_gravity="center"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pbold"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Residual"
-                            android:layout_gravity="center"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/pbolditalic"
-                            android:textColor="@color/white" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="5dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvRecyclable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="0 kg"
-                            android:layout_gravity="center"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pbold"
-                            android:textColor="@color/green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Recyclable"
-                            android:layout_gravity="center"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/pbolditalic"
-                            android:textColor="@color/green" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="5dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/green">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <View
+                            android:layout_height="160dp"
+                            android:background="@drawable/card_gradient" />
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:background="@drawable/card_gradient_1" />
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Points:"
+                                android:textColor="@color/green"
+                                android:textSize="25sp"
+                                android:fontFamily="@font/pregular" />
+
+                            <TextView
+                                android:id="@+id/tvPoints"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 pt/s"
+
+                                android:textSize="30sp"
+                                android:fontFamily="@font/pbold"
+                                android:textColor="@color/white" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_gravity="center"
+                                android:background="@color/black"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Earn more points by contributing!"
+                                android:textSize="14sp"
+                                android:layout_gravity="center_horizontal"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/pregular"
+                                android:textColor="@color/green" />
+                        </LinearLayout>
                     </FrameLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvSpecialWaste"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="0 kg"
-                            android:layout_gravity="center"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pbold"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Special Waste"
-                            android:layout_gravity="center"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/pbolditalic"
-                            android:textColor="@color/white" />
-
-                    </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="20dp"
-                    card_view:cardElevation="5dp"
-                    android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/white">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/llContributions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvBiodegradable"
-                            android:layout_width="wrap_content"
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/green">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:background="@drawable/card_gradient_1" />
+                        </FrameLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="0 kg"
                             android:layout_gravity="center"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pbold"
-                            android:textColor="@color/green" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/tvResidual"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 kg"
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pbold"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Residual"
+                                android:layout_gravity="center"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/pbolditalic"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Recyclable"
                             android:layout_gravity="center"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/pbolditalic"
-                            android:textColor="@color/green" />
+                            android:orientation="vertical">
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tvRecyclable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 kg"
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pbold"
+                                android:textColor="@color/green" />
 
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Recyclable"
+                                android:layout_gravity="center"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/pbolditalic"
+                                android:textColor="@color/green" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/green">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:background="@drawable/card_gradient_1" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvSpecialWaste"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 kg"
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pbold"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Special Waste"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/pbolditalic"
+                                android:textColor="@color/white" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
 
-            </LinearLayout>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvBiodegradable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 kg"
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/pbold"
+                                android:textColor="@color/green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Recyclable"
+                                android:layout_gravity="center"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/pbolditalic"
+                                android:textColor="@color/green" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
 
 
 
@@ -372,72 +378,77 @@
 
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/green"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="20dp"
-                card_view:cardElevation="10dp">
-
-                <FrameLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/green"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="20dp"
+                    card_view:cardElevation="10dp">
 
-                    <ImageView
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@color/white"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_height="wrap_content">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnRedeem"
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/white"/>
+                        <View
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Go to Redeem Rewards"
-                            android:textSize="12sp"
-                            android:padding="15dp"
-                            app:cornerRadius="25dp"
-                            app:strokeWidth="2dp"
-                            app:strokeColor="@color/green"
-                            android:textColor="@color/green"
-                            android:backgroundTint="@color/white"
-                            />
+                            android:background="@color/white" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnRedeem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Go to Redeem Rewards"
+                                android:textSize="12sp"
+                                android:padding="15dp"
+                                app:cornerRadius="25dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/green"
+                                android:textColor="@color/green"
+                                android:backgroundTint="@color/white"
+                                />
 
 
-                    </LinearLayout>
+                        </LinearLayout>
 
 
-                </FrameLayout>
+                    </FrameLayout>
 
-            </androidx.cardview.widget.CardView>
-
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lvRewards"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" />
+                </androidx.cardview.widget.CardView>
 
 
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lvRewards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
 
 
 
-    </ScrollView>
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
 

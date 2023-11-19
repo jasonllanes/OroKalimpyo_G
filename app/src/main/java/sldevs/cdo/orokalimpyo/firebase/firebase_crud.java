@@ -214,7 +214,7 @@ public class firebase_crud {
                     } else {
 
                     }
-                    points.setText(document.get("total_points").toString());;
+                    points.setText(document.get("total_points").toString() + " pt/s");
 
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());

@@ -1,6 +1,7 @@
 package sldevs.cdo.orokalimpyo.redeem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +67,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
                     holder.tvTitle.setText(rewardsDetails.getRewardTitle());
-                    holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()) + " pt/s");
+                    holder.tvPoints.setText("Needed Points: " + String.valueOf(rewardsDetails.getPoints()) + " pt/s");
                     holder.tvDescription.setText(rewardsDetails.getDescription());
                     storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(rewardsDetails.getImageName());
                     GlideApp.with(context).load(storageReference).into(holder.ivRewards);
@@ -108,6 +109,14 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             tvDescription = itemView.findViewById(R.id.tvDescription);
             ivRewards = itemView.findViewById(R.id.ivReward);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, success_redeem.class);
+                    i.putExtra("rewardTitle",tvTitle.getText().toString());
+
+                }
+            });
 
         }
     }

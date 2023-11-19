@@ -45,6 +45,8 @@ public class redeem_rewards extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        tvPoints = findViewById(R.id.tvPoints);
+
         // Initialize your FirestoreRecyclerOptions and adapter here
         Query query = db.collection("Rewards").orderBy("rewardTitle",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Rewards_Details> options = new FirestoreRecyclerOptions.Builder<Rewards_Details>()
@@ -53,6 +55,7 @@ public class redeem_rewards extends AppCompatActivity {
 
         adapter = new RewardsAdapter(redeem_rewards.this, options, searchQuery);
 
+        fc.retrievePoints(redeem_rewards.this,redeem_rewards.this,mAuth.getUid(),tvPoints);
 
 
         lvRewards = findViewById(R.id.lvRewards);

@@ -105,12 +105,28 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         Animation animation2 = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
         llMenu.startAnimation(animation2);
 
-        mAuth.getCurrentUser().reload();
-        if(mAuth.getCurrentUser() == null){
-            Intent intent = new Intent(getContext(), log_in.class);
-            startActivity(intent);
-            getActivity().finish();
-        }
+        mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //if task is successful
+                if(task.isSuccessful()){
+                    if(mAuth.getCurrentUser() == null){
+                        Intent intent = new Intent(getContext(), log_in.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }else{
+                        generateQRCode();
+                        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
+                    }
+                }else {
+                    //if task is not successful
+                    Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), log_in.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        });
 
         tvEditLocation.setOnClickListener(this);
         profile_image.setOnClickListener(this);
@@ -120,25 +136,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnViewHistory.setOnClickListener(this);
 
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
-                mAuth.getCurrentUser().reload();
-                if(mAuth.getCurrentUser() == null){
-                    Intent intent = new Intent(getContext(), log_in.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                }
-            }
-        },500);
 
-
-
-
-        generateQRCode();
-        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
 
         return view;
     }

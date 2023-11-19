@@ -3,10 +3,12 @@ package sldevs.cdo.orokalimpyo.home;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -18,8 +20,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,6 +52,7 @@ public class home_frag extends Fragment {
     SearchView searchView;
     TextView viewProfileTextView,tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
 
+    SwipeRefreshLayout swipeRefreshLayout;
     firebase_crud fc;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,20 +92,48 @@ public class home_frag extends Fragment {
 
         llContributions = v.findViewById(R.id.llContributions);
         viewProfileTextView = v.findViewById(R.id.viewProfileTextView);
-//        llAnnouncements = v.findViewById(R.id.llAnnouncements);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        swipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void run() {
-                mAuth.getCurrentUser().reload();
-                if(mAuth.getCurrentUser() == null){
-                    Intent intent = new Intent(getContext(), log_in.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                }
+            public void onRefresh(){
+                mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        //if task is successful
+                        if(task.isSuccessful()){
+                            if(mAuth.getCurrentUser() == null){
+                                Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getContext(), log_in.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                                swipeRefreshLayout.setRefreshing(false);
+                            }else{
+                                fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvResidual,tvRecyclable,tvBiodegradable,tvSpecialWaste);
+                                fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        }else {
+
+                            //if task is not successful
+                            Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getContext(), log_in.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                            swipeRefreshLayout.setRefreshing(false);
+
+                        }
+                    }
+                });
+
+
             }
-        },500);
+        });
+
+        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvResidual,tvRecyclable,tvBiodegradable,tvSpecialWaste);
+        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);
+
+
 
         lvNews = v.findViewById(R.id.lvNews);
         lvNews.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
@@ -108,8 +142,8 @@ public class home_frag extends Fragment {
 
 
 
-        fc.retrieveTotalContribution(getActivity(),getContext(), mAuth.getUid(), tvResidual,tvRecyclable,tvBiodegradable,tvSpecialWaste);
-        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),viewProfileTextView);
+
+
 
         btnGame1.setOnClickListener(new View.OnClickListener() {
             @Override
