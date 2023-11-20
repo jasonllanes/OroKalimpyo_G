@@ -3,6 +3,7 @@ package sldevs.cdo.orokalimpyo.firebase;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,6 +42,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import org.w3c.dom.Text;
 
@@ -214,7 +218,7 @@ public class firebase_crud {
                     } else {
 
                     }
-                    points.setText(document.get("total_points").toString() + " pt/s");
+                    points.setText(document.get("total_points").toString());
 
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
@@ -257,6 +261,7 @@ public class firebase_crud {
             }
         });
     }
+
 
     public void wasteGame(Activity activity, Context context, String id, TextView game_level, LottieAnimationView star1){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
@@ -559,7 +564,44 @@ public class firebase_crud {
                 });
     }
 
+    public void updatePoints(Context context,double new_points){
+        DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
+        numberRef.update("total_points", new_points).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        PopupDialog.getInstance(context)
+                                .setStyle(Styles.SUCCESS)
+                                .setHeading("Success!" + "\n" + "You have successfully redeemed your reward.")
+                                .setDescription("Go check your redeemed codes in your profile.")
+                                .setCancelable(false)
+                                .showDialog(new OnDialogButtonClickListener() {
+                                    @Override
+                                    public void onDismissClicked(Dialog dialog) {
+                                        super.onDismissClicked(dialog);
+                                        Intent i = new Intent(context, home.class);
+                                        context.startActivity(i);
+                                    }
+                                });
 
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        PopupDialog.getInstance(context)
+                                .setStyle(Styles.FAILED)
+                                .setHeading("Sorry!" + "\n" + "Redeem Unsuccessful.")
+                                .setDescription("Insufficient Balance.")
+                                .setCancelable(false)
+                                .showDialog(new OnDialogButtonClickListener() {
+                                    @Override
+                                    public void onDismissClicked(Dialog dialog) {
+                                        super.onDismissClicked(dialog);
+                                    }
+                                });
+                    }
+                });
+    }
 
     //Log Out
     public void logOut(Activity activity, Context context){

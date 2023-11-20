@@ -1,12 +1,17 @@
 package sldevs.cdo.orokalimpyo.redeem;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,28 +20,40 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
+
+import io.github.cutelibs.cutedialog.CuteDialog;
+//import com.saadahmedsoft.popupdialog.PopupDialog;
+//import com.saadahmedsoft.popupdialog.Styles;
+//import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.github.cutelibs.cutedialog.CuteDialog;
 import sldevs.cdo.orokalimpyo.GlideApp;
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.data_fetch.News_Details;
 import sldevs.cdo.orokalimpyo.data_fetch.Rewards_Details;
+import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 
 public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sldevs.cdo.orokalimpyo.redeem.RewardsAdapter.RewardsHolder> {
     StorageReference storageReference;
+    TextView currentPoints;
 
     ImageView ivRewards;
     Context context;
     FirestoreRecyclerOptions<Rewards_Details> rewards;
-
+    Button btnYes,btnNo;
+    firebase_crud fc;
 
     private String searchQuery = "";
-    public RewardsAdapter(Context context, FirestoreRecyclerOptions<Rewards_Details> rewards,String searchQuery) {
+    public RewardsAdapter(Context context, FirestoreRecyclerOptions<Rewards_Details> rewards,String searchQuery,TextView currentPoints) {
         super(rewards);
         this.context = context;
         this.rewards = rewards;
         this.searchQuery = searchQuery;
-
+        this.currentPoints = currentPoints;
     }
 
     public void updateOptions(@NonNull FirestoreRecyclerOptions<Rewards_Details> options) {
@@ -67,7 +84,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
                     holder.tvTitle.setText(rewardsDetails.getRewardTitle());
-                    holder.tvPoints.setText("Needed Points: " + String.valueOf(rewardsDetails.getPoints()) + " pt/s");
+                    holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()));
                     holder.tvDescription.setText(rewardsDetails.getDescription());
                     storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(rewardsDetails.getImageName());
                     GlideApp.with(context).load(storageReference).into(holder.ivRewards);
@@ -104,6 +121,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
         public RewardsHolder(@NonNull View itemView) {
             super(itemView);
 
+            fc = new firebase_crud();
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvPoints = itemView.findViewById(R.id.tvPoints);
             tvDescription = itemView.findViewById(R.id.tvDescription);
@@ -112,9 +130,37 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context, success_redeem.class);
-                    i.putExtra("rewardTitle",tvTitle.getText().toString());
+                    new CuteDialog.withIcon(context)
+                            .setIcon(R.drawable.star)
+                            .setTitle("Redeem Reward").setTitleTextColor(R.color.green)
+                            .setDescription("Are you sure you want to redeem this?").setPositiveButtonColor(R.color.green)
+                            .setPositiveButtonText("Yes", v2 -> {
+                                if(Double.parseDouble(currentPoints.getText().toString()) >= Double.parseDouble(tvPoints.getText().toString())){
+                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()));
+//                                Intent i = new Intent(context, success_redeem.class);
+//                                i.putExtra("rewardTitle", tvTitle.getText().toString());
+//                                context.startActivity(i);
+                                }else{
+                                    PopupDialog.getInstance(context)
+                                            .setStyle(Styles.FAILED)
+                                            .setHeading("Sorry!" + "\n" + "Redeem Unsuccessful.")
+                                            .setDescription("Insufficient Balance.")
+                                            .setCancelable(false)
+                                            .showDialog(new OnDialogButtonClickListener() {
+                                                @Override
+                                                public void onDismissClicked(Dialog dialog) {
+                                                    super.onDismissClicked(dialog);
+                                                }
+                                            });
+                                }
 
+                            })
+                            .setNegativeButtonText("No", v2 -> {
+                                Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show();
+                            })
+                            .show();
+
+//
                 }
             });
 

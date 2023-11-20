@@ -53,7 +53,7 @@ public class redeem_rewards extends AppCompatActivity {
                 .setQuery(query, Rewards_Details.class)
                 .build();
 
-        adapter = new RewardsAdapter(redeem_rewards.this, options, searchQuery);
+        adapter = new RewardsAdapter(redeem_rewards.this, options, searchQuery,tvPoints);
 
         fc.retrievePoints(redeem_rewards.this,redeem_rewards.this,mAuth.getUid(),tvPoints);
 

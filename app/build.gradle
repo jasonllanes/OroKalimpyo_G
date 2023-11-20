@@ -87,4 +87,8 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
 
+    //Pop Up dialogue
+    implementation 'com.github.CuteLibs:CuteDialog:2.1'
+    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.5'
+
 }
