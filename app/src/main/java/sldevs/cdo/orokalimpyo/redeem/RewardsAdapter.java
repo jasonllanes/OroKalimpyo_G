@@ -24,6 +24,9 @@ import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
 import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import io.github.cutelibs.cutedialog.CuteDialog;
 //import com.saadahmedsoft.popupdialog.PopupDialog;
 //import com.saadahmedsoft.popupdialog.Styles;
@@ -45,15 +48,19 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
     Context context;
     FirestoreRecyclerOptions<Rewards_Details> rewards;
     Button btnYes,btnNo;
+    String user_id;
+    SimpleDateFormat month,day,year,week,date,hours,minutes,seconds,time;
+    String currentMonth,currentDay,currentYear,currentWeek,currentDate,currentHour,currentMinute,currentSeconds,currentTime;
     firebase_crud fc;
 
     private String searchQuery = "";
-    public RewardsAdapter(Context context, FirestoreRecyclerOptions<Rewards_Details> rewards,String searchQuery,TextView currentPoints) {
+    public RewardsAdapter(Context context, FirestoreRecyclerOptions<Rewards_Details> rewards,String searchQuery,TextView currentPoints,String user_id) {
         super(rewards);
         this.context = context;
         this.rewards = rewards;
         this.searchQuery = searchQuery;
         this.currentPoints = currentPoints;
+        this.user_id = user_id;
     }
 
     public void updateOptions(@NonNull FirestoreRecyclerOptions<Rewards_Details> options) {
@@ -86,6 +93,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
                     holder.tvTitle.setText(rewardsDetails.getRewardTitle());
                     holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()));
                     holder.tvDescription.setText(rewardsDetails.getDescription());
+                    holder.tvRewardCode.setText(rewardsDetails.getRewardCode());
                     storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(rewardsDetails.getImageName());
                     GlideApp.with(context).load(storageReference).into(holder.ivRewards);
                     holder.itemView.setVisibility(View.VISIBLE);
@@ -117,11 +125,13 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
 
         ImageView ivRewards;
 
+        TextView tvRewardCode;
 
         public RewardsHolder(@NonNull View itemView) {
             super(itemView);
 
             fc = new firebase_crud();
+            tvRewardCode = itemView.findViewById(R.id.tvRewardCode);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvPoints = itemView.findViewById(R.id.tvPoints);
             tvDescription = itemView.findViewById(R.id.tvDescription);
@@ -135,8 +145,10 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
                             .setTitle("Redeem Reward").setTitleTextColor(R.color.green)
                             .setDescription("Are you sure you want to redeem this?").setPositiveButtonColor(R.color.green)
                             .setPositiveButtonText("Yes", v2 -> {
+                                retrieveDate();
+                                String id = user_id.substring(0,5) + currentMonth + currentDay + currentYear + currentHour + currentMinute + currentSeconds;
                                 if(Double.parseDouble(currentPoints.getText().toString()) >= Double.parseDouble(tvPoints.getText().toString())){
-                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()));
+                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()),id,tvRewardCode.getText().toString(),tvTitle.getText().toString());
 //                                Intent i = new Intent(context, success_redeem.class);
 //                                i.putExtra("rewardTitle", tvTitle.getText().toString());
 //                                context.startActivity(i);
@@ -167,6 +179,34 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
         }
     }
 
+    public void retrieveDate(){
+        month = new SimpleDateFormat("MM");
+        day = new SimpleDateFormat("dd");
+        year = new SimpleDateFormat("yy");
 
+        week = new SimpleDateFormat("W");
+
+        date = new SimpleDateFormat("MM/dd/yy");
+
+        hours = new SimpleDateFormat("hh");
+        minutes = new SimpleDateFormat("mm");
+        seconds = new SimpleDateFormat("ss");
+
+        time = new SimpleDateFormat("hh:mm:ss a");
+
+        currentMonth = month.format(new Date());
+        currentDay = day.format(new Date());
+        currentYear = year.format(new Date());
+
+        currentWeek = week.format(new Date());
+
+        currentDate = date.format(new Date());
+
+        currentHour = hours.format(new Date());
+        currentMinute = minutes.format(new Date());
+        currentSeconds = seconds.format(new Date());
+
+        currentTime = time.format(new Date());
+    }
 
 }

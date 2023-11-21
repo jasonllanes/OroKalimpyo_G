@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:backgroundTint="@color/green"
-    app:cardCornerRadius="20dp"
     android:layout_marginBottom="50dp"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="20dp"
     card_view:cardElevation="0dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="@color/white"
+        android:layout_height="170dp">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -23,20 +23,19 @@
             <ImageView
                 android:id="@+id/ivReward"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="160dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/news_1" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="match_parent"
                 android:background="@color/n_green" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-
                 android:padding="16dp">
 
                 <!--            <TextView-->
@@ -94,49 +93,40 @@
 
 
                 <TextView
-                    android:id="@+id/tvRewardCode"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@color/green"
-                    android:padding="5dp"
-                    android:fontFamily="@font/pbold"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/tvTitle"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:background="@color/green"
                     android:padding="5dp"
                     android:fontFamily="@font/pbold"
-                    android:text=""
+                    android:text="Garbage Bag"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvRedeemCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/green"
+                    android:padding="5dp"
+                    android:fontFamily="@font/pbold"
+                    android:text="2df24"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/tvDescription"
+                    android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/pregular"
-                    android:text="The quick little brown fox, jumps over the lazy dog near the riverbank."
+                    android:text="12/23/2020 2:34"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <TextView
-                    android:id="@+id/tvPoints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/pbold"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
 
 
 
@@ -147,8 +137,8 @@
 
 
 
-
     </androidx.cardview.widget.CardView>
+
 
 
 

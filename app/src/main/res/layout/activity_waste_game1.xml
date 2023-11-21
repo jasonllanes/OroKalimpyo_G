@@ -96,8 +96,7 @@
                             android:id="@+id/ivAnswer"
                             android:layout_width="220dp"
                             android:layout_height="220dp"
-                            android:scaleType="centerCrop"
-                            />
+                            android:scaleType="centerCrop" />
                         <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/lWaiting"
                             android:layout_width="wrap_content"

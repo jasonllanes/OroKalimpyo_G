@@ -6,9 +6,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -25,6 +29,7 @@ public class redeem_rewards extends AppCompatActivity {
     CardView cPoints;
     firebase_crud fc;
     FirebaseAuth mAuth;
+    ImageView btnBack;
 
     RecyclerView lvRewards;
     FirebaseFirestore db;
@@ -43,8 +48,9 @@ public class redeem_rewards extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fc = new firebase_crud();
 
-        db = FirebaseFirestore.getInstance();
 
+
+        btnBack = findViewById(R.id.btnBack);
         tvPoints = findViewById(R.id.tvPoints);
 
         // Initialize your FirestoreRecyclerOptions and adapter here
@@ -53,7 +59,7 @@ public class redeem_rewards extends AppCompatActivity {
                 .setQuery(query, Rewards_Details.class)
                 .build();
 
-        adapter = new RewardsAdapter(redeem_rewards.this, options, searchQuery,tvPoints);
+        adapter = new RewardsAdapter(redeem_rewards.this, options, searchQuery,tvPoints,mAuth.getUid());
 
         fc.retrievePoints(redeem_rewards.this,redeem_rewards.this,mAuth.getUid(),tvPoints);
 
@@ -68,6 +74,13 @@ public class redeem_rewards extends AppCompatActivity {
 //        Animation animation = AnimationUtils.loadAnimation(redeem_rewards.this,R.anim.opacity_anim);
 //        cPoints.startAnimation(animation);
 
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         searchView = findViewById(R.id.searchView);
 

@@ -20,6 +20,7 @@ import sldevs.cdo.orokalimpyo.game_levels.waste_game;
 public class guess_the_waste_game extends AppCompatActivity implements View.OnClickListener {
 
     Button btnWaste1,btnWaste2,btnWaste3,btnWaste4,btnWaste5;
+    Button btnBack;
     LottieAnimationView lStar1,lStar2,lStar3,lStar4,lStar5;
 
     TextView tvStars;
@@ -40,6 +41,9 @@ public class guess_the_waste_game extends AppCompatActivity implements View.OnCl
         btnWaste4 = findViewById(R.id.btnWaste4);
         btnWaste5 = findViewById(R.id.btnWaste5);
 
+        btnBack = findViewById(R.id.btnBack);
+
+
         tvStars = findViewById(R.id.tvStars);
 
         lStar1 = findViewById(R.id.lStar1);
@@ -53,6 +57,8 @@ public class guess_the_waste_game extends AppCompatActivity implements View.OnCl
         btnWaste3.setOnClickListener(this);
         btnWaste4.setOnClickListener(this);
         btnWaste5.setOnClickListener(this);
+
+        btnBack.setOnClickListener(this);
 
 
         fc.wasteGame(guess_the_waste_game.this,getApplicationContext(),mAuth.getUid(),tvStars,lStar1);
@@ -155,6 +161,10 @@ public class guess_the_waste_game extends AppCompatActivity implements View.OnCl
             i.putExtra("game_level","Level 5");
             i.putExtra("stars_collected", tvStars.getText().toString());
             startActivity(i);
+        } else if (id == R.id.btnBack) {
+            Intent i = new Intent(guess_the_waste_game.this, home.class);
+            startActivity(i);
+            finish();
         }
 
     }

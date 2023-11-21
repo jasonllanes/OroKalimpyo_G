@@ -69,7 +69,7 @@ public class firebase_crud {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Map<String, Object> waste_contribution;
+    Map<String, Object> waste_contribution,redeem_details;
     StorageReference storageReference;
 
     //Authentication Functions----------------------------
@@ -564,24 +564,53 @@ public class firebase_crud {
                 });
     }
 
-    public void updatePoints(Context context,double new_points){
+    public void updatePoints(Context context,double new_points,String redeem_id,String selected_reward,String reward_title){
+        redeem_details = new HashMap<>();
         DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
+//        DocumentReference rewardGet = db.collection("Rewards").document(selected_reward);
+        DocumentReference giveCode = db.collection("Redeemed Codes").document(redeem_id);
+
+        redeem_details.put("rewardCode", selected_reward);
+        redeem_details.put("user_id", mAuth.getUid());
+        redeem_details.put("redeemed_date", FieldValue.serverTimestamp());
+        redeem_details.put("reward_title", reward_title);
+
         numberRef.update("total_points", new_points).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        PopupDialog.getInstance(context)
-                                .setStyle(Styles.SUCCESS)
-                                .setHeading("Success!" + "\n" + "You have successfully redeemed your reward.")
-                                .setDescription("Go check your redeemed codes in your profile.")
-                                .setCancelable(false)
-                                .showDialog(new OnDialogButtonClickListener() {
-                                    @Override
-                                    public void onDismissClicked(Dialog dialog) {
-                                        super.onDismissClicked(dialog);
-                                        Intent i = new Intent(context, home.class);
-                                        context.startActivity(i);
-                                    }
-                                });
+                        giveCode.set(redeem_details).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                PopupDialog.getInstance(context)
+                                        .setStyle(Styles.SUCCESS)
+                                        .setHeading("Success!" + "\n" + "You have successfully redeemed your reward.")
+                                        .setDescription("Go check your redeemed codes in your profile.")
+                                        .setCancelable(false)
+                                        .showDialog(new OnDialogButtonClickListener() {
+                                            @Override
+                                            public void onDismissClicked(Dialog dialog) {
+                                                super.onDismissClicked(dialog);
+                                                Intent i = new Intent(context, home.class);
+                                                context.startActivity(i);
+                                            }
+                                        });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                PopupDialog.getInstance(context)
+                                        .setStyle(Styles.FAILED)
+                                        .setHeading("Sorry!" + "\n" + "Something went wrong.")
+                                        .setDescription("Please try again.")
+                                        .setCancelable(false)
+                                        .showDialog(new OnDialogButtonClickListener() {
+                                            @Override
+                                            public void onDismissClicked(Dialog dialog) {
+                                                super.onDismissClicked(dialog);
+                                            }
+                                        });
+                            }
+                        });
 
                     }
                 })
@@ -602,6 +631,7 @@ public class firebase_crud {
                     }
                 });
     }
+
 
     //Log Out
     public void logOut(Activity activity, Context context){

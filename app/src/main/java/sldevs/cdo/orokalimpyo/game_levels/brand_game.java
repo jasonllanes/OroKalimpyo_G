@@ -31,6 +31,7 @@ import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 import sldevs.cdo.orokalimpyo.home.guess_the_brand_game;
 import sldevs.cdo.orokalimpyo.home.guess_the_waste_game;
+import sldevs.cdo.orokalimpyo.home.home;
 import sldevs.cdo.orokalimpyo.ml.ModelUnquant;
 
 public class brand_game extends AppCompatActivity {
@@ -62,6 +63,7 @@ public class brand_game extends AppCompatActivity {
         ivAnswer = findViewById(R.id.ivAnswer);
 
         btnUpload = findViewById(R.id.btnUpload);
+        btnBack = findViewById(R.id.btnBack);
         btnHome = findViewById(R.id.btnHome);
 
 
@@ -70,6 +72,26 @@ public class brand_game extends AppCompatActivity {
         stars_collected = getIntent().getStringExtra("stars_collected");
 
         showGameLevel();
+
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(brand_game.this, guess_the_brand_game.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(brand_game.this, home.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
