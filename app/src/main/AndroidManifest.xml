@@ -29,6 +29,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".redeem.external_branch_view"
+            android:exported="false" />
+        <activity
+            android:name=".home.external_news_view"
+            android:exported="false" />
+        <activity
             android:name=".redeem.success_redeem"
             android:exported="false" />
         <activity

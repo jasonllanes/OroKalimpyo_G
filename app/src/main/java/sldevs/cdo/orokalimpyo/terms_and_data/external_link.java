@@ -28,12 +28,12 @@ public class external_link extends AppCompatActivity {
         wvExternalLink = findViewById(R.id.wvExternalLink);
 
         ivBack = findViewById(R.id.ivBack);
-        tvLink = findViewById(R.id.tvLink);
+
 
         title = getIntent().getStringExtra("title");
         link = getIntent().getStringExtra("external_link");
 
-        tvLink.setText(title);
+//        tvLink.setText(title);
 
 
 

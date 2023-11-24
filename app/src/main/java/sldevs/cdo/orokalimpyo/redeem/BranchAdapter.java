@@ -32,6 +32,8 @@ public class BranchAdapter extends FirestoreRecyclerAdapter<Branches_Details, Br
     FirestoreRecyclerOptions<Branches_Details> branches;
 
     private String searchQuery = "";
+
+
     String url;
     public BranchAdapter(Context context, FirestoreRecyclerOptions<Branches_Details> branches,String searchQuery) {
         super(branches);
@@ -112,7 +114,9 @@ public class BranchAdapter extends FirestoreRecyclerAdapter<Branches_Details, Br
             cvBranch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(tvShared.getText().toString()));
+                    Intent browserIntent = new Intent(context,external_branch_view.class);
+                    browserIntent.putExtra("title",tvName.getText().toString());
+                    browserIntent.putExtra("link",tvShared.getText().toString());
                     context.startActivity(browserIntent);
 
                 }

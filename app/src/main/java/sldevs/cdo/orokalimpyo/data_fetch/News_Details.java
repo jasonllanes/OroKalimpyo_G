@@ -8,18 +8,20 @@ public class News_Details {
     public String description;
     public Timestamp timeStamp;
     public String imageName;
+    public String newsLink;
 
     public News_Details(){
 
     }
 
 
-    public News_Details(String title, String date, String description, Timestamp timeStamp, String imageName) {
+    public News_Details(String title, String date, String description, Timestamp timeStamp, String imageName, String newsLink) {
         this.title = title;
         this.date = date;
         this.description = description;
         this.timeStamp = timeStamp;
         this.imageName = imageName;
+        this.newsLink = newsLink;
     }
 
     public String getTitle() {
@@ -60,5 +62,13 @@ public class News_Details {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    public String getNewsLink() {
+        return newsLink;
+    }
+
+    public void setNewsLink(String newsLink) {
+        this.newsLink = newsLink;
     }
 }
