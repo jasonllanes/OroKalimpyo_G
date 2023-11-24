@@ -5,11 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".authentication.sign_up_selection">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:backgroundTint="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/pbold"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"

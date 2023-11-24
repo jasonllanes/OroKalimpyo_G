@@ -214,24 +214,7 @@ public class waste_game extends AppCompatActivity {
                     }
                 }
                 String[] classes = {"It is a Plastic Bottle","I'm not so sure, Please try again"};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
+
                 String s = "";
                 for(int i = 0; i < classes.length; i++){
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -240,7 +223,7 @@ public class waste_game extends AppCompatActivity {
                 ivAnswer.setImageBitmap(image);
 
                 tvResult.setText(classes[maxPos] + ".");
-//                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+
 
 
                 if(classes[maxPos] == "It is a Plastic Bottle"){
@@ -249,10 +232,6 @@ public class waste_game extends AppCompatActivity {
                     fc.updateWasteStar();
                 }
 
-//            builder.show();
-//            result.setText(classes[maxPos]);
-
-                // Releases model resources if no longer used.
                 model.close();
 
             } else if (tvWasteType.getText().toString().equalsIgnoreCase("Glass Bottle")) {
@@ -292,24 +271,7 @@ public class waste_game extends AppCompatActivity {
                     }
                 }
                 String[] classes = {"It is a Glass Bottle","I'm not so sure, Please try again"};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
+
                 String s = "";
                 for(int i = 0; i < classes.length; i++){
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -327,10 +289,7 @@ public class waste_game extends AppCompatActivity {
                     fc.updateWasteStar();
                 }
 
-//            builder.show();
-//            result.setText(classes[maxPos]);
 
-                // Releases model resources if no longer used.
                 model.close();
             } else if (tvWasteType.getText().toString().equalsIgnoreCase("Can")) {
                 CanModel model = CanModel.newInstance(getApplicationContext());
@@ -369,24 +328,7 @@ public class waste_game extends AppCompatActivity {
                     }
                 }
                 String[] classes = {"It is a Can","I'm not so sure, Please try again"};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
+
                 String s = "";
                 for(int i = 0; i < classes.length; i++){
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -446,24 +388,7 @@ public class waste_game extends AppCompatActivity {
                     }
                 }
                 String[] classes = {"It is a Carton Box","I'm not so sure, Please try again"};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
+
                 String s = "";
                 for(int i = 0; i < classes.length; i++){
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -481,10 +406,7 @@ public class waste_game extends AppCompatActivity {
                     fc.updateWasteStar();
                 }
 
-//            builder.show();
-//            result.setText(classes[maxPos]);
 
-                // Releases model resources if no longer used.
                 model.close();
 
             } else if (tvWasteType.getText().toString().equalsIgnoreCase("PVC Spoon")) {
@@ -524,24 +446,7 @@ public class waste_game extends AppCompatActivity {
                     }
                 }
                 String[] classes = {"It is a PVC Spoon","I'm not so sure, Please try again"};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
+
                 String s = "";
                 for(int i = 0; i < classes.length; i++){
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -559,10 +464,6 @@ public class waste_game extends AppCompatActivity {
                     fc.updateWasteStar();
                 }
 
-//            builder.show();
-//            result.setText(classes[maxPos]);
-
-                // Releases model resources if no longer used.
                 model.close();
             }
 

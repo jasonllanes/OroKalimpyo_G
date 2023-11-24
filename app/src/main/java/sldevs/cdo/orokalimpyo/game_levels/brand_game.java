@@ -32,7 +32,16 @@ import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 import sldevs.cdo.orokalimpyo.home.guess_the_brand_game;
 import sldevs.cdo.orokalimpyo.home.guess_the_waste_game;
 import sldevs.cdo.orokalimpyo.home.home;
+import sldevs.cdo.orokalimpyo.ml.CanModel;
+import sldevs.cdo.orokalimpyo.ml.CartonModel;
+import sldevs.cdo.orokalimpyo.ml.CocaColaModel;
+import sldevs.cdo.orokalimpyo.ml.GlassBottleModel;
+import sldevs.cdo.orokalimpyo.ml.MegaSardinesModel;
 import sldevs.cdo.orokalimpyo.ml.ModelUnquant;
+import sldevs.cdo.orokalimpyo.ml.NatureSpringModel;
+import sldevs.cdo.orokalimpyo.ml.NestleaModel;
+import sldevs.cdo.orokalimpyo.ml.PvcSpoonModel;
+import sldevs.cdo.orokalimpyo.ml.UnileverModel;
 
 public class brand_game extends AppCompatActivity {
     int imageSize = 224;
@@ -168,80 +177,298 @@ public class brand_game extends AppCompatActivity {
 
     public void classifyPlastic(Bitmap image){
         try {
-            ModelUnquant model = ModelUnquant.newInstance(getApplicationContext());
-            // Creates inputs for reference.
-            TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
-            ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
-            byteBuffer.order(ByteOrder.nativeOrder());
+            if(tvBrandType.getText().toString().equalsIgnoreCase("Coca Cola")){
+                CocaColaModel model = CocaColaModel.newInstance(getApplicationContext());
 
-            int[] intValues = new int[imageSize * imageSize];
-            image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
-            int pixel = 0;
-            //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-            for(int i = 0; i < imageSize; i ++){
-                for(int j = 0; j < imageSize; j++){
-                    int val = intValues[pixel++]; // RGB
-                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
-                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
-                    byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
+                ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
+                byteBuffer.order(ByteOrder.nativeOrder());
+
+                int[] intValues = new int[imageSize * imageSize];
+                image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+                int pixel = 0;
+                //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+                for(int i = 0; i < imageSize; i ++){
+                    for(int j = 0; j < imageSize; j++){
+                        int val = intValues[pixel++]; // RGB
+                        byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                    }
                 }
-            }
 
-            inputFeature0.loadBuffer(byteBuffer);
+                inputFeature0.loadBuffer(byteBuffer);
 
-            // Runs model inference and gets result.
-            ModelUnquant.Outputs outputs = model.process(inputFeature0);
-            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+                // Runs model inference and gets result.
+                CocaColaModel.Outputs outputs = model.process(inputFeature0);
+                TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
-            float[] confidences = outputFeature0.getFloatArray();
-            // find the index of the class with the biggest confidence.
-            int maxPos = 0;
-            float maxConfidence = 0;
-            for (int i = 0; i < confidences.length; i++) {
-                if (confidences[i] > maxConfidence) {
-                    maxConfidence = confidences[i];
-                    maxPos = i;
+                float[] confidences = outputFeature0.getFloatArray();
+                // find the index of the class with the biggest confidence.
+                int maxPos = 0;
+                float maxConfidence = 0;
+                for (int i = 0; i < confidences.length; i++) {
+                    if (confidences[i] > maxConfidence) {
+                        maxConfidence = confidences[i];
+                        maxPos = i;
+                    }
                 }
-            }
-            String[] classes = {"Plastic Bottle","I'm not so sure, Please try again."};
-//            Dialog builder = new Dialog(add_record.this);
-//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            builder.setContentView(R.layout.scanned_plastic_pop);
-//            builder.setCancelable(true);
-//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            tvResult = builder.findViewById(R.id.tvResult);
-//            tvDescription = builder.findViewById(R.id.tvDescription);
-//            ivResult = builder.findViewById(R.id.ivResult);
-//            btnConfirm = builder.findViewById(R.id.btnConfirm);
-//            btnConfirm.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    sPlastic.setText(tvResult.getText().toString());
-//                    builder.dismiss();
-//                }
-//            });
-//            ivResult.setImageBitmap(image);
-//            tvResult.setText(classes[maxPos]);
-            String s = "";
-            for(int i = 0; i < classes.length; i++){
-                s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
-            }
-            lWaiting.setVisibility(View.GONE);
-            ivAnswer.setImageBitmap(image);
+                String[] classes = {"It is Coca Cola","I'm not so sure, Please try again"};
 
-            tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+                String s = "";
+                for(int i = 0; i < classes.length; i++){
+                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                }
+                lWaiting.setVisibility(View.GONE);
+                ivAnswer.setImageBitmap(image);
 
-            if(classes[maxPos] == tvBrandType.getText().toString()){
-                tvBrandType.setText("Great Capture!");
+                tvResult.setText(classes[maxPos] + ".");
 
-                fc.updateWasteStar();
-            }
+
+
+                if(classes[maxPos] == "It is Coca Cola"){
+                    tvBrandType.setText("Great Capture!");
+                    btnUpload.setVisibility(View.GONE);
+                    fc.updateWasteStar();
+                }
+
+                model.close();
+
+            } else if (tvBrandType.getText().toString().equalsIgnoreCase("Nature Spring")) {
+                NatureSpringModel model = NatureSpringModel.newInstance(getApplicationContext());
+
+                TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
+                ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
+                byteBuffer.order(ByteOrder.nativeOrder());
+
+                int[] intValues = new int[imageSize * imageSize];
+                image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+                int pixel = 0;
+                //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+                for(int i = 0; i < imageSize; i ++){
+                    for(int j = 0; j < imageSize; j++){
+                        int val = intValues[pixel++]; // RGB
+                        byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                    }
+                }
+
+                inputFeature0.loadBuffer(byteBuffer);
+
+                // Runs model inference and gets result.
+                NatureSpringModel.Outputs outputs = model.process(inputFeature0);
+                TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+
+                float[] confidences = outputFeature0.getFloatArray();
+                // find the index of the class with the biggest confidence.
+                int maxPos = 0;
+                float maxConfidence = 0;
+                for (int i = 0; i < confidences.length; i++) {
+                    if (confidences[i] > maxConfidence) {
+                        maxConfidence = confidences[i];
+                        maxPos = i;
+                    }
+                }
+                String[] classes = {"It is Nature Spring","I'm not so sure, Please try again"};
+
+                String s = "";
+                for(int i = 0; i < classes.length; i++){
+                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                }
+                lWaiting.setVisibility(View.GONE);
+                ivAnswer.setImageBitmap(image);
+
+                tvResult.setText(classes[maxPos] + ".");
+//                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+
+
+                if(classes[maxPos] == "It is Nature Spring"){
+                    tvBrandType.setText("Great Capture!");
+                    btnUpload.setVisibility(View.GONE);
+                    fc.updateWasteStar();
+                }
+
+
+                model.close();
+            } else if (tvBrandType.getText().toString().equalsIgnoreCase("Unilever")) {
+                UnileverModel model = UnileverModel.newInstance(getApplicationContext());
+
+                TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
+                ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
+                byteBuffer.order(ByteOrder.nativeOrder());
+
+                int[] intValues = new int[imageSize * imageSize];
+                image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+                int pixel = 0;
+                //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+                for(int i = 0; i < imageSize; i ++){
+                    for(int j = 0; j < imageSize; j++){
+                        int val = intValues[pixel++]; // RGB
+                        byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                    }
+                }
+
+                inputFeature0.loadBuffer(byteBuffer);
+
+                // Runs model inference and gets result.
+                UnileverModel.Outputs outputs = model.process(inputFeature0);
+                TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+
+                float[] confidences = outputFeature0.getFloatArray();
+                // find the index of the class with the biggest confidence.
+                int maxPos = 0;
+                float maxConfidence = 0;
+                for (int i = 0; i < confidences.length; i++) {
+                    if (confidences[i] > maxConfidence) {
+                        maxConfidence = confidences[i];
+                        maxPos = i;
+                    }
+                }
+                String[] classes = {"It is Unilever","I'm not so sure, Please try again"};
+
+                String s = "";
+                for(int i = 0; i < classes.length; i++){
+                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                }
+                lWaiting.setVisibility(View.GONE);
+                ivAnswer.setImageBitmap(image);
+
+                tvResult.setText(classes[maxPos] + ".");
+//                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+
+
+                if(classes[maxPos] == "It is Unilever"){
+                    tvBrandType.setText("Great Capture!");
+                    btnUpload.setVisibility(View.GONE);
+                    fc.updateWasteStar();
+                }
 
 //            builder.show();
 //            result.setText(classes[maxPos]);
 
-            // Releases model resources if no longer used.
-            model.close();
+                // Releases model resources if no longer used.
+                model.close();
+            } else if (tvBrandType.getText().toString().equalsIgnoreCase("Nestlea")) {
+                NestleaModel model = NestleaModel.newInstance(getApplicationContext());
+
+                TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
+                ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
+                byteBuffer.order(ByteOrder.nativeOrder());
+
+                int[] intValues = new int[imageSize * imageSize];
+                image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+                int pixel = 0;
+                //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+                for(int i = 0; i < imageSize; i ++){
+                    for(int j = 0; j < imageSize; j++){
+                        int val = intValues[pixel++]; // RGB
+                        byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                    }
+                }
+
+                inputFeature0.loadBuffer(byteBuffer);
+
+                // Runs model inference and gets result.
+                NestleaModel.Outputs outputs = model.process(inputFeature0);
+                TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+
+                float[] confidences = outputFeature0.getFloatArray();
+                // find the index of the class with the biggest confidence.
+                int maxPos = 0;
+                float maxConfidence = 0;
+                for (int i = 0; i < confidences.length; i++) {
+                    if (confidences[i] > maxConfidence) {
+                        maxConfidence = confidences[i];
+                        maxPos = i;
+                    }
+                }
+                String[] classes = {"It is Nestlea","I'm not so sure, Please try again"};
+
+                String s = "";
+                for(int i = 0; i < classes.length; i++){
+                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                }
+                lWaiting.setVisibility(View.GONE);
+                ivAnswer.setImageBitmap(image);
+
+                tvResult.setText(classes[maxPos] + ".");
+//                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+
+
+                if(classes[maxPos] == "It is Nestlea"){
+                    tvBrandType.setText("Great Capture!");
+                    btnUpload.setVisibility(View.GONE);
+                    fc.updateWasteStar();
+                }
+
+
+                model.close();
+
+            } else if (tvBrandType.getText().toString().equalsIgnoreCase("MEGA Sardines")) {
+                MegaSardinesModel model = MegaSardinesModel.newInstance(getApplicationContext());
+
+                TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
+                ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
+                byteBuffer.order(ByteOrder.nativeOrder());
+
+                int[] intValues = new int[imageSize * imageSize];
+                image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+                int pixel = 0;
+                //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
+                for(int i = 0; i < imageSize; i ++){
+                    for(int j = 0; j < imageSize; j++){
+                        int val = intValues[pixel++]; // RGB
+                        byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
+                        byteBuffer.putFloat((val & 0xFF) * (1.f / 255.f));
+                    }
+                }
+
+                inputFeature0.loadBuffer(byteBuffer);
+
+                // Runs model inference and gets result.
+                MegaSardinesModel.Outputs outputs = model.process(inputFeature0);
+                TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+
+                float[] confidences = outputFeature0.getFloatArray();
+                // find the index of the class with the biggest confidence.
+                int maxPos = 0;
+                float maxConfidence = 0;
+                for (int i = 0; i < confidences.length; i++) {
+                    if (confidences[i] > maxConfidence) {
+                        maxConfidence = confidences[i];
+                        maxPos = i;
+                    }
+                }
+                String[] classes = {"It is MEGA Sardines","I'm not so sure, Please try again"};
+
+                String s = "";
+                for(int i = 0; i < classes.length; i++){
+                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                }
+                lWaiting.setVisibility(View.GONE);
+                ivAnswer.setImageBitmap(image);
+
+                tvResult.setText(classes[maxPos] + ".");
+//                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
+
+
+                if(classes[maxPos] == "It is a PVC Spoon"){
+                    tvBrandType.setText("Great Capture!");
+                    btnUpload.setVisibility(View.GONE);
+                    fc.updateWasteStar();
+                }
+
+                model.close();
+            }
+
+            // Creates inputs for reference.
+
         } catch (IOException e) {
             // TODO Handle the exception
         }
