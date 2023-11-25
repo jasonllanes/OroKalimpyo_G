@@ -35,7 +35,7 @@ public class edit_name extends AppCompatActivity implements View.OnClickListener
 
         ivBack.setOnClickListener(this);
 
-        etName.setText(email);
+        etName.setText(name);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

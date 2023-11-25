@@ -229,7 +229,7 @@ public class waste_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a Plastic Bottle"){
                     tvWasteType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("waste_game_level");
                 }
 
                 model.close();
@@ -286,7 +286,7 @@ public class waste_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a Glass Bottle"){
                     tvWasteType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("waste_game_level");
                 }
 
 
@@ -343,7 +343,7 @@ public class waste_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a Can"){
                     tvWasteType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("waste_game_level");
                 }
 
 //            builder.show();
@@ -403,7 +403,7 @@ public class waste_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a Carton Box"){
                     tvWasteType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("waste_game_level");
                 }
 
 
@@ -461,7 +461,7 @@ public class waste_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a PVC Spoon"){
                     tvWasteType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("waste_game_level");
                 }
 
                 model.close();

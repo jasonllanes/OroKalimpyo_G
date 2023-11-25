@@ -25,6 +25,7 @@ import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.final_sign_up;
 import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 import sldevs.cdo.orokalimpyo.home.home;
+import sldevs.cdo.orokalimpyo.redeem.external_branch_view;
 
 public class show_qr extends AppCompatActivity {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -70,6 +71,14 @@ public class show_qr extends AppCompatActivity {
         bitmap = qrgEncoder.getBitmap();
         // Setting Bitmap to ImageView
         ivQR.setImageBitmap(bitmap);
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(show_qr.this, home.class);
+        startActivity(i);
+        finish();
 
     }
 }

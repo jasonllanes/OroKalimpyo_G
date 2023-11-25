@@ -41,7 +41,10 @@ public class edit_barangay extends AppCompatActivity implements View.OnClickList
 
         barangay = getIntent().getStringExtra("barangay");
         sBarangay.setItems(of.populateUserTypeBarangay());
+        sBarangay.setText(barangay);
 
+
+        ivBack.setOnClickListener(this);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

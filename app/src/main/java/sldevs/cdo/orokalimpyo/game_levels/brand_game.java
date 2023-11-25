@@ -65,6 +65,7 @@ public class brand_game extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         tvLevel = findViewById(R.id.tvLevel);
+        tvResult = findViewById(R.id.tvResult);
         tvBrandType = findViewById(R.id.tvBrandType);
 
         lWaiting = findViewById(R.id.lWaiting);
@@ -175,7 +176,7 @@ public class brand_game extends AppCompatActivity {
         }
     }
 
-    public void classifyPlastic(Bitmap image){
+    public void classifyBrand(Bitmap image){
         try {
             if(tvBrandType.getText().toString().equalsIgnoreCase("Coca Cola")){
                 CocaColaModel model = CocaColaModel.newInstance(getApplicationContext());
@@ -229,7 +230,7 @@ public class brand_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is Coca Cola"){
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("brand_game_level");
                 }
 
                 model.close();
@@ -286,7 +287,7 @@ public class brand_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is Nature Spring"){
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("brand_game_level");
                 }
 
 
@@ -343,7 +344,7 @@ public class brand_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is Unilever"){
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("brand_game_level");
                 }
 
 //            builder.show();
@@ -403,7 +404,7 @@ public class brand_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is Nestlea"){
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("brand_game_level");
                 }
 
 
@@ -461,7 +462,7 @@ public class brand_game extends AppCompatActivity {
                 if(classes[maxPos] == "It is a PVC Spoon"){
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
-                    fc.updateWasteStar();
+                    fc.updateStar("brand_game_level");
                 }
 
                 model.close();
@@ -486,7 +487,7 @@ public class brand_game extends AppCompatActivity {
                     image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
 
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-                    classifyPlastic(image);
+                    classifyBrand(image);
                     camera = 0;
                 }else{
                     Uri dat = data.getData();
@@ -498,7 +499,7 @@ public class brand_game extends AppCompatActivity {
                     }
 
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-                    classifyPlastic(image);
+                    classifyBrand(image);
                     camera = 0;
                 }
             }else if(camera == 2) {

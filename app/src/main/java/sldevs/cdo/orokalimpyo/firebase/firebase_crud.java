@@ -548,12 +548,12 @@ public class firebase_crud {
                 });
     }
 
-    public void updateWasteStar(){
+    public void updateStar(String game_type){
         DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
-        locationRef.update("waste_game_level", FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
+        locationRef.update(game_type, FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Successfully updated location!");
+                        Log.d(TAG, "Successfully updated score!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

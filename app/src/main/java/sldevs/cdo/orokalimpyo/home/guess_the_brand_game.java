@@ -94,7 +94,7 @@ public class guess_the_brand_game extends AppCompatActivity implements View.OnCl
                     lStar2.playAnimation();
                     lStar3.playAnimation();
                     lStar4.playAnimation();
-                } else if (Integer.parseInt(tvStars.getText().toString()) == 5) {
+                } else if (Integer.parseInt(tvStars.getText().toString()) >= 5) {
                     lStar1.setAnimation(R.raw.lottie_star);
                     lStar2.setAnimation(R.raw.lottie_star);
                     lStar3.setAnimation(R.raw.lottie_star);
