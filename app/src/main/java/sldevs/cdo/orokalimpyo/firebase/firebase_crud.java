@@ -570,7 +570,8 @@ public class firebase_crud {
 //        DocumentReference rewardGet = db.collection("Rewards").document(selected_reward);
         DocumentReference giveCode = db.collection("Redeemed Codes").document(redeem_id);
 
-        redeem_details.put("rewardCode", selected_reward);
+        redeem_details.put("redeem_id", redeem_id);
+        redeem_details.put("reward_code", selected_reward);
         redeem_details.put("user_id", mAuth.getUid());
         redeem_details.put("redeemed_date", FieldValue.serverTimestamp());
         redeem_details.put("reward_title", reward_title);

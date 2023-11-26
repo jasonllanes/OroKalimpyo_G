@@ -62,7 +62,7 @@
                     android:text="Tap the find location to get your current location."
                     android:textColor="@color/green"
                     android:textSize="12sp"
-                    android:fontFamily="@font/pbolditalic"
+                    android:fontFamily="@font/pregular"
                     android:layout_marginTop="13dp"
                     android:layout_marginHorizontal="15dp"
                     android:layout_gravity="center"/>
