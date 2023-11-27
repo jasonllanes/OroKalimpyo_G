@@ -52,7 +52,7 @@ public class redeemed_codes extends AppCompatActivity {
 
 
         // Initialize your FirestoreRecyclerOptions and adapter here
-        Query query = db.collection("Redeemed Codes").whereEqualTo("user_id",mAuth.getUid()).orderBy("reward_title",Query.Direction.DESCENDING);
+        Query query = db.collection("Redeemed Codes").orderBy("redeemed_date",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Redeemed_Details> options = new FirestoreRecyclerOptions.Builder<Redeemed_Details>()
                 .setQuery(query, Redeemed_Details.class)
                 .build();
@@ -86,7 +86,7 @@ public class redeemed_codes extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 searchQuery = newText;
                 // Update the Firestore query based on the search input
-                Query newQuery = db.collection("Redeemed Codes").whereEqualTo("reward_title", newText).whereEqualTo("user_id",mAuth.getUid());
+                Query newQuery = db.collection("Redeemed Codes").whereEqualTo("reward_title", newText);
                 FirestoreRecyclerOptions<Redeemed_Details> newOptions =
                         new FirestoreRecyclerOptions.Builder<Redeemed_Details>()
                                 .setQuery(newQuery, Redeemed_Details.class)

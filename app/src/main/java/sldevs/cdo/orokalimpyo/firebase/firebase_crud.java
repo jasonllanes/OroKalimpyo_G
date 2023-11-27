@@ -564,13 +564,14 @@ public class firebase_crud {
                 });
     }
 
-    public void updatePoints(Context context,double new_points,String redeem_id,String selected_reward,String reward_title){
+    public void updatePoints(Context context,double new_points,String redeem_id,String image_name,String selected_reward,String reward_title){
         redeem_details = new HashMap<>();
         DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
 //        DocumentReference rewardGet = db.collection("Rewards").document(selected_reward);
         DocumentReference giveCode = db.collection("Redeemed Codes").document(redeem_id);
 
         redeem_details.put("redeem_id", redeem_id);
+        redeem_details.put("imageName", image_name);
         redeem_details.put("reward_code", selected_reward);
         redeem_details.put("user_id", mAuth.getUid());
         redeem_details.put("redeemed_date", FieldValue.serverTimestamp());

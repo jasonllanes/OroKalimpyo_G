@@ -91,4 +91,8 @@ dependencies {
     implementation 'com.github.CuteLibs:CuteDialog:2.1'
     implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.5'
 
+    //Image Pop Up
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
+
+
 }

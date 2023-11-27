@@ -42,6 +42,7 @@ public class RedeemedAdapter extends FirestoreRecyclerAdapter<Redeemed_Details, 
     SimpleDateFormat month,day,year,week,date,hours,minutes,seconds,time;
     String currentMonth,currentDay,currentYear,currentWeek,currentDate,currentHour,currentMinute,currentSeconds,currentTime;
     firebase_crud fc;
+    boolean codeShowed = false;
 
     private String searchQuery = "";
     public RedeemedAdapter(Context context, FirestoreRecyclerOptions<Redeemed_Details> rewards,String searchQuery,String user_id) {
@@ -73,16 +74,33 @@ public class RedeemedAdapter extends FirestoreRecyclerAdapter<Redeemed_Details, 
         Redeemed_Details redeemedDetails = rewards.getSnapshots().get(position);
 
 
+        holder.ivShowCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!codeShowed){
+                    codeShowed = true;
+                    holder.tvCode.setVisibility(View.VISIBLE);
+                    holder.tvHideCode.setVisibility(View.GONE);
+                    holder.ivShowCode.setImageResource(R.drawable.hide_password);
+                }else {
+                    codeShowed = false;
+                    holder.tvCode.setVisibility(View.GONE);
+                    holder.tvHideCode.setVisibility(View.VISIBLE);
+                    holder.ivShowCode.setImageResource(R.drawable.show_password);
+                }
+
+            }
+        });
 
         if (model != null) {
             // Check if the model's field is not null
-            String modelField = model.getRewardTitle();
+            String modelField = model.getReward_title();
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
-                    holder.tvTitle.setText(redeemedDetails.getRewardTitle());
-                    holder.tvCode.setText(redeemedDetails.getRewardCode());
-                    holder.tvDate.setText(redeemedDetails.getDate().toDate().toString());
-                    storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(redeemedDetails.getRewardTitle());
+                    holder.tvTitle.setText(redeemedDetails.getReward_title());
+                    holder.tvCode.setText(redeemedDetails.getReward_code());
+                    holder.tvDate.setText(redeemedDetails.getRedeemed_date().toDate().toString());
+                    storageReference = FirebaseStorage.getInstance().getReference("Rewards/").child(redeemedDetails.getImageName());
                     GlideApp.with(context).load(storageReference).into(holder.ivRewards);
                     holder.itemView.setVisibility(View.VISIBLE);
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -108,10 +126,15 @@ public class RedeemedAdapter extends FirestoreRecyclerAdapter<Redeemed_Details, 
         TextView tvTitle;
 
         TextView tvCode;
+        TextView tvHideCode;
 
         TextView tvDate;
 
         ImageView ivRewards;
+
+        ImageView ivShowCode;
+
+
 
 
         public RedeemedHolder(@NonNull View itemView) {
@@ -120,8 +143,13 @@ public class RedeemedAdapter extends FirestoreRecyclerAdapter<Redeemed_Details, 
             fc = new firebase_crud();
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvCode = itemView.findViewById(R.id.tvRedeemCode);
+            tvHideCode = itemView.findViewById(R.id.tvCoverCode);
             tvDate = itemView.findViewById(R.id.tvDate);
             ivRewards = itemView.findViewById(R.id.ivReward);
+
+            ivShowCode = itemView.findViewById(R.id.ivShowCode);
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

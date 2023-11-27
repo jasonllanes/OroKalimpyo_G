@@ -31,12 +31,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import org.w3c.dom.Text;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.github.cutelibs.cutedialog.CuteDialog;
 import sldevs.cdo.orokalimpyo.GlideApp;
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.household_sign_up_details;
@@ -46,11 +50,11 @@ import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
 
 public class profile_fragment extends Fragment implements View.OnClickListener {
 
-    Button btnProfile,btnViewHistory,btnRedeemedCodes,btnLogout,btnAbout,btnYes,btnNo;
+    Button btnProfile, btnViewHistory, btnRedeemedCodes, btnLogout, btnAbout, btnYes, btnNo;
     StorageReference storageReference;
     TextView tvEditLocation;
     CircleImageView profile_image;
-    public TextView tvName,tvType,tvFullname,tvHouseholdType,tvEstablishmentType,tvEstablishmentTypeL,tvBarangay,tvLocation,tvNumber,tvEmail;
+    public TextView tvName, tvType, tvFullname, tvHouseholdType, tvEstablishmentType, tvEstablishmentTypeL, tvBarangay, tvLocation, tvNumber, tvEmail;
 
     firebase_crud fc;
     FirebaseAuth mAuth;
@@ -100,26 +104,26 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
 //        fc.retrieveProfile(getActivity(),getContext(),mAuth.getUid(),tvFullname,tvType,tvHouseholdType,tvEstablishmentType,tvBarangay,tvLocation,tvNumber,tvEstablishmentTypeL,tvEmail);
 
-        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.opacity_anim);
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.opacity_anim);
         profile_image.startAnimation(animation);
 
-        Animation animation2 = AnimationUtils.loadAnimation(getContext(),R.anim.fast_anim);
+        Animation animation2 = AnimationUtils.loadAnimation(getContext(), R.anim.fast_anim);
         llMenu.startAnimation(animation2);
 
         mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 //if task is successful
-                if(task.isSuccessful()){
-                    if(mAuth.getCurrentUser() == null){
+                if (task.isSuccessful()) {
+                    if (mAuth.getCurrentUser() == null) {
                         Intent intent = new Intent(getContext(), log_in.class);
                         startActivity(intent);
                         getActivity().finish();
-                    }else{
+                    } else {
                         generateQRCode();
-                        fc.retrieveName(getActivity(),getContext(),mAuth.getUid(),tvName);
+                        fc.retrieveName(getActivity(), getContext(), mAuth.getUid(), tvName);
                     }
-                }else {
+                } else {
                     //if task is not successful
                     Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getContext(), log_in.class);
@@ -138,8 +142,6 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         btnRedeemedCodes.setOnClickListener(this);
 
 
-
-
         return view;
     }
 
@@ -147,38 +149,51 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
 
-        if(id == R.id.btnLogout){
-            Dialog builder = new Dialog(getContext());
-            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            builder.setContentView(R.layout.log_out_pop);
-            builder.setCancelable(true);
-            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        if (id == R.id.btnLogout) {
+            new CuteDialog.withIcon(getContext())
+                    .setIcon(R.drawable.log_out_2)
+                    .setTitle("Log Out").setTitleTextColor(R.color.green)
+                    .setDescription("Are you sure you want to log out?").setPositiveButtonColor(R.color.green)
+                    .setPositiveButtonText("Yes", v2 -> {
+                        fc.logOut(getActivity(), getContext());
+                        Toast.makeText(getActivity(), "Log out successfully", Toast.LENGTH_SHORT).show();
 
-            btnYes = builder.findViewById(R.id.btnYes);
-            btnYes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    fc.logOut(getActivity(), getContext());
-                    Toast.makeText(getActivity(), "Log out successfully", Toast.LENGTH_SHORT).show();
-
-
-
-                }
-            });
-
-            btnNo = builder.findViewById(R.id.btnNo);
-            btnNo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    builder.dismiss();
-                }
-            });
-            builder.show();
-        }else if(id == R.id.btnProfile){
-            Intent i = new Intent(getContext(),view_profile.class);
+                    })
+                    .setNegativeButtonText("No", v2 -> {
+                        Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                    })
+                    .show();
+//            Dialog builder = new Dialog(getContext());
+//            builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//            builder.setContentView(R.layout.log_out_pop);
+//            builder.setCancelable(true);
+//            builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//
+//            btnYes = builder.findViewById(R.id.btnYes);
+//            btnYes.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    fc.logOut(getActivity(), getContext());
+//                    Toast.makeText(getActivity(), "Log out successfully", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//                }
+//            });
+//
+//            btnNo = builder.findViewById(R.id.btnNo);
+//            btnNo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    builder.dismiss();
+//                }
+//            });
+//            builder.show();
+        } else if (id == R.id.btnProfile) {
+            Intent i = new Intent(getContext(), view_profile.class);
             startActivity(i);
-        } else if(id == R.id.profile_image){
-            Intent i = new Intent(getContext(),show_qr.class);
+        } else if (id == R.id.profile_image) {
+            Intent i = new Intent(getContext(), show_qr.class);
             startActivity(i);
         } else if (id == R.id.btnViewHistory) {
             Intent i = new Intent(getContext(), view_contribution.class);
@@ -188,13 +203,13 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
             startActivity(i);
         } else if (id == R.id.tvEditLocation) {
             Intent i = new Intent(getContext(), edit_location.class);
-            i.putExtra("current_location",tvLocation.getText().toString());
+            i.putExtra("current_location", tvLocation.getText().toString());
             i.putExtra("user_type", tvType.getText().toString());
             i.putExtra("household_type", tvHouseholdType.getText().toString());
             i.putExtra("name", tvFullname.getText().toString());
             i.putExtra("barangay", tvBarangay.getText().toString());
             i.putExtra("number", tvNumber.getText().toString());
-            i.putExtra("email",tvEmail.getText().toString());
+            i.putExtra("email", tvEmail.getText().toString());
             startActivity(i);
         } else if (id == R.id.btnAbout) {
             Intent i = new Intent(getContext(), about_app.class);
@@ -203,11 +218,11 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
     }
 
 
-    public void generateQRCode(){
+    public void generateQRCode() {
 
         QRGEncoder qrgEncoder = new QRGEncoder(mAuth.getUid(), null, QRGContents.Type.TEXT, 800);
-        qrgEncoder.setColorBlack(Color.rgb(10,147,81));
-        qrgEncoder.setColorWhite(Color.rgb(255,255,255));
+        qrgEncoder.setColorBlack(Color.rgb(10, 147, 81));
+        qrgEncoder.setColorWhite(Color.rgb(255, 255, 255));
         // Getting QR-Code as Bitmap
         bitmap = qrgEncoder.getBitmap();
         // Setting Bitmap to ImageView

@@ -47,6 +47,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
     ImageView ivRewards;
     Context context;
     FirestoreRecyclerOptions<Rewards_Details> rewards;
+    Rewards_Details rewardsDetails;
     Button btnYes,btnNo;
     String user_id;
     SimpleDateFormat month,day,year,week,date,hours,minutes,seconds,time;
@@ -81,7 +82,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
 
     @Override
     protected void onBindViewHolder(@NonNull RewardsAdapter.RewardsHolder holder, int position, @NonNull Rewards_Details model) {
-        Rewards_Details rewardsDetails = rewards.getSnapshots().get(position);
+        rewardsDetails = rewards.getSnapshots().get(position);
 
 
 
@@ -148,7 +149,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
                                 retrieveDate();
                                 String id = user_id.substring(0,5) + currentMonth + currentDay + currentYear + currentHour + currentMinute + currentSeconds;
                                 if(Double.parseDouble(currentPoints.getText().toString()) >= Double.parseDouble(tvPoints.getText().toString())){
-                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()),id,tvRewardCode.getText().toString(),tvTitle.getText().toString());
+                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()),id,rewardsDetails.getImageName(),tvRewardCode.getText().toString(),tvTitle.getText().toString());
 //                                Intent i = new Intent(context, success_redeem.class);
 //                                i.putExtra("rewardTitle", tvTitle.getText().toString());
 //                                context.startActivity(i);
