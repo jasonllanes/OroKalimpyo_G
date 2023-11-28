@@ -3,6 +3,7 @@ package sldevs.cdo.orokalimpyo.firebase;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,24 +16,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.AggregateQuery;
 import com.google.firebase.firestore.AggregateQuerySnapshot;
 import com.google.firebase.firestore.AggregateSource;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.saadahmedsoft.popupdialog.PopupDialog;
+import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener;
 
 import org.w3c.dom.Text;
 
@@ -41,11 +53,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import sldevs.cdo.orokalimpyo.GlideApp;
+import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.final_sign_up;
 import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.data_fetch.UserDetails;
+import sldevs.cdo.orokalimpyo.home.guess_the_waste_game;
 import sldevs.cdo.orokalimpyo.home.home;
 import sldevs.cdo.orokalimpyo.profile.show_qr;
+import sldevs.cdo.orokalimpyo.profile.view_profile;
 
 public class firebase_crud {
 
@@ -55,7 +70,7 @@ public class firebase_crud {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Map<String, Object> waste_contribution;
+    Map<String, Object> waste_contribution,redeem_details;
     StorageReference storageReference;
 
     //Authentication Functions----------------------------
@@ -191,7 +206,7 @@ public class firebase_crud {
         });
     }
 
-    public void retrieveTotalContribution(Activity activity,Context context,String id,TextView recyclable,TextView biodegradable,TextView residual,TextView special_waste){
+    public void retrievePoints(Activity activity,Context context,String id,TextView points){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -204,16 +219,11 @@ public class firebase_crud {
                     } else {
 
                     }
-                    recyclable.setText(document.get("recyclable").toString());
-                    biodegradable.setText(document.get("biodegradable").toString());
-                    residual.setText(document.get("residual").toString());
-                    special_waste.setText(document.get("special_waste").toString());
+                    points.setText(document.get("total_points").toString());
 
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
-
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -223,6 +233,82 @@ public class firebase_crud {
         });
     }
 
+    public void retrieveTotalContribution(Activity activity,Context context,String id,TextView residual,TextView recyclable, TextView biodegradable,TextView special_waste){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+
+                    } else {
+
+                    }
+                    residual.setText(document.get("residual").toString() + " kg");
+                    recyclable.setText(document.get("recyclable").toString()+ " kg");
+                    biodegradable.setText(document.get("biodegradable").toString()+ " kg");
+                    special_waste.setText(document.get("special_waste").toString()+ " kg");
+
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+
+
+    public void wasteGame(Activity activity, Context context, String id, TextView game_level, LottieAnimationView star1){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                if (e != null) {
+//                    Log.w(TAG, "Listen failed.", e);
+//                    return;
+//                }
+
+                if (value != null && value.exists()) {
+                    game_level.setText(value.get("waste_game_level").toString());
+                    if(value.get("waste_game_level").toString() == "1"){
+                        star1.setAnimation(R.raw.lottie_star);
+                    }
+
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+    }
+
+    public void brandGame(Activity activity, Context context, String id, TextView game_level, LottieAnimationView star1){
+        DocumentReference docRef = db.collection("Waste Generator").document(id);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                if (e != null) {
+//                    Log.w(TAG, "Listen failed.", e);
+//                    return;
+//                }
+
+                if (value != null && value.exists()) {
+                    game_level.setText(value.get("brand_game_level").toString());
+                    if(value.get("brand_game_level").toString() == "1"){
+                        star1.setAnimation(R.raw.lottie_star);
+                    }
+
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+    }
 
     public void retrieveProfile(Activity activity, Context context, String id, TextView name, TextView user_type, TextView household_type, TextView establishment_type, TextView barangay, TextView location, TextView number, TextView establishment_type_label,TextView email){
         DocumentReference docRef = db.collection("Waste Generator").document(id);
@@ -324,21 +410,246 @@ public class firebase_crud {
 
     }
 
+    public void updateName(Activity activity,String name){
+        DocumentReference nameRef = db.collection("Waste Generator").document(mAuth.getUid());
+        nameRef.update("name", name).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated name!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated name!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
 
+                        Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+    public void updateBarangay(Activity activity,String barangay){
+        DocumentReference barangayRef = db.collection("Waste Generator").document(mAuth.getUid());
+        barangayRef.update("barangay", barangay).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated barangay!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated barangay!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                        Log.w(TAG, "Error updating barangay.", e);
+                    }
+                });
+    }
+
+    public void updateNumber(Activity activity,String number){
+        DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
+        numberRef.update("number", number).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
+                        activity.finish();
+                        Toast.makeText(activity, "Successfully updated number!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Successfully updated number!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                        Log.w(TAG, "Error updating number.", e);
+                    }
+                });
+    }
+
+    public void updateEmail(Activity activity,String currentEmail, String password,String email){
+        DocumentReference emailRef = db.collection("Waste Generator").document(mAuth.getUid());
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(currentEmail, password);
+
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(TAG, "User re-authenticated.");
+                        user.updateEmail(email)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            emailRef.update("email", email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Intent i = new Intent(activity, view_profile.class);
+                                                            activity.startActivity(i);
+                                                            activity.finish();
+                                                            Toast.makeText(activity, "Successfully updated email!", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "Successfully updated email!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                                                            Log.w(TAG, "Error updating location.", e);
+                                                        }
+                                                    });
+                                        }else{
+                                            Toast.makeText(activity, task.getException()+ "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+
+
+
+
+
+    }
     //Update Location
     public void updateLocation(Activity activity,String location){
         DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
         locationRef.update("location", location).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        Intent i = new Intent(activity, view_profile.class);
+                        activity.startActivity(i);
                         activity.finish();
+                        Toast.makeText(activity, "Successfully updated location!", Toast.LENGTH_SHORT).show();
+
                         Log.d(TAG, "Successfully updated location!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(activity, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
                         Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+    public void updateStar(ProgressBar progressBar,Button btnReset,Context guessTheWasteGame,String game_type, String uid, int s) {
+        DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
+        locationRef.update(game_type, 0).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        progressBar.setVisibility(View.GONE);
+                        btnReset.setVisibility(View.VISIBLE);
+                        Toast.makeText(guessTheWasteGame, "Reset Successfully!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Reset Successfully!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(guessTheWasteGame, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+    public void updateStar(String game_type){
+        DocumentReference locationRef = db.collection("Waste Generator").document(mAuth.getUid());
+        locationRef.update(game_type, FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Successfully updated score!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating location.", e);
+                    }
+                });
+    }
+
+    public void updatePoints(Context context,double new_points,String redeem_id,String image_url,String image_name,String selected_reward,String reward_title){
+        redeem_details = new HashMap<>();
+        DocumentReference numberRef = db.collection("Waste Generator").document(mAuth.getUid());
+//        DocumentReference rewardGet = db.collection("Rewards").document(selected_reward);
+        DocumentReference giveCode = db.collection("Redeemed Codes").document(redeem_id);
+
+        redeem_details.put("redeem_id", redeem_id);
+        redeem_details.put("imageName", image_name);
+        redeem_details.put("imageUrl", image_url);
+        redeem_details.put("reward_code", selected_reward);
+        redeem_details.put("user_id", mAuth.getUid());
+        redeem_details.put("redeemed_date", FieldValue.serverTimestamp());
+        redeem_details.put("reward_title", reward_title);
+
+        numberRef.update("total_points", new_points).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        giveCode.set(redeem_details).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                PopupDialog.getInstance(context)
+                                        .setStyle(Styles.SUCCESS)
+                                        .setHeading("Success!" + "\n" + "You have successfully redeemed your reward.")
+                                        .setDescription("Go check your redeemed codes in your profile.")
+                                        .setCancelable(false)
+                                        .showDialog(new OnDialogButtonClickListener() {
+                                            @Override
+                                            public void onDismissClicked(Dialog dialog) {
+                                                super.onDismissClicked(dialog);
+                                                Intent i = new Intent(context, home.class);
+                                                context.startActivity(i);
+                                            }
+                                        });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                PopupDialog.getInstance(context)
+                                        .setStyle(Styles.FAILED)
+                                        .setHeading("Sorry!" + "\n" + "Something went wrong.")
+                                        .setDescription("Please try again.")
+                                        .setCancelable(false)
+                                        .showDialog(new OnDialogButtonClickListener() {
+                                            @Override
+                                            public void onDismissClicked(Dialog dialog) {
+                                                super.onDismissClicked(dialog);
+                                            }
+                                        });
+                            }
+                        });
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        PopupDialog.getInstance(context)
+                                .setStyle(Styles.FAILED)
+                                .setHeading("Sorry!" + "\n" + "Redeem Unsuccessful.")
+                                .setDescription("Insufficient Balance.")
+                                .setCancelable(false)
+                                .showDialog(new OnDialogButtonClickListener() {
+                                    @Override
+                                    public void onDismissClicked(Dialog dialog) {
+                                        super.onDismissClicked(dialog);
+                                    }
+                                });
                     }
                 });
     }
@@ -353,4 +664,22 @@ public class firebase_crud {
         activity.finish();
     }
 
+
+    public void deleteAccount(view_profile viewProfile, String uid) {
+        DocumentReference docRef = db.collection("Waste Generator").document(uid);
+        docRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                mAuth.getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Intent i = new Intent(viewProfile, log_in.class);
+                        viewProfile.startActivity(i);
+                        viewProfile.finish();
+                        Toast.makeText(viewProfile, "Account deleted successfully.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
 }

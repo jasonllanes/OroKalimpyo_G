@@ -92,7 +92,7 @@ public class edit_location extends AppCompatActivity {
         number = getIntent().getStringExtra("number");
         email = getIntent().getStringExtra("email");
 
-        location = getIntent().getStringExtra("current_location");
+        location = getIntent().getStringExtra("location");
         etLocation.setText(location);
 
 
@@ -127,17 +127,7 @@ public class edit_location extends AppCompatActivity {
                 pbLocationLoading.setVisibility(View.VISIBLE);
                 btnFind.setVisibility(View.GONE);
                 btnUpdate.setVisibility(View.GONE);
-                if(houshold_type.equalsIgnoreCase("Household")){
-                    all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + houshold_type + "\n" + barangay + "\n" + etLocation.getText().toString() + "\n" + number + "\n" + email;
-                    fc.updateLocation(edit_location.this,etLocation.getText().toString().trim());
-                    generateQRCode();
-                    fc.updateQRCode(bitmap,edit_location.this,getApplicationContext(),user_type,mAuth.getUid(),name,pbLocationLoading,btnFind,btnUpdate);
-                } else if (houshold_type.equalsIgnoreCase("Non-Household")) {
-                    all_data = mAuth.getUid() + "\n" + name + "\n" + user_type + "\n" + houshold_type + "\n" + establishment_type + "\n" + others + "\n" + barangay + "\n" + etLocation.getText().toString() + "\n" + number + "\n" + email;
-                    fc.updateLocation(edit_location.this,etLocation.getText().toString().trim());
-                    generateQRCode();
-                    fc.updateQRCode(bitmap,edit_location.this,getApplicationContext(),user_type,mAuth.getUid(),name,pbLocationLoading,btnFind,btnUpdate);
-                }
+                fc.updateLocation(edit_location.this,etLocation.getText().toString().trim());
 
             }
         });

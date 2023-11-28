@@ -44,12 +44,12 @@ public class choose_household extends AppCompatActivity implements View.OnClickL
 
         if(id == R.id.btnHousehold){
             Intent i = new Intent(choose_household.this, household_sign_up_details.class);
-            i.putExtra("user_type",user_type);
+            i.putExtra("user_type","Waste Generator");
             i.putExtra("household_type","Household");
             startActivity(i);
         } else if(id == R.id.btnNonHousehold){
             Intent i = new Intent(choose_household.this, non_household_sign_up_details.class);
-            i.putExtra("user_type",user_type);
+            i.putExtra("user_type","Waste Generator");
             i.putExtra("household_type","Non-Household");
             startActivity(i);
         } else if(id == R.id.ivBack){

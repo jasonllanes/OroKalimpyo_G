@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="10dp"
+    android:backgroundTint="@color/white"
+    android:layout_gravity="center"
+    android:elevation="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to redeem this?"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/pbold"
+            android:layout_marginTop="13dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textColor="@color/green"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

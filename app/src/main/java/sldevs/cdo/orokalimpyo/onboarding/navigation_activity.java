@@ -17,15 +17,19 @@ import com.google.android.material.button.MaterialButton;
 
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.authentication.log_in;
+import sldevs.cdo.orokalimpyo.home.Help_ViewPagerAdapter;
+import sldevs.cdo.orokalimpyo.home.home;
 
 public class navigation_activity extends AppCompatActivity {
 
+    boolean isHelp = false;
 
     ViewPager slideViewPager;
     LinearLayout dotIndicator;
     MaterialButton backButton, nextButton, skipButton;
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
+    Help_ViewPagerAdapter viewPagerAdapter_help;
     ViewPager.OnPageChangeListener viewPagerListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -56,8 +60,13 @@ public class navigation_activity extends AppCompatActivity {
         setContentView(R.layout.activity_navigation);
 
 
+
+
         nextButton = findViewById(R.id.btnNext);
         skipButton = findViewById(R.id.btnSkip);
+
+        isHelp = getIntent().getBooleanExtra("isHelp", false);
+
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +74,31 @@ public class navigation_activity extends AppCompatActivity {
                 if (getItem(0) < 4)
                     slideViewPager.setCurrentItem(getItem(1), true);
                 else {
+                    if(isHelp) {
+                        Intent i = new Intent(navigation_activity.this, home.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(navigation_activity.this, log_in.class);
+                        SharedPreferences sharedPref = getSharedPreferences("getting_started", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("was_launched", "true");
+                        editor.commit();
+                        startActivity(i);
+                        finish();
+                    }
+
+                }
+            }
+        });
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isHelp) {
+                    Intent i = new Intent(navigation_activity.this, home.class);
+                    startActivity(i);
+                    finish();
+                } else {
                     Intent i = new Intent(navigation_activity.this, log_in.class);
                     SharedPreferences sharedPref = getSharedPreferences("getting_started", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
@@ -75,22 +109,15 @@ public class navigation_activity extends AppCompatActivity {
                 }
             }
         });
-        skipButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(navigation_activity.this, log_in.class);
-                SharedPreferences sharedPref = getSharedPreferences("getting_started",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("was_launched", "true");
-                editor.commit();
-                startActivity(i);
-                finish();
-            }
-        });
         slideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         dotIndicator = (LinearLayout) findViewById(R.id.dotIndicator);
-        viewPagerAdapter = new ViewPagerAdapter(this);
-        slideViewPager.setAdapter(viewPagerAdapter);
+        if(isHelp) {
+            viewPagerAdapter_help = new Help_ViewPagerAdapter(this);
+            slideViewPager.setAdapter(viewPagerAdapter_help);
+        } else{
+            viewPagerAdapter = new ViewPagerAdapter(this);
+            slideViewPager.setAdapter(viewPagerAdapter);
+        }
         setDotIndicator(0);
         slideViewPager.addOnPageChangeListener(viewPagerListener);
     }

@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -43,6 +45,7 @@ public class log_in extends AppCompatActivity implements View.OnClickListener {
     ProgressBar pbLoading;
 
     firebase_crud fc;
+    boolean showPassword = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,34 @@ public class log_in extends AppCompatActivity implements View.OnClickListener {
         tvSignUp.setOnClickListener(this);
 
         tvForgotPassword.setOnClickListener(this);
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if(motionEvent.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        if(showPassword) {
+                            showPassword = false;
+
+                            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show_password, 0);
+                        } else {
+                            showPassword = true;
+                            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide_password, 0);
+                        }
+                        // your action here
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -146,7 +177,7 @@ public class log_in extends AppCompatActivity implements View.OnClickListener {
     }
 
     public static boolean isValidEmail(String email) {
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+.[A-Za-z0-9.-]$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();

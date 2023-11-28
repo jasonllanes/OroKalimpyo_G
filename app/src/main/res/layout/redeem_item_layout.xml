@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="50dp"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="20dp"
+    card_view:cardElevation="0dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:backgroundTint="@color/white">
+
+        <!--        <FrameLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="150dp">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivReward"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="160dp"-->
+        <!--                android:scaleType="centerCrop"-->
+        <!--                android:src="@drawable/news_1" />-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:orientation="vertical"-->
+        <!--                android:padding="16dp">-->
+        <!--                -->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="right"-->
+
+
+        <!--                    android:orientation="horizontal">-->
+
+
+        <!--                </LinearLayout>-->
+
+
+        <!--            </LinearLayout>-->
+
+        <!--        </FrameLayout>-->
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivReward"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/news_1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+
+                    android:fontFamily="@font/regular"
+                    android:padding="5dp"
+                    android:text="Garbage Bag"
+                    android:textColor="@color/green"
+                    android:textSize="17sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvRedeemCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@color/green"
+                        android:fontFamily="@font/pbold"
+                        android:padding="5dp"
+                        android:text="******"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvCoverCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+
+                        android:fontFamily="@font/pbold"
+                        android:padding="5dp"
+                        android:text="******"
+                        android:textColor="@color/green"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/ivShowCode"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/show_password"
+                        android:backgroundTint="@color/black" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/pregular"
+                    android:text="12/23/2020 2:34"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black" />
+
+
+</LinearLayout>

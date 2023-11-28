@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:22.1.1'
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
     implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
     implementation 'com.google.firebase:firebase-database:20.2.2'
     implementation 'com.google.firebase:firebase-storage:20.2.1'
     implementation 'com.google.firebase:firebase-firestore:24.7.0'
@@ -75,8 +76,23 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
+    //Lottie
+    implementation 'com.airbnb.android:lottie:5.1.0'
+
     //Chart
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.5'
+
+    //TensorFlow Lite
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
+
+    //Pop Up dialogue
+    implementation 'com.github.CuteLibs:CuteDialog:2.1'
+    implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.5'
+
+    //Image Pop Up
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
 
 
 }

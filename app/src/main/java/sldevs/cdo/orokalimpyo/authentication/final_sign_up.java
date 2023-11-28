@@ -13,6 +13,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -66,6 +68,8 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
 
     SimpleDateFormat month,day,year,week,date,hours,minutes,seconds,time;
     String currentMonth,currentDay,currentYear,currentWeek,currentDate,currentHour,currentMinute,currentSeconds,currentTime;
+    boolean showPassword = false;
+    boolean showPasswordRetyped = false;
 
 
     @Override
@@ -112,6 +116,59 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         tvTerms.setOnClickListener(this);
         tvData.setOnClickListener(this);
 
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if(motionEvent.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        if(showPassword) {
+                            showPassword = false;
+                            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show_password, 0);
+                        } else {
+                            showPassword = true;
+                            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide_password, 0);
+                        }
+                        // your action here
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        etRetypePassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if(motionEvent.getRawX() >= (etRetypePassword.getRight() - etRetypePassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        if(showPasswordRetyped) {
+                            showPasswordRetyped = false;
+                            etRetypePassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                            etRetypePassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.show_password, 0);
+                        } else {
+                            showPasswordRetyped = true;
+                            etRetypePassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                            etRetypePassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.hide_password, 0);
+                        }
+                        // your action here
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
 
 
@@ -231,11 +288,14 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("location", location);
         user_details.put("number", number);
         user_details.put("email", etEmail.getText().toString().trim());
-        user_details.put("date_create", currentDate + " " + currentTime);
+        user_details.put("date_created", currentDate + " " + currentTime);
         user_details.put("recyclable", 0);
         user_details.put("biodegradable", 0);
         user_details.put("residual", 0);
         user_details.put("special_waste", 0);
+        user_details.put("total_points", 0);
+        user_details.put("waste_game_level", 0);
+        user_details.put("brand_game_level", 0);
         user_details.put("contributed_today","No");
 
         all_data = mAuth.getUid();
@@ -247,7 +307,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details = new HashMap<>();
         user_details.put("user_id",mAuth.getUid());
         user_details.put("name", name);
-        user_details.put("user_type", user_type);
+        user_details.put("user_type", "Waste Generator");
         user_details.put("household_type", houshold_type);
         user_details.put("establishment_type",establishment_type);
         user_details.put("others",others);
@@ -260,6 +320,9 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("biodegradable", 0.0);
         user_details.put("residual", 0.0);
         user_details.put("special_waste", 0.0);
+        user_details.put("total_points", 0);
+        user_details.put("waste_game_level", 0);
+        user_details.put("brand_game_level", 0);
         user_details.put("contributed_today","No");
 
         all_data = mAuth.getUid();
@@ -313,7 +376,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
     }
 
     public static boolean isValidEmail(String email) {
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+.[A-Za-z0-9.-]$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();

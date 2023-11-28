@@ -75,7 +75,7 @@
             android:layout_gravity=""
             android:orientation="vertical">
             <ImageView
-                android:id="@+id/ivQR"
+                android:id="@+id/ivProof"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="end"

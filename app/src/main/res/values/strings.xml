@@ -2,7 +2,19 @@
     <string name="app_name">Oro Kalimpyo</string>
 
     <string name="terms_of_service"><u>Terms and Condition</u></string>
-    <string name="data_policy"><u>Data Policy</u>.</string>
+    <string name="data_policy"><u>Data Policy</u></string>
+
+    <string name="guide_0">3 Easy Steps</string>
+    <string name="guide_1">Segregate</string>
+    <string name="guide_2">Prepare</string>
+    <string name="guide_3">Show QR Code</string>
+    <string name="guide_4">Thank you for your cooperation!</string>
+
+    <string name="guide_desc_0">Oro Kalimpyo App</string>
+    <string name="guide_desc_1">Seamless Collection</string>
+    <string name="guide_desc_2">Partnership</string>
+    <string name="guide_desc_3">City Implementation</string>
+    <string name="guide_desc_4">SL Devs</string>
 
     <string name="screen1">Oro Kalimpyo App</string>
     <string name="screen2">Seamless Collection</string>
@@ -14,7 +26,7 @@
         The generated data will be use for report generation about the city\'s waste generation quantity that provide statical evidence for a better assessment on partaking reusing recyclable solid waste.</string>
     <string name="screen3desc">The application is the project of the Healthy Oceans and Cleans Cities Initiative (HOCCI) by the UN-Habitat Philippines, funded by the Government of Japan.</string>
     <string name="screen4desc">Implemented in the City of Cagayan de Oro with the partnership with the City Local Environment and Natural Resources Office (CLENRO).</string>
-    <string name="screen5desc">The project was based from the Hackathon called "Plastic (3R) Hacks PH)" on the year 2021. Developed by the students from STI College Cagayan de Oro under the team name "SL Devs".</string>
+    <string name="screen5desc">The project was based from the Hackathon called "Plastic (3R) Hacks PH)" on the year 2021. Developed by the students from STI College Cagayan de Oro under the team name SL Devs which is now called Autodidactics.</string>
 
     <string name="startDesc">Salamat sa pag-download ani nga app ug unta gamiton ninyo kani para makatabang
         mo dili lang para sa syudad peru para pud sa usag ka tao.</string>
@@ -27,5 +39,6 @@
 
     <string name="ra_description"> ▶ declares the policy of the state in adopting a systematic, comprehensive and ecological solid waste management program that ensures the protection of public health and the environment and the proper segregation, collection, transport, storage, treatment and disposal of solid waste through the formulation and adoption of best environmental practices.</string>
 
+    <string name="how_to_redeem"><b>Step 1.</b> Tap <b>"Redeemable Rewards"</b>.\n<b>Step 2.</b> Tap the reward that you like.\n<b>Step 3.</b> Tap <b>Yes</b> to redeem the reward.\n<b>Step 4.</b> Go to <b>Profile</b> and tap <b>Redeemed Codes</b>.\n<b>Step 5.</b> Show your code to the nearest branch and redeem your rewards.</string>
 
 </resources>

@@ -1,335 +1,457 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     tools:context=".profile.profile_fragment">
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/profile_heading" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circle_person"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/pbold"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/circle_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="13dp"
+                            android:fontFamily="@font/pbold"
+                            android:text="Profile"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/qr_code_sample"
-                android:layout_marginBottom="-50dp"
-                android:layout_gravity="center"
-                android:elevation="30dp"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/green"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvQRCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap to show QR Code"
-                android:layout_gravity="center"
-                android:textStyle="italic"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:layout_marginTop="50dp"
-                android:paddingTop="10dp"
-                android:fontFamily="@font/pmedium"
-                android:layout_marginHorizontal="15dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="-70dp"
+                        android:layout_marginTop="50dp"
+                        android:fontFamily="@font/pregular"
+                        android:text="Ako si..."
+                        android:textColor="@color/white"
+
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pbold"
+
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
+                        android:text="Waste Generator"
+                        android:textColor="@color/green"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:elevation="20dp"
+                        android:src="@drawable/qr_code_sample"
+                        app:civ_border_color="@color/green"
+                        app:civ_border_width="2dp" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:background="@drawable/card_layout">
+                android:background="@drawable/card_layout"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pbold"
                         android:text="User Details"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="User Type: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[User Type]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Name: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
 
                     <TextView
                         android:id="@+id/tvFullname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Name]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
-
-
+                        android:textSize="15sp" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Household Type: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvHouseholdType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[User Type]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvEstablishmentTypeL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Establishment Type: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvEstablishmentType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Establishment Type]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Barangay: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvBarangay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Barangay]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Location: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Location]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvEditLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/poppins_semibolditalic"
                         android:text="Tap here to edit location."
                         android:textColor="@color/green"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_semibolditalic"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Mobile Number: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Number]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/pbold"
                         android:text="Email: "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pbold"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:fontFamily="@font/pmedium"
                         android:text="[Number]"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:fontFamily="@font/pmedium"
-                        android:layout_marginHorizontal="15dp" />
+                        android:textSize="15sp" />
 
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnViewHistory"
+            <LinearLayout
+                android:id="@+id/llMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="View Contribution History"
-                android:textSize="15sp"
-                android:padding="15dp"
-                app:cornerRadius="25dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/green"
-                android:textColor="@color/green"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/white"
-                android:layout_marginHorizontal="50dp" />
 
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/btnEditProfile"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Edit Profile"-->
-<!--                android:textSize="15sp"-->
-<!--                android:padding="15dp"-->
-<!--                app:cornerRadius="25dp"-->
-<!--                app:strokeWidth="2dp"-->
-<!--                app:strokeColor="@color/green"-->
-<!--                android:textColor="@color/green"-->
-<!--                android:backgroundTint="@color/white"-->
+                android:orientation="vertical">
 
-<!--                android:layout_marginHorizontal="50dp"-->
-<!--                />-->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="15dp"
+                    android:text="View Profile"
+                    android:textColor="@color/green"
+                    android:textSize="12sp"
+                    app:cornerRadius="25dp"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAbout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textSize="15sp"
-                android:padding="15dp"
-                app:cornerRadius="25dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/green"
-                android:textColor="@color/green"
-                android:backgroundTint="@color/white"
-                android:layout_marginHorizontal="50dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="15dp"
+                    android:text="View Contribution History"
+                    android:textColor="@color/green"
+                    android:textSize="12sp"
+                    app:cornerRadius="25dp"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRedeemedCodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="15dp"
+                    android:text="Redeemed Codes"
+                    android:textColor="@color/green"
+                    android:textSize="12sp"
+                    app:cornerRadius="25dp"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="15dp"
+                    android:text="About"
+                    android:textColor="@color/green"
+                    android:textSize="12sp"
+                    app:cornerRadius="25dp"
+                    app:strokeColor="@color/green"
+                    app:strokeWidth="2dp" />
+
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/pmedium"
-                android:textSize="15sp"
-                android:textColor="@color/white"
                 android:padding="15dp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 app:backgroundTint="@color/green"
-                app:cornerRadius="25dp"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="90dp" />
+                app:cornerRadius="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pregular"
+                    android:text="@string/terms_of_service"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pregular"
+                    android:text=" | "
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pregular"
+                    android:text="@string/data_policy"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/pregular"
+                android:text="Version 1.0.1"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginBottom="90dp"/>
+
+
         </LinearLayout>
+
 
     </ScrollView>
 
