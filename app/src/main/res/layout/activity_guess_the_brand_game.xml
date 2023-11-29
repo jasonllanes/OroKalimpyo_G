@@ -71,7 +71,7 @@
                 android:layout_margin="10dp"
                 android:text="Accomplish each level to gain a star(★) by capturing a brand/logo that is required in each level."
                 android:textSize="15sp"
-                android:fontFamily="@font/pbolditalic"
+                android:fontFamily="@font/medium"
                 android:textColor="@color/green" />
 
             <TextView
@@ -135,6 +135,16 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="Note: The game is not yet fully trained so it may not recognize the waste you captured sometimes."
+                android:textSize="13sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/red" />
 
             <LinearLayout
                 android:layout_width="match_parent"

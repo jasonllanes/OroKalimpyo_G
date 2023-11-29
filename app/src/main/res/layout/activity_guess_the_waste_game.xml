@@ -71,7 +71,7 @@
                 android:layout_margin="10dp"
                 android:text="Accomplish each level to gain a star(★) by capturing a waste that is required shown in each level."
                 android:textSize="15sp"
-                android:fontFamily="@font/pbolditalic"
+                android:fontFamily="@font/medium"
                 android:textColor="@color/green" />
 
             <TextView
@@ -92,6 +92,7 @@
                 android:textAlignment="center"
                 android:layout_marginLeft="10dp"
                 android:text="0"
+                android:visibility="gone"
                 android:textSize="15sp"
                 android:fontFamily="@font/pregular"
                 android:textColor="@color/green" />
@@ -145,6 +146,19 @@
 
 
             </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+
+                android:text="Note: The game is not yet fully trained so it may not recognize the waste you captured sometimes."
+                android:textSize="13sp"
+                android:fontFamily="@font/pregular"
+                android:textColor="@color/red" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

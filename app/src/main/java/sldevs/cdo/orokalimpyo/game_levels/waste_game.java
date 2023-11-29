@@ -18,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -478,52 +479,24 @@ public class waste_game extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(resultCode == RESULT_OK){
-            if(camera == 1){
                 if(requestCode == 3){
-
                     image = (Bitmap) data.getExtras().get("data");
                     int dimension = Math.min(image.getWidth(), image.getHeight());
                     image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                     classifyPlastic(image);
                     camera = 0;
                 }else{
-                    Uri dat = data.getData();
-                    image = null;
-                    try {
-                        image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+                    image = (Bitmap) data.getExtras().get("data");
+                    int dimension = Math.min(image.getWidth(), image.getHeight());
+                    image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                     classifyPlastic(image);
                     camera = 0;
                 }
-            }else if(camera == 2) {
-                if(requestCode == 4) {
 
-                    image = (Bitmap) data.getExtras().get("data");
-                    int dimension = Math.min(image.getWidth(), image.getHeight());
-                    image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-//                    classifyBrand(image);
-                    camera = 0;
-                } else {
-                    Uri dat = data.getData();
-                    image = null;
-                    try {
-                        image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-//                    classifyBrand(image);
-                    camera = 0;
-                }
-            }
+        }else{
+            Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

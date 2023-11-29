@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,13 +50,14 @@ public class brand_game extends AppCompatActivity {
     int camera;
     String game_level;
     String stars_collected;
-    TextView tvLevel,tvBrandType,tvResult;
+    TextView tvLevel, tvBrandType, tvResult;
     LottieAnimationView lWasteType, lWaiting;
     ImageView ivAnswer;
 
-    Button btnUpload,btnHome,btnBack;
+    Button btnUpload, btnHome, btnBack;
     FirebaseAuth mAuth;
     firebase_crud fc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,6 @@ public class brand_game extends AppCompatActivity {
         btnUpload = findViewById(R.id.btnUpload);
         btnBack = findViewById(R.id.btnBack);
         btnHome = findViewById(R.id.btnHome);
-
 
 
         game_level = getIntent().getStringExtra("game_level");
@@ -120,9 +121,10 @@ public class brand_game extends AppCompatActivity {
 
 
     }
-    public void showGameLevel(){
-        if(game_level.equalsIgnoreCase("Level 1")){
-            if(Integer.parseInt(stars_collected) > 0){
+
+    public void showGameLevel() {
+        if (game_level.equalsIgnoreCase("Level 1")) {
+            if (Integer.parseInt(stars_collected) > 0) {
                 tvBrandType.setText("Great Capture!");
                 lWaiting.setAnimation(R.raw.lottie_applause);
                 btnUpload.setVisibility(View.GONE);
@@ -132,8 +134,8 @@ public class brand_game extends AppCompatActivity {
             }
 
 
-        } else if(game_level.equalsIgnoreCase("Level 2")){
-            if(Integer.parseInt(stars_collected) > 1){
+        } else if (game_level.equalsIgnoreCase("Level 2")) {
+            if (Integer.parseInt(stars_collected) > 1) {
                 tvBrandType.setText("Great Capture!");
                 lWaiting.setAnimation(R.raw.lottie_applause);
                 btnUpload.setVisibility(View.GONE);
@@ -143,8 +145,8 @@ public class brand_game extends AppCompatActivity {
             }
 
 
-        } else if(game_level.equalsIgnoreCase("Level 3")){
-            if(Integer.parseInt(stars_collected) > 2){
+        } else if (game_level.equalsIgnoreCase("Level 3")) {
+            if (Integer.parseInt(stars_collected) > 2) {
                 tvBrandType.setText("Great Capture!");
                 lWaiting.setAnimation(R.raw.lottie_applause);
                 btnUpload.setVisibility(View.GONE);
@@ -153,8 +155,8 @@ public class brand_game extends AppCompatActivity {
                 tvBrandType.setText("Unilever");
             }
 
-        } else if(game_level.equalsIgnoreCase("Level 4")){
-            if(Integer.parseInt(stars_collected) > 3){
+        } else if (game_level.equalsIgnoreCase("Level 4")) {
+            if (Integer.parseInt(stars_collected) > 3) {
                 tvBrandType.setText("Great Capture!");
                 lWaiting.setAnimation(R.raw.lottie_applause);
                 btnUpload.setVisibility(View.GONE);
@@ -163,8 +165,8 @@ public class brand_game extends AppCompatActivity {
                 tvBrandType.setText("Nestlea");
             }
 
-        } else if(game_level.equalsIgnoreCase("Level 5")){
-            if(Integer.parseInt(stars_collected) > 4){
+        } else if (game_level.equalsIgnoreCase("Level 5")) {
+            if (Integer.parseInt(stars_collected) > 4) {
                 tvBrandType.setText("Great Capture!");
                 lWaiting.setAnimation(R.raw.lottie_applause);
                 btnUpload.setVisibility(View.GONE);
@@ -176,9 +178,9 @@ public class brand_game extends AppCompatActivity {
         }
     }
 
-    public void classifyBrand(Bitmap image){
+    public void classifyBrand(Bitmap image) {
         try {
-            if(tvBrandType.getText().toString().equalsIgnoreCase("Coca Cola")){
+            if (tvBrandType.getText().toString().equalsIgnoreCase("Coca Cola")) {
                 CocaColaModel model = CocaColaModel.newInstance(getApplicationContext());
 
                 TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
@@ -189,8 +191,8 @@ public class brand_game extends AppCompatActivity {
                 image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                 int pixel = 0;
                 //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-                for(int i = 0; i < imageSize; i ++){
-                    for(int j = 0; j < imageSize; j++){
+                for (int i = 0; i < imageSize; i++) {
+                    for (int j = 0; j < imageSize; j++) {
                         int val = intValues[pixel++]; // RGB
                         byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                         byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -214,10 +216,10 @@ public class brand_game extends AppCompatActivity {
                         maxPos = i;
                     }
                 }
-                String[] classes = {"It is Coca Cola","I'm not so sure, Please try again"};
+                String[] classes = {"It is Coca Cola", "I'm not so sure, Please try again"};
 
                 String s = "";
-                for(int i = 0; i < classes.length; i++){
+                for (int i = 0; i < classes.length; i++) {
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
                 }
                 lWaiting.setVisibility(View.GONE);
@@ -226,8 +228,7 @@ public class brand_game extends AppCompatActivity {
                 tvResult.setText(classes[maxPos] + ".");
 
 
-
-                if(classes[maxPos] == "It is Coca Cola"){
+                if (classes[maxPos] == "It is Coca Cola") {
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
                     fc.updateStar("brand_game_level");
@@ -246,8 +247,8 @@ public class brand_game extends AppCompatActivity {
                 image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                 int pixel = 0;
                 //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-                for(int i = 0; i < imageSize; i ++){
-                    for(int j = 0; j < imageSize; j++){
+                for (int i = 0; i < imageSize; i++) {
+                    for (int j = 0; j < imageSize; j++) {
                         int val = intValues[pixel++]; // RGB
                         byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                         byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -271,10 +272,10 @@ public class brand_game extends AppCompatActivity {
                         maxPos = i;
                     }
                 }
-                String[] classes = {"It is Nature Spring","I'm not so sure, Please try again"};
+                String[] classes = {"It is Nature Spring", "I'm not so sure, Please try again"};
 
                 String s = "";
-                for(int i = 0; i < classes.length; i++){
+                for (int i = 0; i < classes.length; i++) {
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
                 }
                 lWaiting.setVisibility(View.GONE);
@@ -284,7 +285,7 @@ public class brand_game extends AppCompatActivity {
 //                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
 
 
-                if(classes[maxPos] == "It is Nature Spring"){
+                if (classes[maxPos] == "It is Nature Spring") {
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
                     fc.updateStar("brand_game_level");
@@ -303,8 +304,8 @@ public class brand_game extends AppCompatActivity {
                 image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                 int pixel = 0;
                 //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-                for(int i = 0; i < imageSize; i ++){
-                    for(int j = 0; j < imageSize; j++){
+                for (int i = 0; i < imageSize; i++) {
+                    for (int j = 0; j < imageSize; j++) {
                         int val = intValues[pixel++]; // RGB
                         byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                         byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -328,10 +329,10 @@ public class brand_game extends AppCompatActivity {
                         maxPos = i;
                     }
                 }
-                String[] classes = {"It is Unilever","I'm not so sure, Please try again"};
+                String[] classes = {"It is Unilever", "I'm not so sure, Please try again"};
 
                 String s = "";
-                for(int i = 0; i < classes.length; i++){
+                for (int i = 0; i < classes.length; i++) {
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
                 }
                 lWaiting.setVisibility(View.GONE);
@@ -341,7 +342,7 @@ public class brand_game extends AppCompatActivity {
 //                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
 
 
-                if(classes[maxPos] == "It is Unilever"){
+                if (classes[maxPos] == "It is Unilever") {
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
                     fc.updateStar("brand_game_level");
@@ -363,8 +364,8 @@ public class brand_game extends AppCompatActivity {
                 image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                 int pixel = 0;
                 //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-                for(int i = 0; i < imageSize; i ++){
-                    for(int j = 0; j < imageSize; j++){
+                for (int i = 0; i < imageSize; i++) {
+                    for (int j = 0; j < imageSize; j++) {
                         int val = intValues[pixel++]; // RGB
                         byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                         byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -388,10 +389,10 @@ public class brand_game extends AppCompatActivity {
                         maxPos = i;
                     }
                 }
-                String[] classes = {"It is Nestlea","I'm not so sure, Please try again"};
+                String[] classes = {"It is Nestlea", "I'm not so sure, Please try again"};
 
                 String s = "";
-                for(int i = 0; i < classes.length; i++){
+                for (int i = 0; i < classes.length; i++) {
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
                 }
                 lWaiting.setVisibility(View.GONE);
@@ -401,7 +402,7 @@ public class brand_game extends AppCompatActivity {
 //                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
 
 
-                if(classes[maxPos] == "It is Nestlea"){
+                if (classes[maxPos] == "It is Nestlea") {
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
                     fc.updateStar("brand_game_level");
@@ -421,8 +422,8 @@ public class brand_game extends AppCompatActivity {
                 image.getPixels(intValues, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
                 int pixel = 0;
                 //iterate over each pixel and extract R, G, and B values. Add those values individually to the byte buffer.
-                for(int i = 0; i < imageSize; i ++){
-                    for(int j = 0; j < imageSize; j++){
+                for (int i = 0; i < imageSize; i++) {
+                    for (int j = 0; j < imageSize; j++) {
                         int val = intValues[pixel++]; // RGB
                         byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f / 255.f));
                         byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f / 255.f));
@@ -446,10 +447,10 @@ public class brand_game extends AppCompatActivity {
                         maxPos = i;
                     }
                 }
-                String[] classes = {"It is MEGA Sardines","I'm not so sure, Please try again"};
+                String[] classes = {"It is MEGA Sardines", "I'm not so sure, Please try again"};
 
                 String s = "";
-                for(int i = 0; i < classes.length; i++){
+                for (int i = 0; i < classes.length; i++) {
                     s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
                 }
                 lWaiting.setVisibility(View.GONE);
@@ -459,7 +460,7 @@ public class brand_game extends AppCompatActivity {
 //                tvResult.setText("It is a " + classes[maxPos] + "." + "\n\nConfidence Level:\n" + s);
 
 
-                if(classes[maxPos] == "It is a PVC Spoon"){
+                if (classes[maxPos] == "It is a PVC Spoon") {
                     tvBrandType.setText("Great Capture!");
                     btnUpload.setVisibility(View.GONE);
                     fc.updateStar("brand_game_level");
@@ -478,62 +479,35 @@ public class brand_game extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode == RESULT_OK){
-            if(camera == 1){
-                if(requestCode == 3){
-
-                    image = (Bitmap) data.getExtras().get("data");
-                    int dimension = Math.min(image.getWidth(), image.getHeight());
-                    image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-                    classifyBrand(image);
-                    camera = 0;
-                }else{
-                    Uri dat = data.getData();
-                    image = null;
-                    try {
-                        image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-                    classifyBrand(image);
-                    camera = 0;
-                }
-            }else if(camera == 2) {
-                if(requestCode == 4) {
-
-                    image = (Bitmap) data.getExtras().get("data");
-                    int dimension = Math.min(image.getWidth(), image.getHeight());
-                    image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-//                    classifyBrand(image);
-                    camera = 0;
-                } else {
-                    Uri dat = data.getData();
-                    image = null;
-                    try {
-                        image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), dat);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
-//                    classifyBrand(image);
-                    camera = 0;
-                }
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 3) {
+                image = (Bitmap) data.getExtras().get("data");
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+                classifyBrand(image);
+                camera = 0;
+            } else {
+                image = (Bitmap) data.getExtras().get("data");
+                int dimension = Math.min(image.getWidth(), image.getHeight());
+                image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+                classifyBrand(image);
+                camera = 0;
             }
+
+
+        } else {
+            Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent(brand_game.this, guess_the_brand_game.class);
-        startActivity(i);
+        @Override
+        public void onBackPressed () {
+            super.onBackPressed();
+            Intent i = new Intent(brand_game.this, guess_the_brand_game.class);
+            startActivity(i);
 
+        }
     }
-}
