@@ -111,6 +111,18 @@
                     android:textSize="17sp" />
 
                 <TextView
+                    android:id="@+id/tvImageUrl"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:padding="5dp"
+                    android:fontFamily="@font/pbold"
+                    android:text="Singkamas"
+                    android:textColor="@color/green"
+                    android:textSize="17sp" />
+
+                <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
