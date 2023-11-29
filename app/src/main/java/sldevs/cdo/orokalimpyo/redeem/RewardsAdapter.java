@@ -93,6 +93,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             String modelField = model.getRewardTitle();
             if (modelField != null) {
                 if (searchQuery == null || searchQuery.isEmpty() || modelField.toLowerCase().contains(searchQuery.toLowerCase())) {
+                    holder.tvImageUrl.setText(rewardsDetails.getImage_url());
                     holder.tvTitle.setText(rewardsDetails.getRewardTitle());
                     holder.tvImageName.setText(rewardsDetails.getImageName());
                     holder.tvPoints.setText(String.valueOf(rewardsDetails.getPoints()));
@@ -125,6 +126,8 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
 
         LinearLayout llRewardItem;
         CardView cvRewardItem;
+
+        TextView tvImageUrl;
         TextView tvTitle;
         TextView tvImageName;
 
@@ -145,6 +148,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
             cvRewardItem = itemView.findViewById(R.id.cvRewardItem);
             tvRewardCode = itemView.findViewById(R.id.tvRewardCode);
             tvImageName = itemView.findViewById(R.id.tvImageName);
+            tvImageUrl = itemView.findViewById(R.id.tvImageUrl);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvPoints = itemView.findViewById(R.id.tvPoints);
             tvDescription = itemView.findViewById(R.id.tvDescription);
@@ -162,7 +166,7 @@ public class RewardsAdapter extends FirestoreRecyclerAdapter<Rewards_Details, sl
                                 retrieveDate();
                                 String id = user_id.substring(0,5) + currentMonth + currentDay + currentYear + currentHour + currentMinute + currentSeconds;
                                 if(Double.parseDouble(currentPoints.getText().toString()) >= Double.parseDouble(tvPoints.getText().toString())){
-                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()),id,rewardsDetails.imageUrl,tvImageName.getText().toString(),tvRewardCode.getText().toString(),tvTitle.getText().toString());
+                                    fc.updatePoints(context,Double.parseDouble(currentPoints.getText().toString()) - Double.parseDouble(tvPoints.getText().toString()),id,tvImageUrl.getText().toString(),tvImageName.getText().toString(),tvRewardCode.getText().toString(),tvTitle.getText().toString());
 //                                Intent i = new Intent(context, success_redeem.class);
 //                                i.putExtra("rewardTitle", tvTitle.getText().toString());
 //                                context.startActivity(i);
