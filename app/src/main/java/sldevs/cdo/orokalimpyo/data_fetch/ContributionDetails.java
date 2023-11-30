@@ -3,6 +3,7 @@ package sldevs.cdo.orokalimpyo.data_fetch;
 public class ContributionDetails {
 
     public String id;
+    public String status;
     public String contribution_id;
     public String name;
     public String type;
@@ -25,8 +26,9 @@ public class ContributionDetails {
     public String total_kilo;
     public String total_contributions;
 
-    public ContributionDetails(String id, String contribution_id, String name, String type, String barangay, String address, String number, String plastic, String otherWaste, String brand, String otherBrand, String kilo, String month, String day, String year, String date, String time, String waste_images_url, String proof_image_url, String qr_image_url, String total_kilo, String total_contributions) {
+    public ContributionDetails(String id, String status,String contribution_id, String name, String type, String barangay, String address, String number, String plastic, String otherWaste, String brand, String otherBrand, String kilo, String month, String day, String year, String date, String time, String waste_images_url, String proof_image_url, String qr_image_url, String total_kilo, String total_contributions) {
         this.id = id;
+        this.status = status;
         this.contribution_id = contribution_id;
         this.name = name;
         this.type = type;
@@ -61,6 +63,14 @@ public class ContributionDetails {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getContribution_id() {

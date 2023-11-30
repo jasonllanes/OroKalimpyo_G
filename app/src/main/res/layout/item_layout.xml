@@ -23,31 +23,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
+                android:fontFamily="@font/regular"
                 android:text="Contribution ID: [Loading]"
                 android:textStyle="bold"
-                android:textSize="15dp"/>
+                android:textSize="17dp"/>
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green"
+                android:fontFamily="@font/regular"
+                android:text="Status: [Loading]"
+                android:textSize="16dp"/>
             <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/green"
+                android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:text="Date and Time: [Loading]"
-                android:textStyle="bold"
-                android:textSize="15dp"/>
+
+                android:textSize="12dp"/>
 
             <TextView
                 android:id="@+id/tvName"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:text="Waste Generator Name: [Loading]"
                 android:textSize="15dp"/>
 
             <TextView
                 android:id="@+id/tvBarangay"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:text="Barangay: [Loading]"
                 android:textSize="15dp"/>
 
@@ -56,16 +70,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:text="Waste Type: [Loading]"
-                android:textSize="15dp"/>
+                android:textSize="12dp"/>
 
             <TextView
                 android:id="@+id/tvKilo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:text="Total Kilo: [Loading]"
-                android:textSize="15dp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -83,9 +99,9 @@
         </LinearLayout>
 
 
+
+
     </LinearLayout>
-
-
 
 
 </androidx.cardview.widget.CardView>

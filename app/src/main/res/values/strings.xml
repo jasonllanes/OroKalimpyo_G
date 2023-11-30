@@ -8,11 +8,11 @@
     <string name="guide_1">Segregate</string>
     <string name="guide_2">Prepare</string>
     <string name="guide_3">Show QR Code</string>
-    <string name="guide_4">That would be all. Thank you for your cooperation!</string>
+    <string name="guide_4">That would be all and thank you for your future contribution!</string>
 
-    <string name="guide_desc_0">The only thing that you are going to do is just follow these 3 easy steps.</string>
+    <string name="guide_desc_0">The only thing that you need to do is just follow these 3 easy steps.</string>
     <string name="guide_desc_1">Waste segregation is an ideal way to diminish the impact of landfills on the environment as well as health issues that can result from improperly disposed of wastes and toxins.</string>
-    <string name="guide_desc_2">Gather your waste and place it in designated bins. This includes recyclable materials, non-recyclable materials, and yard waste.</string>
+    <string name="guide_desc_2">Gather your waste and place it in designated bins. This includes recyclable materials, biodegradable, residuals, and special waste.</string>
     <string name="guide_desc_3">Show your QR Code to the waste collector so that they would be able to credit your contribution.</string>
     <string name="guide_desc_4"><i>-CLENRO CDO</i></string>
 

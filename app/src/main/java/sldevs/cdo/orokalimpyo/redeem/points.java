@@ -108,7 +108,7 @@ public class points extends Fragment {
         });
 
         fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
-        fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvRecyclable, tvBiodegradable, tvResidual, tvSpecialWaste);
+        fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvResidual, tvRecyclable, tvBiodegradable, tvSpecialWaste);
 
 
 //        fc.retrievePoints(getActivity(),getContext(), mAuth.getUid(), tvPoints);

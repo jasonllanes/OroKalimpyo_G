@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -54,6 +55,7 @@ public class ContributionAdapter extends RecyclerView.Adapter<ContributionAdapte
         Scanned_Contributions scanned_contributions = scanned_contributionsArrayList.get(position);
 
         holder.tvContributionId.setText("Contribution ID: \n" +scanned_contributions.contribution_id);
+        holder.tvStatus.setText("Status: \n" + scanned_contributions.status);
         holder.tvDateTime.setText("Date and Time: \n" +scanned_contributions.date + " " + scanned_contributions.time);
         holder.tvName.setText("Name: " + scanned_contributions.name);
         holder.tvBarangay.setText("Barangay: " + scanned_contributions.barangay);
@@ -61,6 +63,11 @@ public class ContributionAdapter extends RecyclerView.Adapter<ContributionAdapte
         holder.tvTotalKilo.setText("Kilo: " + scanned_contributions.kilo);
 
 
+        if(scanned_contributions.status.equals("Waste Collected")) {
+            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.red));
+        }else if(scanned_contributions.status.equals("Waste Consolidated")) {
+            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.green));
+        }
 
 
 
@@ -91,6 +98,7 @@ public class ContributionAdapter extends RecyclerView.Adapter<ContributionAdapte
     public class ContributionHolder extends RecyclerView.ViewHolder {
 
         TextView tvContributionId;
+        TextView tvStatus;
 
         TextView tvDateTime;
         TextView tvName;
@@ -108,6 +116,7 @@ public class ContributionAdapter extends RecyclerView.Adapter<ContributionAdapte
             super(itemView);
 
             tvContributionId = itemView.findViewById(R.id.tvID);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
             tvDateTime = itemView.findViewById(R.id.tvDateTime);
             tvName = itemView.findViewById(R.id.tvName);
             tvBarangay = itemView.findViewById(R.id.tvBarangay);
