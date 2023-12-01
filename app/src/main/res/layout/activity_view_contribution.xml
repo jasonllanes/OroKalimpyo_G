@@ -85,9 +85,9 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="@font/poppins_semibolditalic"
-                android:text="Empty Contribution"
+                android:text="No Contributions Yet..."
                 android:textColor="@color/green"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
 
 

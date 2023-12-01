@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:text="Note: The game is not yet fully trained so it may not recognize the waste you captured sometimes."
+                android:text="Note: The game is not yet fully trained so it may not recognize the brand` you captured sometimes."
                 android:textSize="13sp"
                 android:fontFamily="@font/pregular"
                 android:textColor="@color/red" />

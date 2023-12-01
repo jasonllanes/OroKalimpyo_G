@@ -43,9 +43,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.cutelibs.cutedialog.CuteDialog;
 import sldevs.cdo.orokalimpyo.GlideApp;
 import sldevs.cdo.orokalimpyo.R;
+import sldevs.cdo.orokalimpyo.authentication.final_sign_up;
 import sldevs.cdo.orokalimpyo.authentication.household_sign_up_details;
 import sldevs.cdo.orokalimpyo.authentication.log_in;
 import sldevs.cdo.orokalimpyo.firebase.firebase_crud;
+import sldevs.cdo.orokalimpyo.terms_and_data.external_link;
 
 
 public class profile_fragment extends Fragment implements View.OnClickListener {
@@ -54,7 +56,7 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
     StorageReference storageReference;
     TextView tvEditLocation;
     CircleImageView profile_image;
-    public TextView tvName, tvType, tvFullname, tvHouseholdType, tvEstablishmentType, tvEstablishmentTypeL, tvBarangay, tvLocation, tvNumber, tvEmail;
+    public TextView tvName, tvType, tvFullname, tvHouseholdType, tvEstablishmentType, tvEstablishmentTypeL, tvBarangay, tvLocation, tvNumber, tvEmail,tvTerm,tvData;
 
     firebase_crud fc;
     FirebaseAuth mAuth;
@@ -91,6 +93,8 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
         tvLocation = view.findViewById(R.id.tvLocation);
         tvNumber = view.findViewById(R.id.tvNumber);
         tvEmail = view.findViewById(R.id.tvEmail);
+        tvTerm = view.findViewById(R.id.tvTerm);
+        tvData = view.findViewById(R.id.tvData);
 
         tvEditLocation = view.findViewById(R.id.tvEditLocation);
 
@@ -109,6 +113,27 @@ public class profile_fragment extends Fragment implements View.OnClickListener {
 
         Animation animation2 = AnimationUtils.loadAnimation(getContext(), R.anim.fast_anim);
         llMenu.startAnimation(animation2);
+
+        tvTerm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), external_link.class);
+                i.putExtra("title","Terms and Condition");
+                i.putExtra("external_link","https://terms-and-condition-okapp.netlify.app/?fbclid=IwAR2lZEvMlRtneZKyKL1n0Sh6xC0YWVrRNvwYvGPx77N4AfSr6Z39haAmwyE#liability");
+                startActivity(i);
+            }
+        });
+
+        tvData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), external_link.class);
+                i.putExtra("title","Data Policy");
+                i.putExtra("external_link","https://privacy.gov.ph/data-privacy-act/?fbclid=IwAR0u0WwsJHx-IsXrJf6gjGpi1I91iIjucho7kWL9nxJw1gYz5HVzdSmHdaI");
+                startActivity(i);
+            }
+        });
+
 
         mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

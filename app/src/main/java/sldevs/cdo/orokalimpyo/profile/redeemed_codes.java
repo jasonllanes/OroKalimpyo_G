@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -36,6 +38,7 @@ public class redeemed_codes extends AppCompatActivity {
     RedeemedAdapter adapter;
     String searchQuery;
     SearchView searchView;
+    LinearLayout llEmpty;
     TextView tvPoints,tvResidual, tvBiodegradable, tvRecyclable, tvSpecialWaste;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,11 @@ public class redeemed_codes extends AppCompatActivity {
 
 
         btnBack = findViewById(R.id.btnBack);
+        llEmpty = findViewById(R.id.llEmpty);
 
 
         // Initialize your FirestoreRecyclerOptions and adapter here
-        Query query = db.collection("Redeemed Codes").whereEqualTo("user_id",mAuth.getUid()).orderBy("redeemed_date",Query.Direction.DESCENDING);
+        Query query = db.collection("Redeemed Codes").whereEqualTo("user_id",mAuth.getUid());
         FirestoreRecyclerOptions<Redeemed_Details> options = new FirestoreRecyclerOptions.Builder<Redeemed_Details>()
                 .setQuery(query, Redeemed_Details.class)
                 .build();
@@ -64,6 +68,24 @@ public class redeemed_codes extends AppCompatActivity {
         lvRedeemedCodes = findViewById(R.id.lvRedeemed);
         lvRedeemedCodes.setLayoutManager(new LinearLayoutManager(redeemed_codes.this,LinearLayoutManager.VERTICAL,false));
         lvRedeemedCodes.setAdapter(adapter);
+
+        final Handler handler = new Handler();
+        Runnable refresh = new Runnable() {
+            @Override
+            public void run() {
+                // data request
+                handler.postDelayed(this, 500);
+                adapter.startListening();
+                if(adapter.getItemCount() == 0){
+                    llEmpty.setVisibility(View.VISIBLE);
+                }else{
+                    llEmpty.setVisibility(View.GONE);
+                }
+            }
+        };
+
+        handler.postDelayed(refresh, 500);
+
 
 
 

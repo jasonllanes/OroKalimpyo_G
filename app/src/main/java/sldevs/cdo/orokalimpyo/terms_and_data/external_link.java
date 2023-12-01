@@ -17,7 +17,7 @@ public class external_link extends AppCompatActivity {
     WebView wvExternalLink;
 
     ImageView ivBack;
-    TextView tvLink;
+    TextView tvLink,tvTitle;
 
     String link,title;
     @Override
@@ -29,13 +29,15 @@ public class external_link extends AppCompatActivity {
 
         ivBack = findViewById(R.id.ivBack);
 
+        tvTitle = findViewById(R.id.tvTitle);
+
 
         title = getIntent().getStringExtra("title");
         link = getIntent().getStringExtra("external_link");
 
 //        tvLink.setText(title);
 
-
+        tvTitle.setText(title);
 
         wvExternalLink.getSettings().setJavaScriptEnabled(true);
         wvExternalLink.loadUrl(link);

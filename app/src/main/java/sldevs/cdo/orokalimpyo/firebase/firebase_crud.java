@@ -366,7 +366,7 @@ public class firebase_crud {
                 Toast.makeText(context, "Successfully Created", Toast.LENGTH_SHORT).show();
                 loading.setVisibility(View.INVISIBLE);
                 btnSignUp.setVisibility(View.VISIBLE);
-                Intent i = new Intent(context, log_in.class)
+                Intent i = new Intent(context, home.class)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); ;
                 context.startActivity(i);
                 activity.finish();

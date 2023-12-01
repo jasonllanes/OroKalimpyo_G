@@ -315,7 +315,7 @@ public class final_sign_up extends AppCompatActivity implements View.OnClickList
         user_details.put("location", location);
         user_details.put("number", number);
         user_details.put("email", etEmail.getText().toString().trim());
-        user_details.put("date_create", currentDate + " " + currentTime);
+        user_details.put("date_created", currentDate + " " + currentTime);
         user_details.put("recyclable", 0.0);
         user_details.put("biodegradable", 0.0);
         user_details.put("residual", 0.0);
