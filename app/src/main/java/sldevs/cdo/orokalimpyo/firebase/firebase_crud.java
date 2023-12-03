@@ -242,9 +242,7 @@ public class firebase_crud {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-
                     } else {
-
                     }
                     residual.setText(document.get("residual").toString() + " kg");
                     recyclable.setText(document.get("recyclable").toString()+ " kg");

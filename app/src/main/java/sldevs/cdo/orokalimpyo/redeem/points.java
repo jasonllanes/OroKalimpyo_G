@@ -110,13 +110,8 @@ public class points extends Fragment {
         fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
         fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvResidual, tvRecyclable, tvBiodegradable, tvSpecialWaste);
 
-
-//        fc.retrievePoints(getActivity(),getContext(), mAuth.getUid(), tvPoints);
-
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.opacity_anim);
         cPoints.startAnimation(animation);
-
-
         btnRedeem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

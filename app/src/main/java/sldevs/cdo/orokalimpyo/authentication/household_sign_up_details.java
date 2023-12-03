@@ -11,17 +11,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -37,6 +42,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.functions.other_functions;
 
@@ -50,10 +59,13 @@ public class household_sign_up_details extends AppCompatActivity implements View
     ProgressBar pbLocationLoading;
 
     private LocationRequest locationRequest;
+    TextView tvAddress;
 
     other_functions of;
+    double longitude,latitude;
 
     String user_type, household_type;
+    String address ,city,state,country,postalCode,knownName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +79,8 @@ public class household_sign_up_details extends AppCompatActivity implements View
         etName = findViewById(R.id.etName);
         etLocation = findViewById(R.id.etLocation);
         etNumber = findViewById(R.id.etNumber);
+
+        tvAddress = findViewById(R.id.tvAddress);
 
         sBarangay = findViewById(R.id.sBarangay);
 
@@ -90,7 +104,26 @@ public class household_sign_up_details extends AppCompatActivity implements View
         btnLocation.setOnClickListener(this);
         btnNext.setOnClickListener(this);
 
+        etLocation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    getAddress();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
 
     }
@@ -161,6 +194,22 @@ public class household_sign_up_details extends AppCompatActivity implements View
 
     }
 
+    public void getAddress() throws IOException {
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+         address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+         city = addresses.get(0).getLocality();
+         state = addresses.get(0).getAdminArea();
+         country = addresses.get(0).getCountryName();
+         postalCode = addresses.get(0).getPostalCode();
+         knownName = addresses.get(0).getFeatureName();
+
+         tvAddress.setText(address);
+    }
     public void getCurrentLocation() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -180,8 +229,8 @@ public class household_sign_up_details extends AppCompatActivity implements View
                                     if (locationResult != null && locationResult.getLocations().size() >0){
 
                                         int index = locationResult.getLocations().size() - 1;
-                                        double latitude = locationResult.getLocations().get(index).getLatitude();
-                                        double longitude = locationResult.getLocations().get(index).getLongitude();
+                                        latitude = locationResult.getLocations().get(index).getLatitude();
+                                        longitude = locationResult.getLocations().get(index).getLongitude();
 
                                         etLocation.setText(latitude + "," +longitude);
                                         pbLocationLoading.setVisibility(View.GONE);

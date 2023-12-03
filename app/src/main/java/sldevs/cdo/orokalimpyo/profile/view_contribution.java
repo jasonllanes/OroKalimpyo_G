@@ -80,27 +80,14 @@ public class view_contribution extends AppCompatActivity implements View.OnClick
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         db = FirebaseFirestore.getInstance();
         scanned_contributionsArrayList = new ArrayList<Scanned_Contributions>();
 
         adapter = new ContributionAdapter(view_contribution.this,scanned_contributionsArrayList);
 
-
         recyclerView.setAdapter(adapter);
 
-
         EventChangeListener();
-//        Query query = db.collection("Branches").orderBy("user_id",Query.Direction.DESCENDING);
-//        FirestoreRecyclerOptions<Scanned_Contributions> options = new FirestoreRecyclerOptions.Builder<Scanned_Contributions>()
-//                .setQuery(query, Scanned_Contributions.class)
-//                .build();
-
-
-
-
-
 
     }
 
@@ -113,11 +100,8 @@ public class view_contribution extends AppCompatActivity implements View.OnClick
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         size = value.size();
                         if(error != null){
-
                             Log.e("Firestore error!",error.getMessage());
                             return;
-
-
                         }
 
                         if(value.size() == 0){
@@ -126,18 +110,14 @@ public class view_contribution extends AppCompatActivity implements View.OnClick
 
                         for (DocumentChange dc : value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED){
-
                                 scanned_contributionsArrayList.add(dc.getDocument().toObject(Scanned_Contributions.class));
                             }
-
                             adapter.notifyDataSetChanged();
-
                         }
                         tvLoading.setVisibility(View.GONE);
                         pbLoading.setVisibility(View.GONE);
                     }
                 });
-
     }
 
     @Override

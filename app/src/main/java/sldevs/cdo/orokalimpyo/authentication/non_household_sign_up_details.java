@@ -12,15 +12,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -36,6 +41,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import sldevs.cdo.orokalimpyo.R;
 import sldevs.cdo.orokalimpyo.functions.other_functions;
@@ -53,6 +62,9 @@ public class non_household_sign_up_details extends AppCompatActivity implements 
     private LocationRequest locationRequest;
     String user_type,household_type;
     String others = "N/A";
+    TextView tvAddress;
+    double longitude,latitude;
+    String address ,city,state,country,postalCode,knownName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +125,27 @@ public class non_household_sign_up_details extends AppCompatActivity implements 
         ivBack.setOnClickListener(this);
         btnLocation.setOnClickListener(this);
         btnNext.setOnClickListener(this);
+
+        etLocation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    getAddress();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
     }
 
@@ -197,6 +230,23 @@ public class non_household_sign_up_details extends AppCompatActivity implements 
         }
 
 
+    }
+
+    public void getAddress() throws IOException {
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+        address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        city = addresses.get(0).getLocality();
+        state = addresses.get(0).getAdminArea();
+        country = addresses.get(0).getCountryName();
+        postalCode = addresses.get(0).getPostalCode();
+        knownName = addresses.get(0).getFeatureName();
+
+        tvAddress.setText(address);
     }
 
     private void getCurrentLocation() {

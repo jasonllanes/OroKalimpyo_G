@@ -251,6 +251,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
+                            android:text="Address: "
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/pbold"
+                            android:layout_marginTop="15dp" />
+
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="Loading..."
+                            android:textColor="@color/green"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/regular"
+                            android:layout_marginTop="15dp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
                             android:text="Contact Number:"
                             android:textColor="@color/black"
                             android:textSize="20sp"

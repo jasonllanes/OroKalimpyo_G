@@ -66,10 +66,7 @@ public class view_profile extends AppCompatActivity implements View.OnClickListe
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
 
 
-
-
         fc.retrieveProfile(view_profile.this, view_profile.this, mAuth.getUid(), tvName, tvType, tvHouseholdType, tvEstablishmentType, tvBarangay, tvLocation, tvNumber, tvEstablishmentTypeL, tvEmail);
-
 
         tvEditName.setOnClickListener(this);
         tvEditBarangay.setOnClickListener(this);
