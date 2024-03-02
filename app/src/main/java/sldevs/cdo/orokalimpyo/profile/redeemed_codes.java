@@ -65,26 +65,26 @@ public class redeemed_codes extends AppCompatActivity {
 
 
 
-        lvRedeemedCodes = findViewById(R.id.lvRedeemed);
-        lvRedeemedCodes.setLayoutManager(new LinearLayoutManager(redeemed_codes.this,LinearLayoutManager.VERTICAL,false));
-        lvRedeemedCodes.setAdapter(adapter);
+//        lvRedeemedCodes = findViewById(R.id.lvRedeemed);
+//        lvRedeemedCodes.setLayoutManager(new LinearLayoutManager(redeemed_codes.this,LinearLayoutManager.VERTICAL,false));
+//        lvRedeemedCodes.setAdapter(adapter);
 
         final Handler handler = new Handler();
-        Runnable refresh = new Runnable() {
-            @Override
-            public void run() {
-                // data request
-                handler.postDelayed(this, 500);
-                adapter.startListening();
-                if(adapter.getItemCount() == 0){
-                    llEmpty.setVisibility(View.VISIBLE);
-                }else{
-                    llEmpty.setVisibility(View.GONE);
-                }
-            }
-        };
-
-        handler.postDelayed(refresh, 500);
+//        Runnable refresh = new Runnable() {
+//            @Override
+//            public void run() {
+//                // data request
+//                handler.postDelayed(this, 500);
+//                adapter.startListening();
+//                if(adapter.getItemCount() == 0){
+//                    llEmpty.setVisibility(View.VISIBLE);
+//                }else{
+//                    llEmpty.setVisibility(View.GONE);
+//                }
+//            }
+//        };
+//
+//        handler.postDelayed(refresh, 500);
 
 
 
@@ -96,41 +96,41 @@ public class redeemed_codes extends AppCompatActivity {
             }
         });
 
-        searchView = findViewById(R.id.searchView);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query)  {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                searchQuery = newText;
-                // Update the Firestore query based on the search input
-                Query newQuery = db.collection("Redeemed Codes").whereEqualTo("user_id",mAuth.getUid()).whereEqualTo("reward_title", newText);
-                FirestoreRecyclerOptions<Redeemed_Details> newOptions =
-                        new FirestoreRecyclerOptions.Builder<Redeemed_Details>()
-                                .setQuery(newQuery, Redeemed_Details.class)
-                                .build();
-
-                adapter.updateSearchQuery(newText);
-
-                return true;
-            }
-        });
+//        searchView = findViewById(R.id.searchView);
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query)  {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                searchQuery = newText;
+//                // Update the Firestore query based on the search input
+//                Query newQuery = db.collection("Redeemed Codes").whereEqualTo("user_id",mAuth.getUid()).whereEqualTo("reward_title", newText);
+//                FirestoreRecyclerOptions<Redeemed_Details> newOptions =
+//                        new FirestoreRecyclerOptions.Builder<Redeemed_Details>()
+//                                .setQuery(newQuery, Redeemed_Details.class)
+//                                .build();
+//
+//                adapter.updateSearchQuery(newText);
+//
+//                return true;
+//            }
+//        });
 
 
     }
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
+//        adapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapter.stopListening();
+//        adapter.stopListening();
     }
 }

@@ -63,62 +63,62 @@ public class points extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         fc = new firebase_crud();
 
-        tvPoints = v.findViewById(R.id.tvPoints);
-        tvResidual = v.findViewById(R.id.tvResidual);
-        tvBiodegradable = v.findViewById(R.id.tvBiodegradable);
-        tvRecyclable = v.findViewById(R.id.tvRecyclable);
-        tvSpecialWaste = v.findViewById(R.id.tvSpecialWaste);
+//        tvPoints = v.findViewById(R.id.tvPoints);
+//        tvResidual = v.findViewById(R.id.tvResidual);
+//        tvBiodegradable = v.findViewById(R.id.tvBiodegradable);
+//        tvRecyclable = v.findViewById(R.id.tvRecyclable);
+//        tvSpecialWaste = v.findViewById(R.id.tvSpecialWaste);
+//
+//        cPoints = v.findViewById(R.id.cPoints);
+//
+//        btnRedeem = v.findViewById(R.id.btnRedeem);
+//
+//        swipeRefreshLayout = v.findViewById(R.id.swipeRefresh);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        //if task is successful
+//                        if (task.isSuccessful()) {
+//                            if (mAuth.getCurrentUser() == null) {
+//                                Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
+//                                Intent intent = new Intent(getContext(), log_in.class);
+//                                startActivity(intent);
+//                                getActivity().finish();
+//                                swipeRefreshLayout.setRefreshing(false);
+//                            } else {
+//                                fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
+//                                fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvRecyclable, tvBiodegradable, tvResidual, tvSpecialWaste);
+//                                swipeRefreshLayout.setRefreshing(false);
+//                            }
+//                        } else {
+//                            //if task is not successful
+//                            Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
+//                            Intent intent = new Intent(getContext(), log_in.class);
+//                            startActivity(intent);
+//                            getActivity().finish();
+//                            swipeRefreshLayout.setRefreshing(false);
+//                        }
+//                    }
+//                });
+//
+//            }
+//        });
 
-        cPoints = v.findViewById(R.id.cPoints);
-
-        btnRedeem = v.findViewById(R.id.btnRedeem);
-
-        swipeRefreshLayout = v.findViewById(R.id.swipeRefresh);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        //if task is successful
-                        if (task.isSuccessful()) {
-                            if (mAuth.getCurrentUser() == null) {
-                                Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getContext(), log_in.class);
-                                startActivity(intent);
-                                getActivity().finish();
-                                swipeRefreshLayout.setRefreshing(false);
-                            } else {
-                                fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
-                                fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvRecyclable, tvBiodegradable, tvResidual, tvSpecialWaste);
-                                swipeRefreshLayout.setRefreshing(false);
-                            }
-                        } else {
-                            //if task is not successful
-                            Toast.makeText(getContext(), "Please log in again.", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getContext(), log_in.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    }
-                });
-
-            }
-        });
-
-        fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
-        fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvResidual, tvRecyclable, tvBiodegradable, tvSpecialWaste);
-
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.opacity_anim);
-        cPoints.startAnimation(animation);
-        btnRedeem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), redeem_rewards.class);
-                startActivity(intent);
-            }
-        });
+//        fc.retrievePoints(getActivity(), getContext(), mAuth.getUid(), tvPoints);
+//        fc.retrieveTotalContribution(getActivity(), getContext(), mAuth.getUid(), tvResidual, tvRecyclable, tvBiodegradable, tvSpecialWaste);
+//
+//        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.opacity_anim);
+//        cPoints.startAnimation(animation);
+//        btnRedeem.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), redeem_rewards.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         return v;

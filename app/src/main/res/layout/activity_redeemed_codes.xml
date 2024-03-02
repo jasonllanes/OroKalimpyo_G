@@ -196,14 +196,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lvRedeemed"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coming Soon!"
+            android:fontFamily="@font/pbold"
+            android:textColor="@color/green"
+            android:textSize="30dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This feature is still under maintenance..."
+            android:fontFamily="@font/regular"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/lvRedeemed"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="5dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginTop="10dp" />-->
 
 
 
